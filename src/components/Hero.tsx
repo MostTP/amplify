@@ -1,6 +1,5 @@
 import Link from "next/link";
 import HeroCollage from "./HeroCollage";
-import VisualBackdrop from "./VisualBackdrop";
 import { IconPlay, IconRec, Waveform } from "./Icons";
 import { hero, site } from "@/data/content";
 

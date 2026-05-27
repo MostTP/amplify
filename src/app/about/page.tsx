@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import EventImage from "@/components/EventImage";
 import { about, site, visuals } from "@/data/content";
 
 export const metadata = {

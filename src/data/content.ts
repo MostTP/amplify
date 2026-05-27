@@ -184,7 +184,8 @@ export const register = {
   title: "Register for Media Week",
   subtitle:
     "Join AMPLIFY. 26’ — step into professional media production training.",
-
+    successMessage:
+    "Your registration has been received successfully. Check your email for further instructions.",
   departments: [
     "Broadcast & Audio",
     "Photography",
@@ -205,12 +206,56 @@ export const testimonials = {
         "Media Week gave me real hands-on experience with production equipment.",
       name: "Sarah A.",
       role: "Photography Team · 2024",
+      rating: 4,
     },
     {
       quote:
         "I learned how real live streaming systems actually work.",
       name: "David O.",
       role: "Live Stream Volunteer · 2024",
+      rating: 5,
+    },
+    {
+      quote:
+        "Before Media Week, I only knew theory. Now I can confidently run a full audio setup.",
+      name: "Michael T.",
+      role: "Audio Team · 2025",
+      rating: 5,
+    },
+    {
+      quote:
+        "The cinematography workshop completely changed how I see storytelling.",
+      name: "Grace E.",
+      role: "Video Production · 2025",
+      rating: 5,
+    },
+    {
+      quote:
+        "I finally understood how design serves ministry and communication, not just aesthetics.",
+      name: "Daniel K.",
+      role: "Graphics Team · 2024",
+      rating: 4,
+    },
+    {
+      quote:
+        "Working with a real production crew helped me build confidence and teamwork skills.",
+      name: "Blessing O.",
+      role: "Media Crew · 2025",
+      rating: 5,
+    },
+    {
+      quote:
+        "Media Week pushed me into excellence — from casual editing to intentional production.",
+      name: "Emmanuel R.",
+      role: "Editing Team · 2024",
+      rating: 5,
+    },
+    {
+      quote:
+        "It felt like a real studio environment. Everything was practical and impactful.",
+      name: "Sarah K.",
+      role: "Photography Team · 2025",
+      rating: 5,
     },
   ],
 };
