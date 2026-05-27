@@ -19,145 +19,214 @@ export default function RegisterPage() {
         imageAlt="Recording studio"
       />
 
-      <section className="relative overflow-hidden bg-[#02040F] py-28">
-        {/* ===================================== */}
-        {/* BACKGROUND ATMOSPHERE */}
-        {/* ===================================== */}
+      <section className="relative overflow-hidden bg-white py-24 sm:py-28">
+        {/* ================================= */}
+        {/* BACKGROUND DESIGN */}
+        {/* ================================= */}
 
-        {/* AURORA */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[-10%] top-[-10%] h-[700px] w-[700px] rounded-full bg-blue-500/15 blur-[150px]" />
+        {/* Soft gradient atmosphere */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-200/40 blur-3xl" />
 
-          <div className="absolute right-[-10%] top-[20%] h-[650px] w-[650px] rounded-full bg-fuchsia-500/10 blur-[150px]" />
+          <div className="absolute right-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-fuchsia-200/40 blur-3xl" />
 
-          <div className="absolute bottom-[-30%] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[180px]" />
+          <div className="absolute bottom-[-20%] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-blue-100/60 blur-3xl" />
         </div>
 
-        {/* GRID */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-          <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:90px_90px]" />
+        {/* Visible grid */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+          <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.12)_1px,transparent_1px)] bg-[size:70px_70px]" />
         </div>
 
-        {/* LIGHT BEAMS */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[10%] top-[-20%] h-[1200px] w-[240px] rotate-[18deg] bg-gradient-to-b from-cyan-400/20 via-blue-500/5 to-transparent blur-3xl" />
+        {/* Grain texture */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
 
-          <div className="absolute right-[10%] top-[-20%] h-[1200px] w-[240px] -rotate-[18deg] bg-gradient-to-b from-fuchsia-400/20 via-fuchsia-500/5 to-transparent blur-3xl" />
-        </div>
+        {/* Decorative rings */}
+        <div className="pointer-events-none absolute left-[5%] top-[20%] hidden h-52 w-52 rounded-full border border-slate-200 xl:block" />
+        <div className="pointer-events-none absolute right-[8%] bottom-[18%] hidden h-72 w-72 rounded-full border border-slate-200 xl:block" />
 
-        {/* MEDIA VISUALS */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {/* CAMERA */}
-          <div className="absolute -left-44 top-[15%] hidden xl:block">
-            <div className="relative h-[650px] w-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1800&auto=format&fit=crop"
-                alt="Cinema camera"
-                fill
-                className="
-                  object-cover
-                  opacity-[0.05]
-                  blur-[7px]
-                  saturate-0
-                  brightness-[0.6]
-                  contrast-125
-                  rotate-[-14deg]
-                  scale-125
-                  mix-blend-screen
-                "
-              />
-            </div>
-          </div>
-
-          {/* HEADPHONES */}
-          <div className="absolute -right-44 top-[35%] hidden xl:block">
-            <div className="relative h-[650px] w-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1800&auto=format&fit=crop"
-                alt="Studio headphones"
-                fill
-                className="
-                  object-cover
-                  opacity-[0.05]
-                  blur-[7px]
-                  saturate-0
-                  brightness-[0.7]
-                  contrast-125
-                  rotate-[12deg]
-                  scale-125
-                  mix-blend-screen
-                "
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* FILM GRAIN */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]" />
-
-        {/* VIGNETTE */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.88)_100%)]" />
-
-        {/* ===================================== */}
+        {/* ================================= */}
         {/* CONTENT */}
-        {/* ===================================== */}
+        {/* ================================= */}
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-5">
-            {/* LEFT PANEL */}
-            <div className="relative hidden overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_25px_100px_rgba(0,0,0,0.55)] backdrop-blur-3xl lg:col-span-2 lg:block">
-              {/* IMAGE */}
-              <div className="absolute inset-0">
-                <EventImage
-                  src={visuals.pillars.digital}
-                  alt="Digital ministry workspace"
-                  kenBurns
-                />
-              </div>
+          <div className="grid items-start gap-10 lg:grid-cols-5">
+            {/* ========================= */}
+            {/* LEFT SIDE */}
+            {/* ========================= */}
 
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#02040F] via-[#02040F]/40 to-transparent" />
+            <div className="hidden lg:col-span-2 lg:block">
+              <div className="sticky top-28 overflow-hidden rounded-[36px] border border-slate-200 bg-white shadow-[0_20px_80px_rgba(15,23,42,0.08)]">
+                {/* IMAGE */}
+                <div className="relative h-[340px] overflow-hidden">
+                  <EventImage
+                    src={visuals.pillars.digital}
+                    alt="Digital ministry workspace"
+                    kenBurns
+                  />
 
-              {/* CONTENT */}
-              <div className="relative z-20 flex h-full flex-col justify-between p-8">
-                {/* LIVE BADGE */}
-                <div className="inline-flex w-fit items-center gap-3 rounded-full border border-cyan-400/20 bg-white/[0.04] px-5 py-2 backdrop-blur-2xl">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
 
-                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
-                    Registration Open
-                  </span>
+                  {/* Badge */}
+                  <div className="absolute left-6 top-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-xl">
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+
+                    <span className="text-xs font-bold uppercase tracking-[0.28em] text-white">
+                      Registration Open
+                    </span>
+                  </div>
+
+                  {/* Floating card */}
+                  <div className="absolute bottom-6 left-6 right-6 rounded-[24px] border border-white/15 bg-white/10 p-5 backdrop-blur-2xl">
+                    <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-200">
+                      Media Week 2026
+                    </p>
+
+                    <h3 className="mt-3 text-2xl font-black text-white">
+                      Build Creative Excellence
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-relaxed text-slate-200">
+                      Learn production, storytelling, media systems,
+                      design, livestreaming, and digital ministry workflows.
+                    </p>
+                  </div>
                 </div>
 
-                {/* GLASS CARD */}
-                <div className="rounded-[28px] border border-white/10 bg-black/30 p-7 backdrop-blur-2xl">
-                  <p className="text-xs font-bold uppercase tracking-[0.35em] text-gold-300">
-                    What To Bring
-                  </p>
+                {/* CONTENT */}
+                <div className="space-y-8 p-8">
+                  {/* Features */}
+                  <div className="grid gap-4">
+                    {[
+                      "Hands-on media training",
+                      "Creative collaboration",
+                      "Certificate available",
+                      "Practical live sessions",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4"
+                      >
+                        <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-sm font-bold text-white">
+                          ✓
+                        </div>
 
-                  <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate-200">
-                    <li>✦ Open heart & willing hands</li>
-                    <li>✦ Notebook or device for notes</li>
-                    <li>✦ Portfolio or past work (optional)</li>
-                    <li>✦ Team spirit — we create together</li>
-                  </ul>
+                        <div>
+                          <p className="font-semibold text-slate-900">
+                            {item}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Small gallery */}
+                  <div>
+                    <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-slate-500">
+                      Experience
+                    </p>
+
+                    <div className="grid grid-cols-3 gap-3">
+                      {visuals.gallery.slice(0, 3).map((img, index) => (
+                        <div
+                          key={index}
+                          className="relative aspect-square overflow-hidden rounded-2xl"
+                        >
+                          <Image
+                            src={img.src}
+                            alt={img.label}
+                            fill
+                            className="object-cover transition duration-700 hover:scale-110"
+                            sizes="120px"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* TOP LIGHT */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-70" />
             </div>
 
-            {/* FORM */}
+            {/* ========================= */}
+            {/* RIGHT SIDE FORM */}
+            {/* ========================= */}
+
             <div className="lg:col-span-3">
-              <div className="overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-8 shadow-[0_25px_100px_rgba(0,0,0,0.55)] backdrop-blur-3xl sm:p-12">
-                <RegisterForm />
+              <div className="relative overflow-hidden rounded-[38px] border border-slate-200 bg-white shadow-[0_25px_100px_rgba(15,23,42,0.08)]">
+                {/* Decorative top glow */}
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500" />
+
+                {/* Pattern */}
+                <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+                  <div className="h-full w-full bg-[radial-gradient(circle,rgba(15,23,42,0.18)_1px,transparent_1px)] bg-[size:26px_26px]" />
+                </div>
+
+                {/* Glow */}
+                <div className="absolute right-[-120px] top-[-120px] h-[300px] w-[300px] rounded-full bg-cyan-200/50 blur-3xl" />
+
+                <div className="relative p-6 sm:p-10 lg:p-12">
+                  {/* Top heading */}
+                  <div className="mb-10 flex flex-col gap-6 border-b border-slate-100 pb-8 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.35em] text-cyan-600">
+                        Secure Registration
+                      </p>
+
+                      <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
+                        Reserve Your Spot
+                      </h2>
+
+                      <p className="mt-3 max-w-xl text-slate-600">
+                        Complete your registration and payment to gain access
+                        to Media Week training sessions and activities.
+                      </p>
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-5">
+                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">
+                        Registration Fee
+                      </p>
+
+                      <div className="mt-3 flex items-end gap-2">
+                        <span className="text-4xl font-black text-slate-950">
+                          ₦5,000
+                        </span>
+
+                        <span className="pb-1 text-sm text-slate-500">
+                          Training
+                        </span>
+                      </div>
+
+                      <p className="mt-2 text-sm text-slate-500">
+                        + ₦1,000 optional certificate
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* FORM */}
+                  <RegisterForm />
+                </div>
               </div>
 
-              <p className="mt-8 text-center text-xs text-slate-500">
-                Demo form — connect to Supabase, Formspree,
-                Firebase, or your API when ready.
-              </p>
+              {/* Footer text */}
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-cyan-500" />
+                  Secure payment via Paystack
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-blue-500" />
+                  Instant confirmation
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-fuchsia-500" />
+                  Optimized for mobile
+                </div>
+              </div>
             </div>
           </div>
         </div>

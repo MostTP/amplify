@@ -20,228 +20,181 @@ export default function AboutPage() {
         imageAlt="Media ministry team"
       />
 
-      <section className="relative overflow-hidden bg-[#02040F] py-28">
-        {/* ===================================== */}
-        {/* CINEMATIC BACKGROUND */}
-        {/* ===================================== */}
-
-        {/* AURORA GLOW */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[-10%] top-[-15%] h-[700px] w-[700px] rounded-full bg-blue-500/15 blur-[140px]" />
-
-          <div className="absolute right-[-10%] top-[10%] h-[650px] w-[650px] rounded-full bg-fuchsia-500/10 blur-[140px]" />
-
-          <div className="absolute bottom-[-30%] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[180px]" />
-        </div>
+      <section className="relative overflow-hidden bg-white py-24">
+        {/* ================= BACKGROUND ================= */}
 
         {/* GRID */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-          <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:90px_90px]" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+          <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
-        {/* FILM GRAIN */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]" />
+        {/* SOFT GLOW */}
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-100/50 blur-[120px]" />
 
-        {/* LIGHT BEAMS */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[8%] top-[-20%] h-[1200px] w-[240px] rotate-[20deg] bg-gradient-to-b from-cyan-400/15 via-blue-500/5 to-transparent blur-3xl" />
+        {/* SIDE LIGHTS */}
+        <div className="pointer-events-none absolute left-[-10%] top-[20%] h-[500px] w-[500px] rounded-full bg-blue-100/40 blur-[120px]" />
+        <div className="pointer-events-none absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-fuchsia-100/30 blur-[120px]" />
 
-          <div className="absolute right-[8%] top-[-20%] h-[1200px] w-[240px] -rotate-[18deg] bg-gradient-to-b from-fuchsia-400/15 via-fuchsia-500/5 to-transparent blur-3xl" />
-        </div>
+        {/* NOISE */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
 
-        {/* FLOATING MEDIA VISUALS */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {/* CAMERA */}
-          <div className="absolute -left-40 top-[15%] hidden xl:block">
-            <div className="relative h-[650px] w-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1800&auto=format&fit=crop"
-                alt="Cinema Camera"
-                fill
-                className="
-            object-cover
-            opacity-[0.05]
-            blur-[6px]
-            saturate-0
-            brightness-[0.55]
-            contrast-125
-            rotate-[-12deg]
-            scale-125
-            mix-blend-screen
-          "
-              />
-            </div>
-          </div>
-
-          {/* STAGE LIGHT */}
-          <div className="absolute -right-40 top-[35%] hidden xl:block">
-            <div className="relative h-[650px] w-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1800&auto=format&fit=crop"
-                alt="Stage Lighting"
-                fill
-                className="
-            object-cover
-            opacity-[0.06]
-            blur-[7px]
-            saturate-0
-            brightness-[0.7]
-            contrast-125
-            rotate-[12deg]
-            scale-125
-            mix-blend-screen
-          "
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* VIGNETTE */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.88)_100%)]" />
-
-        {/* ===================================== */}
-        {/* CONTENT */}
-        {/* ===================================== */}
+        {/* ================= CONTENT ================= */}
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* MISSION + VISION */}
-          <div className="grid gap-8 lg:grid-cols-2">
+
+          {/* ================= MISSION / VISION ================= */}
+
+          <div className="grid gap-10 lg:grid-cols-2">
+
             {/* MISSION */}
-            <article
-              className="
-          group relative overflow-hidden rounded-[32px]
-          border border-white/10
-          bg-white/[0.03]
-          backdrop-blur-3xl
-          shadow-[0_25px_80px_rgba(0,0,0,0.55)]
-          transition-all duration-700
-          hover:-translate-y-2
-          hover:border-cyan-400/20
-        "
-            >
-              <div className="relative h-56 overflow-hidden">
-                <EventImage
+            <article className="
+  group relative overflow-hidden rounded-[34px]
+  border border-white/10
+  bg-white/[0.03]
+  backdrop-blur-3xl
+  shadow-[0_25px_80px_rgba(0,0,0,0.55)]
+  transition-all duration-700
+  hover:-translate-y-2
+  hover:border-cyan-400/30
+">
+
+              {/* IMAGE HEADER */}
+              <div className="relative h-60 overflow-hidden">
+                <Image
                   src={visuals.pillars.broadcast}
                   alt="Mission"
-                  overlay
+                  fill
+                  className="
+        object-cover
+        brightness-[0.8]
+        contrast-125
+        saturate-125
+        transition-transform duration-700
+        group-hover:scale-105
+      "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02040F] via-transparent to-transparent" />
+                {/* OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#02040F] via-black/20 to-transparent" />
+
+                {/* LABEL */}
+                <div className="absolute left-5 top-5 rounded-full bg-black/40 px-4 py-2 backdrop-blur-xl border border-white/10">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
+                    Mission
+                  </p>
+                </div>
               </div>
 
+              {/* CONTENT */}
               <div className="p-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
-                  Mission
-                </p>
-
-                <h2 className="mt-4 font-display text-3xl font-bold text-white">
+                <h2 className="font-display text-3xl font-bold text-black-100/50">
                   {about.mission.title}
                 </h2>
 
-                <p className="mt-5 leading-relaxed text-slate-300">
+                <p className="mt-5 leading-relaxed text-slate-500">
                   {about.mission.text}
                 </p>
               </div>
-
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-70" />
             </article>
 
             {/* VISION */}
-            <article
-              className="
-          group relative overflow-hidden rounded-[32px]
-          border border-white/10
-          bg-white/[0.03]
-          backdrop-blur-3xl
-          shadow-[0_25px_80px_rgba(0,0,0,0.55)]
-          transition-all duration-700
-          hover:-translate-y-2
-          hover:border-fuchsia-400/20
-        "
-            >
-              <div className="relative h-56 overflow-hidden">
-                <EventImage
+            <article className="
+  group relative overflow-hidden rounded-[34px]
+  border border-white/10
+  bg-white/[0.03]
+  backdrop-blur-3xl
+  shadow-[0_25px_80px_rgba(0,0,0,0.55)]
+  transition-all duration-700
+  hover:-translate-y-2
+  hover:border-fuchsia-400/30
+">
+
+              {/* IMAGE HEADER */}
+              <div className="relative h-60 overflow-hidden">
+                <Image
                   src={visuals.pillars.camera}
                   alt="Vision"
-                  overlay
+                  fill
+                  className="
+        object-cover
+        brightness-[0.8]
+        contrast-125
+        saturate-125
+        transition-transform duration-700
+        group-hover:scale-105
+      "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02040F] via-transparent to-transparent" />
+                {/* OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#02040F] via-black/20 to-transparent" />
+
+                {/* LABEL */}
+                <div className="absolute left-5 top-5 rounded-full bg-black/40 px-4 py-2 backdrop-blur-xl border border-white/10">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-fuchsia-300">
+                    Vision
+                  </p>
+                </div>
               </div>
 
+              {/* CONTENT */}
               <div className="p-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-fuchsia-300">
-                  Vision
-                </p>
-
-                <h2 className="mt-4 font-display text-3xl font-bold text-white">
+                <h2 className="font-display text-3xl font-bold text-black-100/50">
                   {about.vision.title}
                 </h2>
 
-                <p className="mt-5 leading-relaxed text-slate-300">
+                <p className="mt-5 leading-relaxed text-slate-500">
                   {about.vision.text}
                 </p>
               </div>
-
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent opacity-70" />
             </article>
+
           </div>
 
-          {/* VALUES */}
+          {/* ================= VALUES ================= */}
+
           <div className="mt-28">
             <SectionHeading
               eyebrow="Core Values"
               title="What We Stand For"
               subtitle="Media ministry rooted in excellence, creativity, and spiritual impact."
-              light
+              light={false}
             />
 
-            <div className="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
               {about.values.map((value, i) => (
                 <div
                   key={value.title}
-                  className="
-              group relative overflow-hidden rounded-[28px]
-              border border-white/10
-              bg-white/[0.03]
-              backdrop-blur-3xl
-              shadow-[0_20px_60px_rgba(0,0,0,0.5)]
-              transition-all duration-700
-              hover:-translate-y-2
-              hover:border-cyan-400/20
-            "
+                  className="group rounded-[24px] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-md"
                 >
-                  {/* HEADER */}
-                  <div className="relative h-28 overflow-hidden bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-fuchsia-500/20">
-                    <div className="absolute inset-0 opacity-20 media-grid" />
-
-                    <span className="absolute bottom-4 left-5 font-display text-5xl font-black text-white/10">
-                      {String(i + 1).padStart(2, "0")}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                      0{i + 1}
                     </span>
+
+                    <div className="h-2 w-2 rounded-full bg-cyan-500 opacity-60 group-hover:opacity-100" />
                   </div>
 
-                  {/* CONTENT */}
-                  <div className="p-7 text-center">
-                    <h3 className="font-display text-2xl font-bold text-white">
-                      {value.title}
-                    </h3>
+                  <h3 className="mt-5 text-xl font-bold text-slate-900">
+                    {value.title}
+                  </h3>
 
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                      {value.description}
-                    </p>
-                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                    {value.description}
+                  </p>
 
-                  {/* GLOW */}
-                  <div className="absolute -bottom-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                  <div className="mt-6 h-[3px] w-10 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500 group-hover:w-full" />
                 </div>
               ))}
+
             </div>
           </div>
 
-          {/* CTA PANEL */}
-          <div className="mt-28 overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] backdrop-blur-3xl shadow-[0_25px_100px_rgba(0,0,0,0.55)]">
-            <div className="grid items-center lg:grid-cols-2">
-              {/* IMAGE */}
+          {/* ================= CTA ================= */}
+
+          <div className="mt-28 overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-cyan-50 via-white to-blue-50 shadow-sm">
+            <div className="grid lg:grid-cols-2">
+
               <div className="relative h-[320px] lg:h-full">
                 <Image
                   src={visuals.gallery[4].src}
@@ -249,48 +202,33 @@ export default function AboutPage() {
                   fill
                   className="object-cover"
                 />
-
-                <div className="absolute inset-0 bg-gradient-to-r from-[#02040F]/70 via-transparent to-transparent" />
               </div>
 
-              {/* CONTENT */}
-              <div className="relative p-10 lg:p-14">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">
+              <div className="p-10 lg:p-14">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-600">
                   Join the Media Crew
                 </p>
 
-                <h3 className="mt-5 font-display text-4xl font-bold text-white">
+                <h3 className="mt-5 text-4xl font-black text-slate-900">
                   Serve with Creativity & Purpose
                 </h3>
 
-                <p className="mt-6 leading-relaxed text-slate-300">
-                  Become part of a generation using media,
-                  storytelling, and technology to amplify the Gospel
-                  on campus and beyond.
+                <p className="mt-6 leading-relaxed text-slate-600">
+                  Become part of a generation using media, storytelling,
+                  and technology to amplify the Gospel on campus and beyond.
                 </p>
 
                 <Link
                   href="/register"
-                  className="
-              group mt-10 inline-flex items-center gap-3
-              rounded-full
-              bg-gradient-to-r from-blue-500 via-cyan-400 to-fuchsia-500
-              px-8 py-4
-              font-semibold text-white
-              shadow-[0_10px_40px_rgba(59,130,246,0.35)]
-              transition-all duration-500
-              hover:scale-105
-            "
+                  className="mt-10 inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 font-semibold text-white transition hover:bg-cyan-600"
                 >
-                  Join the Crew
-
-                  <span className="transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
+                  Join the Crew →
                 </Link>
               </div>
+
             </div>
           </div>
+
         </div>
       </section>
     </>

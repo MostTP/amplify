@@ -5,21 +5,26 @@ export default function PhotoMarquee() {
   const images = [...visuals.marquee, ...visuals.marquee];
 
   return (
-    <section className="overflow-hidden border-y border-white/10 bg-navy-900 py-6">
+    <section className="relative overflow-hidden border-y border-black/5 bg-white py-8">
+      {/* LIGHT BACKGROUND GLOW */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-1/2 h-[300px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-50 blur-[120px]" />
+      </div>
+
       <div className="flex animate-marquee-slow gap-4">
         {images.map((src, i) => (
           <div
-            key={`${src}-${i}`}
-            className="relative h-32 w-48 shrink-0 overflow-hidden rounded-xl border border-white/10 sm:h-40 sm:w-64"
+            key={i}
+            className="relative h-32 w-48 shrink-0 overflow-hidden rounded-xl border border-black/5 bg-white shadow-sm"
           >
             <Image
               src={src}
-              alt={`Media Week moment ${(i % visuals.marquee.length) + 1}`}
+              alt={`media ${i}`}
               fill
-              className="object-cover"
-              sizes="256px"
+              className="object-cover transition-transform duration-500 hover:scale-105"
             />
-            <div className="absolute inset-0 bg-royal-900/20 mix-blend-multiply" />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
           </div>
         ))}
       </div>

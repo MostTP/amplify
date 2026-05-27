@@ -1,5 +1,6 @@
 import EventImage from "./EventImage";
 import VisualBackdrop from "./VisualBackdrop";
+import Link from "next/link";
 
 type PageHeroProps = {
   title: string;
@@ -17,39 +18,137 @@ export default function PageHero({
   imageAlt = "Media Week",
 }: PageHeroProps) {
   return (
-    <section className="relative min-h-[50vh] overflow-hidden bg-navy-950 pt-32 pb-24 grain">
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-white">
+      {/* ===================== */}
+      {/* BACKGROUND SYSTEM */}
+      {/* ===================== */}
+      <div className="absolute inset-0">
+        {/* base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50" />
+
+        {/* structured grid (clean but visible) */}
+        <div className="absolute inset-0 opacity-[0.12]">
+          <div className="h-full w-full bg-[linear-gradient(to_right,rgba(15,23,42,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.12)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        </div>
+
+        {/* dot texture (adds depth) */}
+        <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(rgba(15,23,42,0.35)_1px,transparent_1px)] [background-size:16px_16px]" />
+
+        {/* subtle glow anchors */}
+        <div className="absolute left-[-15%] top-[-10%] h-[600px] w-[600px] rounded-full bg-blue-500/15 blur-[140px]" />
+        <div className="absolute right-[-15%] bottom-[-10%] h-[600px] w-[600px] rounded-full bg-fuchsia-500/15 blur-[160px]" />
+      </div>
+
+      {/* ===================== */}
+      {/* IMAGE SIDE PANEL */}
+      {/* ===================== */}
       {imageSrc && (
-        <>
+        <div className="absolute right-0 top-0 hidden h-full w-1/2 lg:block">
           <EventImage
             src={imageSrc}
             alt={imageAlt}
-            className="absolute inset-0 min-h-[50vh]"
-            overlay
+            className="h-full w-full object-cover"
+            overlay={false}
             kenBurns
           />
-          <div className="absolute inset-0 bg-navy-950/75" />
-        </>
+
+          {/* controlled fade into content */}
+          <div className="absolute inset-0 bg-gradient-to-l from-white via-white/60 to-transparent" />
+        </div>
       )}
-      {!imageSrc && (
-        <>
-          <div className="absolute inset-0 bg-hero-gradient" />
-          <VisualBackdrop variant="subtle" />
-        </>
-      )}
-      <div className="media-grid pointer-events-none absolute inset-0 opacity-20" />
-      <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        {eyebrow && (
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-royal-300">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
-            {eyebrow}
-          </p>
-        )}
-        <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl animate-fade-up">
-          {title}
-        </h1>
-        {subtitle && (
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">{subtitle}</p>
-        )}
+
+      {/* fallback visual */}
+      {!imageSrc && <VisualBackdrop variant="subtle" />}
+
+      {/* ===================== */}
+      {/* CONTENT LAYOUT */}
+      {/* ===================== */}
+      <div className="relative mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          
+          {/* LEFT CONTENT */}
+          <div>
+            {eyebrow && (
+              <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600 shadow-sm backdrop-blur-xl">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
+                {eyebrow}
+              </p>
+            )}
+
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+              {title}
+            </h1>
+
+            {subtitle && (
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+                {subtitle}
+              </p>
+            )}
+
+            {/* CTA AREA */}
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                href="/register"
+                className="rounded-full bg-gradient-to-r from-blue-600 to-fuchsia-500 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:shadow-xl"
+              >
+                Register Now
+              </Link>
+
+              <Link
+                href="/about"
+                className="rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+              >
+                Learn More
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT VISUAL CARD (desktop only depth layer) */}
+          <div className="hidden lg:block">
+            <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(0,0,0,0.08)]">
+              
+              {/* inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-fuchsia-500/10" />
+
+              {/* animated highlight strip */}
+              <div className="absolute -left-20 top-0 h-full w-40 rotate-12 bg-white/30 blur-2xl" />
+
+              {/* content preview block */}
+              <div className="relative p-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
+                  Media Experience
+                </p>
+
+                <h3 className="mt-4 text-2xl font-bold text-slate-900">
+                  Creative. Technical. Spiritual.
+                </h3>
+
+                <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                  A structured environment where media, creativity, and excellence come together to produce impactful content.
+                </p>
+
+                {/* mini stats */}
+                <div className="mt-8 grid grid-cols-3 gap-4">
+                  <div>
+                    <p className="text-2xl font-bold text-slate-900">5+</p>
+                    <p className="text-xs text-slate-500">Tracks</p>
+                  </div>
+
+                  <div>
+                    <p className="text-2xl font-bold text-slate-900">2 Days</p>
+                    <p className="text-xs text-slate-500">Training</p>
+                  </div>
+
+                  <div>
+                    <p className="text-2xl font-bold text-slate-900">Live</p>
+                    <p className="text-xs text-slate-500">Experience</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

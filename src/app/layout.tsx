@@ -18,11 +18,11 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: `${site.fullTitle} | ${site.tagline}`,
+  title: `${site.fullTitle} | ${site.tag}`,
   description: `${site.fullTitle} — ${site.date} at ${site.location}. Equipping believers in broadcast, visual media, design, and digital ministry.`,
   openGraph: {
     title: site.fullTitle,
-    description: site.tagline,
+    description: site.tag,
     type: "website",
   },
 };

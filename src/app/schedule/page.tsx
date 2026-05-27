@@ -18,227 +18,184 @@ export default function SchedulePage() {
         imageAlt="Event stage lighting"
       />
 
-      <section className="relative overflow-hidden bg-[#02040F] py-28">
-        {/* ========================================= */}
-        {/* CINEMATIC BACKGROUND */}
-        {/* ========================================= */}
-
-        {/* AURORA GLOW */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[-10%] top-[-10%] h-[700px] w-[700px] rounded-full bg-blue-500/15 blur-[150px]" />
-
-          <div className="absolute right-[-10%] top-[20%] h-[650px] w-[650px] rounded-full bg-fuchsia-500/10 blur-[150px]" />
-
-          <div className="absolute bottom-[-30%] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[180px]" />
-        </div>
+      <section className="relative overflow-hidden bg-white py-24">
+        {/* ===================================== */}
+        {/* BACKGROUND */}
+        {/* ===================================== */}
 
         {/* GRID */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-          <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:90px_90px]" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
+          <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
-        {/* FILM GRAIN */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]" />
+        {/* TOP GLOW */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-cyan-50 via-white to-transparent" />
 
-        {/* LIGHT BEAMS */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[10%] top-[-20%] h-[1200px] w-[240px] rotate-[18deg] bg-gradient-to-b from-cyan-400/20 via-blue-500/5 to-transparent blur-3xl" />
+        {/* RADIAL LIGHT */}
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-cyan-100/40 blur-[120px]" />
 
-          <div className="absolute right-[10%] top-[-20%] h-[1200px] w-[240px] -rotate-[18deg] bg-gradient-to-b from-fuchsia-400/20 via-fuchsia-500/5 to-transparent blur-3xl" />
-        </div>
+        {/* SIDE LIGHTS */}
+        <div className="pointer-events-none absolute left-[-10%] top-[20%] h-[500px] w-[500px] rounded-full bg-blue-100/50 blur-[120px]" />
 
-        {/* FLOATING MEDIA VISUALS */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {/* CAMERA */}
-          <div className="absolute -left-44 top-[15%] hidden xl:block">
-            <div className="relative h-[650px] w-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1800&auto=format&fit=crop"
-                alt="Cinema camera"
-                fill
-                className="
-            object-cover
-            opacity-[0.05]
-            blur-[7px]
-            saturate-0
-            brightness-[0.6]
-            contrast-125
-            rotate-[-14deg]
-            scale-125
-            mix-blend-screen
-          "
-              />
-            </div>
-          </div>
+        <div className="pointer-events-none absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-fuchsia-100/40 blur-[120px]" />
 
-          {/* STAGE LIGHT */}
-          <div className="absolute -right-44 top-[35%] hidden xl:block">
-            <div className="relative h-[650px] w-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1800&auto=format&fit=crop"
-                alt="Stage lighting"
-                fill
-                className="
-            object-cover
-            opacity-[0.06]
-            blur-[7px]
-            saturate-0
-            brightness-[0.7]
-            contrast-125
-            rotate-[12deg]
-            scale-125
-            mix-blend-screen
-          "
-              />
-            </div>
-          </div>
-        </div>
+        {/* NOISE */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
 
-        {/* VIGNETTE */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,0.88)_100%)]" />
-
-        {/* ========================================= */}
+        {/* ===================================== */}
         {/* CONTENT */}
-        {/* ========================================= */}
+        {/* ===================================== */}
 
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* HERO EVENT CARD */}
-          <div
-            className="
-        overflow-hidden rounded-[36px]
-        border border-white/10
-        bg-white/[0.03]
-        backdrop-blur-3xl
-        shadow-[0_25px_100px_rgba(0,0,0,0.55)]
-      "
-          >
-            <div className="relative grid md:grid-cols-2">
-              {/* IMAGE */}
-              <div className="relative min-h-[280px] overflow-hidden md:min-h-[380px]">
-                <Image
-                  src={visuals.gallery[0].src}
-                  alt="Workshop session"
-                  fill
-                  className="
-              object-cover
-              brightness-[0.7]
-              contrast-125
-              saturate-125
-              transition-transform duration-1000
-              hover:scale-105
-            "
-                  sizes="50vw"
-                />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* HERO */}
+          <div className="mx-auto max-w-5xl text-center">
+            {/* BADGE */}
+            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-200 bg-cyan-50 px-5 py-2 shadow-sm">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-500" />
 
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#02040F]" />
-              </div>
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-700">
+                Media Week 2026
+              </span>
+            </div>
 
-              {/* CONTENT */}
-              <div className="relative flex flex-col justify-center p-10 lg:p-14">
-                {/* LIVE BADGE */}
-                <div className="inline-flex w-fit items-center gap-3 rounded-full border border-cyan-400/20 bg-white/[0.04] px-5 py-2 backdrop-blur-2xl">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+            {/* TITLE */}
+            <h1 className="mt-8 font-display text-5xl font-black tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+              Experience The
+              <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+                {" "}
+                Full Schedule
+              </span>
+            </h1>
 
-                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
-                    Media Week 2026
-                  </span>
-                </div>
+            {/* DESCRIPTION */}
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-slate-600">
+              Workshops, worship experiences, live production sessions,
+              media training, and creative collaboration designed to equip
+              the next generation of digital ministers.
+            </p>
 
-                {/* DATE */}
-                <p className="mt-7 text-sm uppercase tracking-[0.35em] text-fuchsia-300">
+            {/* STATS */}
+            <div className="mt-14 grid gap-5 sm:grid-cols-3">
+              <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
                   Event Date
                 </p>
 
-                <h2 className="mt-4 font-display text-4xl font-black leading-tight text-white lg:text-5xl">
+                <p className="mt-4 text-3xl font-black text-slate-900">
                   {site.date}
-                </h2>
+                </p>
+              </div>
 
-                <p className="mt-5 max-w-md text-lg leading-relaxed text-slate-300">
-                  {site.location}
+              <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
+                  Venue
                 </p>
 
-                {/* CTA */}
-                <Link
-                  href="/register"
-                  className="
-              group mt-10 inline-flex w-fit items-center gap-3
-              rounded-full
-              bg-gradient-to-r from-blue-500 via-cyan-400 to-fuchsia-500
-              px-8 py-4
-              font-semibold text-white
-              shadow-[0_12px_50px_rgba(59,130,246,0.35)]
-              transition-all duration-500
-              hover:scale-105
-            "
-                >
-                  Reserve Your Seat
+                <p className="mt-4 text-2xl font-black text-slate-900">
+                  {site.location}
+                </p>
+              </div>
 
-                  <span className="transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
+              <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
+                  Access
+                </p>
 
-                {/* FLOATING GLOW */}
-                <div className="absolute -bottom-20 right-0 h-56 w-56 rounded-full bg-cyan-500/10 blur-[100px]" />
+                <p className="mt-4 text-3xl font-black text-cyan-600">
+                  Open
+                </p>
               </div>
             </div>
           </div>
 
-          {/* ========================================= */}
-          {/* TIMELINE */}
-          {/* ========================================= */}
+          {/* ===================================== */}
+          {/* FEATURE IMAGE */}
+          {/* ===================================== */}
 
-          <div className="relative mt-24">
+          <div className="relative mx-auto mt-20 max-w-6xl overflow-hidden rounded-[40px] border border-slate-200 bg-white shadow-[0_20px_80px_rgba(15,23,42,0.08)]">
+            <div className="relative h-[300px] w-full sm:h-[420px]">
+              <Image
+                src={visuals.gallery[0].src}
+                alt="Workshop session"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
+            </div>
+
+            {/* FLOATING CARD */}
+            <div className="absolute bottom-6 left-6 rounded-3xl border border-white/40 bg-white/80 p-6 shadow-xl backdrop-blur-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-700">
+                Featured Session
+              </p>
+
+              <h2 className="mt-3 text-2xl font-black text-slate-900">
+                Creative Media Training
+              </h2>
+
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-600">
+                Learn storytelling, live production, design,
+                photography, digital ministry, and media excellence.
+              </p>
+            </div>
+          </div>
+
+          {/* ===================================== */}
+          {/* TIMELINE */}
+          {/* ===================================== */}
+
+          <div className="relative mx-auto mt-28 max-w-5xl">
             {/* LINE */}
-            <div className="absolute left-[26px] top-0 hidden h-full w-px bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent md:block" />
+            <div className="absolute left-6 top-0 hidden h-full w-px bg-gradient-to-b from-cyan-300 via-blue-400 to-transparent md:block" />
 
             <div className="space-y-8">
               {schedule.tracks.map((item) => (
                 <div
                   key={`${item.time}-${item.title}`}
-                  className="group relative"
+                  className="group relative pl-0 md:pl-20"
                 >
-                  {/* TIMELINE DOT */}
-                  <div className="absolute left-0 top-10 hidden md:flex">
-                    <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/20 bg-[#071120] backdrop-blur-2xl">
-                      <div className="h-3 w-3 rounded-full bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.9)]" />
-
-                      <div className="absolute inset-0 rounded-full border border-cyan-400/20 animate-ping" />
+                  {/* DOT */}
+                  <div className="absolute left-0 top-6 hidden md:flex">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cyan-200 bg-white shadow-md">
+                      <div className="h-3 w-3 rounded-full bg-cyan-500" />
                     </div>
                   </div>
 
                   {/* CARD */}
                   <div
                     className="
-                md:ml-24 overflow-hidden rounded-[30px]
-                border border-white/10
-                bg-white/[0.03]
-                backdrop-blur-3xl
-                shadow-[0_20px_60px_rgba(0,0,0,0.45)]
-                transition-all duration-700
-                hover:-translate-y-2
-                hover:border-cyan-400/20
-              "
+                      rounded-[32px]
+                      border border-slate-200
+                      bg-white
+                      p-8
+                      shadow-sm
+                      transition-all duration-500
+                      hover:-translate-y-1
+                      hover:shadow-[0_20px_60px_rgba(14,165,233,0.12)]
+                    "
                   >
-                    <div className="grid gap-8 p-8 lg:grid-cols-[180px_1fr] lg:p-10">
+                    <div className="grid gap-8 lg:grid-cols-[180px_1fr]">
                       {/* TIME */}
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-fuchsia-300">
+                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-600">
                           Time
                         </p>
 
-                        <h3 className="mt-3 font-display text-3xl font-black text-white">
+                        <h3 className="mt-3 text-3xl font-black text-slate-900">
                           {item.time}
                         </h3>
 
-                        <div className="mt-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                        <div className="mt-5 inline-flex rounded-full bg-cyan-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-700">
                           {item.type}
                         </div>
                       </div>
 
-                      {/* DETAILS */}
+                      {/* CONTENT */}
                       <div>
-                        <h2 className="font-display text-2xl font-bold text-white lg:text-3xl">
+                        <h2 className="text-3xl font-black tracking-tight text-slate-900">
                           {item.title}
                         </h2>
 
@@ -246,12 +203,12 @@ export default function SchedulePage() {
                           {item.location}
                         </p>
 
-                        <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300">
+                        <p className="mt-6 leading-relaxed text-slate-600">
                           {item.description}
                         </p>
 
                         {/* UNDERLINE */}
-                        <div className="mt-8 h-[3px] w-20 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-fuchsia-500 transition-all duration-700 group-hover:w-full" />
+                        <div className="mt-8 h-[3px] w-20 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500 group-hover:w-full" />
                       </div>
                     </div>
                   </div>
@@ -260,13 +217,53 @@ export default function SchedulePage() {
             </div>
           </div>
 
+          {/* ===================================== */}
+          {/* CTA */}
+          {/* ===================================== */}
+
+          <div className="relative mt-28 overflow-hidden rounded-[40px] border border-slate-200 bg-gradient-to-br from-cyan-50 via-white to-blue-50 p-14 text-center shadow-[0_20px_80px_rgba(14,165,233,0.08)]">
+            {/* GRID */}
+            <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
+              <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.08)_1px,transparent_1px)] bg-[size:50px_50px]" />
+            </div>
+
+            <div className="relative">
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-700">
+                Join The Experience
+              </p>
+
+              <h2 className="mx-auto mt-6 max-w-3xl text-4xl font-black tracking-tight text-slate-900 sm:text-5xl">
+                Reserve Your Seat For Media Week 2026
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+                Be part of a generation using creativity, media,
+                and storytelling to amplify impact and ministry.
+              </p>
+
+              <Link
+                href="/register"
+                className="
+                  mt-10 inline-flex items-center gap-3
+                  rounded-full
+                  bg-slate-900
+                  px-8 py-4
+                  font-semibold
+                  text-white
+                  transition-all duration-300
+                  hover:scale-105
+                  hover:bg-cyan-600
+                "
+              >
+                Reserve Your Seat
+                <span>→</span>
+              </Link>
+            </div>
+          </div>
+
           {/* FOOTNOTE */}
-          <p className="mt-16 text-center text-sm text-slate-500">
+          <p className="mt-12 text-center text-sm text-slate-400">
             Schedule subject to change.
-            Update timings in{" "}
-            <code className="rounded bg-white/10 px-2 py-1 text-xs text-slate-300">
-              src/data/content.ts
-            </code>
           </p>
         </div>
       </section>
