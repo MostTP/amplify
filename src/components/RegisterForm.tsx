@@ -4,8 +4,6 @@ import { useState } from "react";
 import { register as registerContent } from "@/data/content";
 import { RegisterData } from "./formtypes";
 import { payWithPaystack } from "./paystack";
-import { submitToSheet } from "./bmitToSheet";
-import Script from "next/script";
 
 export default function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -40,7 +38,6 @@ export default function RegisterForm() {
       },
       body: JSON.stringify({
         reference,
-        formData,
       }),
     });
 
@@ -74,16 +71,8 @@ export default function RegisterForm() {
     focus:ring-4
     focus:ring-cyan-400/10
   `;
-  <Script
-    src="https://js.paystack.co/v1/inline.js"
-    strategy="lazyOnload"
-  />
   return (
     <>
-      <Script
-        src="https://js.paystack.co/v1/inline.js"
-        strategy="beforeInteractive"
-      />
 
       {submitted ? (
         <div className="rounded-[32px] border border-cyan-400/20 bg-cyan-400/10 p-12 text-center backdrop-blur-2xl">

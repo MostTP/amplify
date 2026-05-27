@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { reference, formData } = body;
+    const { reference } = body;
 
     const verifyRes = await fetch(
       `https://api.paystack.co/transaction/verify/${reference}`,
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
       },
       { status: 400 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,
