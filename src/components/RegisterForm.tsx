@@ -2,13 +2,61 @@
 
 import { useState } from "react";
 import { register as registerContent } from "@/data/content";
+import { RegisterData } from "./formtypes";
+import { payWithPaystack } from "./paystack";
+import { submitToSheet } from "./bmitToSheet";
+import Script from "next/script";
 
 export default function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+
+
+  const [formData, setFormData] = useState<RegisterData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    department: "",
+    church: "",
+    notes: "",
+    wantsCertificate: false,
+  });
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  async function handlePayment(reference: string) {
+    const res = await fetch("/api/verify-payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reference,
+        formData,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setSubmitted(true);
+    } else {
+      alert("Payment verification failed");
+    }
+  }
+
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+
+    payWithPaystack(formData, handlePayment);
   }
 
   const inputStyles = `
@@ -26,209 +74,142 @@ export default function RegisterForm() {
     focus:ring-4
     focus:ring-cyan-400/10
   `;
-
-  if (submitted) {
-    return (
-      <div className="rounded-[32px] border border-cyan-400/20 bg-cyan-400/10 p-12 text-center backdrop-blur-2xl">
-        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl text-white shadow-[0_0_40px_rgba(34,211,238,0.45)]">
-          ✓
-        </div>
-
-        <p className="mt-8 font-display text-3xl font-bold text-white">
-          You're on the list!
-        </p>
-
-        <p className="mt-4 text-lg leading-relaxed text-slate-300">
-          {registerContent.successMessage}
-        </p>
-      </div>
-    );
-  }
-
+  <Script
+    src="https://js.paystack.co/v1/inline.js"
+    strategy="lazyOnload"
+  />
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      {/* HEADER */}
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">
-          Media Week 2026
-        </p>
+    <>
+      <Script
+        src="https://js.paystack.co/v1/inline.js"
+        strategy="beforeInteractive"
+      />
 
-        <h2 className="mt-4 font-display text-4xl font-black text-white">
-          Register Now
-        </h2>
+      {submitted ? (
+        <div className="rounded-[32px] border border-cyan-400/20 bg-cyan-400/10 p-12 text-center backdrop-blur-2xl">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl text-white shadow-[0_0_40px_rgba(34,211,238,0.45)]">
+            ✓
+          </div>
 
-        <p className="mt-4 max-w-2xl text-slate-400">
-          Join creatives, storytellers, editors, photographers,
-          designers, and digital ministers for a transformative
-          media experience.
-        </p>
-      </div>
+          <p className="mt-8 font-display text-3xl font-bold text-white">
+            You&apos;re on the list!
+          </p>
 
-      {/* NAMES */}
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="firstName"
-            className="text-sm font-medium text-slate-300"
-          >
-            First Name *
-          </label>
+          <p className="mt-4 text-lg text-slate-300">
+            {registerContent.successMessage}
+          </p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-8">
+          {/* HEADER */}
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">
+              Media Week 2026
+            </p>
 
+            <h2 className="mt-4 text-4xl font-black text-white">
+              Register Now
+            </h2>
+          </div>
+
+          {/* FIRST NAME */}
           <input
-            id="firstName"
             name="firstName"
-            required
+            placeholder="First Name"
             className={inputStyles}
-            placeholder="Stephen"
+            onChange={handleChange}
+            required
           />
-        </div>
 
-        <div>
-          <label
-            htmlFor="lastName"
-            className="text-sm font-medium text-slate-300"
-          >
-            Last Name *
-          </label>
-
+          {/* LAST NAME */}
           <input
-            id="lastName"
             name="lastName"
-            required
+            placeholder="Last Name"
             className={inputStyles}
-            placeholder="Ola"
+            onChange={handleChange}
+            required
           />
-        </div>
-      </div>
 
-      {/* CONTACT */}
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="email"
-            className="text-sm font-medium text-slate-300"
-          >
-            Email Address *
-          </label>
-
+          {/* EMAIL */}
           <input
-            id="email"
+            name="email"
             type="email"
-            required
+            placeholder="Email"
             className={inputStyles}
-            placeholder="you@example.com"
+            onChange={handleChange}
+            required
           />
-        </div>
 
-        <div>
-          <label
-            htmlFor="phone"
-            className="text-sm font-medium text-slate-300"
+          {/* PHONE */}
+          <input
+            name="phone"
+            placeholder="Phone"
+            className={inputStyles}
+            onChange={handleChange}
+            required
+          />
+
+          {/* DEPARTMENT */}
+          <select
+            name="department"
+            className={inputStyles}
+            onChange={handleChange}
+            required
           >
-            Phone Number *
+            <option value="">Select Department</option>
+
+            {registerContent.departments.map((d) => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
+          </select>
+          <input
+  name="church"
+  placeholder="Church Name"
+  className={inputStyles}
+  onChange={handleChange}
+/>
+<textarea
+  name="notes"
+  placeholder="Additional Notes (Optional)"
+  className={`${inputStyles} min-h-[140px] resize-none`}
+  onChange={handleChange}
+/>
+
+          <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-white">
+            <input
+              type="checkbox"
+              checked={formData.wantsCertificate}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  wantsCertificate: e.target.checked,
+                })
+              }
+              className="h-5 w-5 accent-cyan-400"
+            />
+
+            <div>
+              <p className="font-semibold">
+                Add Certificate
+              </p>
+
+              <p className="text-sm text-slate-400">
+                Optional — ₦1000
+              </p>
+            </div>
           </label>
 
-          <input
-            id="phone"
-            type="tel"
-            required
-            className={inputStyles}
-            placeholder="+234 812 345 6789"
-          />
-        </div>
-      </div>
-
-      {/* DEPARTMENT */}
-      <div>
-        <label
-          htmlFor="department"
-          className="text-sm font-medium text-slate-300"
-        >
-          Department / Interest *
-        </label>
-
-        <select
-          id="department"
-          required
-          defaultValue=""
-          className={inputStyles}
-        >
-          <option value="" disabled className="bg-[#02040F]">
-            Select a department
-          </option>
-
-          {registerContent.departments.map((d) => (
-            <option
-              key={d}
-              value={d}
-              className="bg-[#02040F]"
-            >
-              {d}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* CHURCH */}
-      <div>
-        <label
-          htmlFor="church"
-          className="text-sm font-medium text-slate-300"
-        >
-          Church / Fellowship
-        </label>
-
-        <input
-          id="church"
-          className={inputStyles}
-          placeholder="RCF KWASU"
-        />
-      </div>
-
-      {/* NOTES */}
-      <div>
-        <label
-          htmlFor="notes"
-          className="text-sm font-medium text-slate-300"
-        >
-          Why do you want to attend?
-        </label>
-
-        <textarea
-          id="notes"
-          rows={5}
-          className={`${inputStyles} resize-none`}
-          placeholder="Tell us about your passion for media ministry..."
-        />
-      </div>
-
-      {/* BUTTON */}
-      <button
-        type="submit"
-        className="
-          group relative inline-flex w-full items-center justify-center gap-3
-          overflow-hidden rounded-full
-          bg-gradient-to-r from-blue-500 via-cyan-400 to-fuchsia-500
-          px-10 py-5
-          text-lg font-semibold text-white
-          shadow-[0_15px_60px_rgba(59,130,246,0.35)]
-          transition-all duration-500
-          hover:scale-[1.02]
-          hover:shadow-[0_20px_80px_rgba(59,130,246,0.45)]
-        "
-      >
-        <span className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <span className="absolute inset-0 bg-white/10" />
-        </span>
-
-        <span className="relative z-10">
-          Submit Registration
-        </span>
-
-        <span className="relative z-10 transition-transform duration-500 group-hover:translate-x-1">
-          →
-        </span>
-      </button>
-    </form>
+          {/* BUTTON */}
+          <button
+            type="submit"
+            className="w-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 py-5 font-semibold text-white"
+          >
+            Pay & Register
+          </button>
+        </form>
+      )}
+    </>
   );
 }

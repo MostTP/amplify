@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
-import ScheduleCard from "@/components/ScheduleCard";
 import { schedule, site, visuals } from "@/data/content";
 
 export const metadata = {
@@ -194,7 +193,7 @@ export default function SchedulePage() {
             <div className="absolute left-[26px] top-0 hidden h-full w-px bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent md:block" />
 
             <div className="space-y-8">
-              {schedule.tracks.map((item, index) => (
+              {schedule.tracks.map((item) => (
                 <div
                   key={`${item.time}-${item.title}`}
                   className="group relative"

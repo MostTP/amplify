@@ -11,6 +11,13 @@ const pillarImages: Record<string, string> = {
   visuals: visuals.pillars.visuals,
 };
 
+type MediaIconName =
+  | "broadcast"
+  | "camera"
+  | "design"
+  | "digital"
+  | "visuals";
+
 const edgeVisuals = {
   camera:
     "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop",
@@ -341,7 +348,7 @@ export default function MediaPillars() {
                     <div className="flex items-start justify-between">
                       <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-black/30 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                         <MediaIcon
-                          name={item.icon as any}
+                          name={item.icon as MediaIconName}
                           className="h-8 w-8 text-white"
                         />
                       </div>

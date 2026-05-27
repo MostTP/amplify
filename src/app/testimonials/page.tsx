@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
-import TestimonialCard from "@/components/TestimonialCard";
 import { testimonials, site, visuals } from "@/data/content";
 
 export const metadata = {
