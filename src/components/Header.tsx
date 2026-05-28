@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks, site } from "@/data/content";
@@ -27,8 +28,14 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
 
         {/* BRAND */}
-        <Link href="/" className="flex items-center gap-3">
-          <img src="/Tenurenameb.png" className="h-12 w-auto" alt="RCF KWASU" />
+        <Link href="/" className="flex items-center gap-2 sm:gap-3">
+          <Image 
+            src="/Tenurenameb.png" 
+            width={48} 
+            height={48}
+            className="h-10 w-auto sm:h-12" 
+            alt="RCF KWASU" 
+          />
 
           <div className="hidden sm:block leading-tight">
             <p className="text-sm font-semibold text-slate-900">

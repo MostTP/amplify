@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased`}
+        className={`${playfair.variable} ${jakarta.variable} font-sans antialiased overflow-x-hidden`}
       >
         <Header />
         <main>{children}</main>

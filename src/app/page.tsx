@@ -1,19 +1,25 @@
-import Link from "next/link";
-import Image from "next/image";
 import Hero from "@/components/Hero";
 import MediaPillars from "@/components/MediaPillars";
 import PhotoMarquee from "@/components/PhotoMarquee";
 import VisualCTA from "@/components/VisualCTA";
 import SectionHeading from "@/components/SectionHeading";
 import { homeSections, visuals } from "@/data/content";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const { highlight } = homeSections;
 
   return (
-    <main className="bg-white text-slate-900">
+    <main className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-900 antialiased">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_32%)]" />
+      <div className="pointer-events-none absolute left-0 top-40 h-72 w-72 rounded-full bg-fuchsia-100/70 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-40 h-72 w-72 rounded-full bg-cyan-100/70 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-100 to-transparent" />
+
       {/* HERO (keep as-is, already strong) */}
       <Hero />
+
 
       {/* MARQUEE (lightened wrapper) */}
       <div className="bg-gray-50">
@@ -29,9 +35,9 @@ export default function Home() {
       {/* HIGHLIGHT SECTION (REDESIGNED) */}
       {/* ===================================== */}
 
-      <section className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 sm:gap-12 md:gap-16 lg:grid-cols-2">
 
             {/* TEXT */}
             <div>
@@ -67,19 +73,20 @@ export default function Home() {
             </div>
 
             {/* IMAGE */}
-            <div className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-lg">
+            <div className="relative order-first sm:order-last overflow-hidden">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl shadow-lg">
                 <Image
                   src={visuals.about}
                   alt="Media team collaboration"
                   fill
                   className="object-cover"
                   priority
+
                 />
               </div>
 
               {/* simple accent */}
-              <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full bg-blue-100 blur-2xl" />
+              <div className="absolute bottom-0 right-0 -mb-6 -mr-6 h-32 w-32 rounded-full bg-blue-100 blur-2xl pointer-events-none" />
             </div>
           </div>
         </div>

@@ -6,12 +6,12 @@ export default function VisualCTA() {
   const { cta } = homeSections;
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-fuchsia-50">
       {/* ============================= */}
       {/* BACKGROUND LIGHT SYSTEM */}
       {/* ============================= */}
 
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* SOFT CENTER GLOW */}
         <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100 blur-[140px]" />
         <div className="absolute right-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-fuchsia-100 blur-[160px]" />
@@ -54,7 +54,7 @@ export default function VisualCTA() {
       {/* CONTENT */}
       {/* ============================= */}
 
-      <div className="relative mx-auto flex min-h-[520px] max-w-6xl flex-col items-center justify-center px-4 py-28 text-center">
+      <div className="relative mx-auto flex min-h-[520px] max-w-6xl flex-col items-center justify-center px-4 py-16 sm:py-24 md:py-28 text-center">
         {/* BADGE */}
         <div className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white px-5 py-2 shadow-sm backdrop-blur">
           <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
@@ -64,12 +64,12 @@ export default function VisualCTA() {
         </div>
 
         {/* TITLE */}
-        <h2 className="mt-7 max-w-4xl text-4xl font-black leading-tight text-black sm:text-5xl lg:text-6xl">
+        <h2 className="mt-6 sm:mt-7 max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-black">
           {cta.title}
         </h2>
 
         {/* BODY */}
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-black/60 sm:text-xl">
+        <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-black/60">
           {cta.body}
         </p>
 
@@ -81,9 +81,9 @@ export default function VisualCTA() {
             rounded-full bg-black
             px-10 py-4
             text-white
-            shadow-lg
+            shadow-[0_20px_80px_rgba(0,0,0,0.18)]
             transition-all duration-500
-            hover:scale-[1.03]
+            hover:-translate-y-0.5 hover:scale-[1.03]
             hover:bg-black/90
           "
         >

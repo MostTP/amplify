@@ -108,7 +108,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-[40px] border border-slate-200 bg-white p-6 shadow-[0_30px_100px_rgba(0,0,0,0.08)] md:p-10">
+    <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[40px] border border-slate-200 bg-white p-4 sm:p-6 shadow-[0_30px_100px_rgba(0,0,0,0.08)] md:p-10">
 
       {/* BACKGROUND EFFECTS */}
       <div className="absolute inset-0">

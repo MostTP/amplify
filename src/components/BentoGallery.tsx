@@ -14,7 +14,7 @@ export default function BentoGallery() {
           light
         />
 
-        <div className="mt-16 grid auto-rows-[140px] grid-cols-2 gap-3 sm:auto-rows-[180px] md:grid-cols-4 md:gap-4">
+        <div className="mt-12 sm:mt-16 grid auto-rows-[100px] grid-cols-2 gap-2 sm:auto-rows-[140px] sm:gap-3 md:auto-rows-[180px] md:grid-cols-4 md:gap-4">
           {visuals.gallery.map((item) => (
             <div
               key={item.label}

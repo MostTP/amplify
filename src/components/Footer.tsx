@@ -3,8 +3,9 @@ import { footer, navLinks, site } from "@/data/content";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white text-slate-700">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="relative border-t border-slate-200 bg-white text-slate-700">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-fuchsia-500" />
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 
         <div className="grid gap-12 md:grid-cols-3">
 
@@ -51,6 +52,18 @@ export default function Footer() {
             </p>
           </div>
 
+        </div>
+
+        <div className="mt-10 rounded-[2rem] border border-slate-200 bg-slate-50 px-6 py-6 text-center shadow-sm sm:flex sm:items-center sm:justify-between sm:text-left">
+          <p className="text-sm font-semibold text-slate-900">
+            Ready to amplify your media ministry?
+          </p>
+          <Link
+            href="/register"
+            className="mt-4 inline-flex rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition hover:bg-slate-900 sm:mt-0"
+          >
+            Register Now
+          </Link>
         </div>
 
         {/* BOTTOM */}

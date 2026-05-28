@@ -9,7 +9,7 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: radial-gradient(circle at top, rgba(59,130,246,0.12), transparent 30%), radial-gradient(circle at 20% 90%, rgba(236,72,153,0.08), transparent 16%), linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
 @layer utilities {
@@ -51,6 +51,22 @@ body {
     @apply absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-900/40 to-transparent;
   }
 
+  .shadow-luxury {
+    box-shadow: 0 30px 90px rgba(15, 23, 42, 0.12);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 18px 70px rgba(59, 130, 246, 0.15);
+  }
+
+  .animate-ken-burns-slow {
+    animation: ken-burns 20s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer-slow {
+    animation: shimmer 3.2s ease-in-out infinite;
+  }
+
   .grain::after {
     content: "";
     position: absolute;
@@ -79,6 +95,11 @@ body {
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-8px); }
 }
 
 @keyframes float {

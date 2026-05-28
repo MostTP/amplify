@@ -8,6 +8,9 @@ type MediaPillarIcon =
   | "camera"
   | "design"
   | "digital"
+  | "code"
+  | "video"
+  | "write"
   | "visuals";
 
 const pillarImages: Record<MediaPillarIcon, string> = {
@@ -15,6 +18,9 @@ const pillarImages: Record<MediaPillarIcon, string> = {
   camera: visuals.pillars.camera,
   design: visuals.pillars.design,
   digital: visuals.pillars.digital,
+  code: visuals.pillars.code,
+  video: visuals.pillars.video,
+  write: visuals.pillars.write,
   visuals: visuals.pillars.visuals,
 };
 
@@ -22,9 +28,9 @@ export default function MediaPillars() {
   const { mediaPillars } = homeSections;
 
   return (
-    <section className="relative bg-white py-32">
+    <section className="relative bg-white py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* LIGHT BACKGROUND SYSTEM */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-blue-50 blur-[140px]" />
         <div className="absolute right-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-fuchsia-50 blur-[160px]" />
         <div className="absolute bottom-[-20%] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-50 blur-[160px]" />
@@ -35,7 +41,7 @@ export default function MediaPillars() {
         <div className="h-full w-full bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:90px_90px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="The Media Mandate"
           title={mediaPillars.title}
@@ -51,16 +57,16 @@ export default function MediaPillars() {
               <article
                 key={item.title}
                 className="
-                  group relative overflow-hidden rounded-2xl
-                  border border-black/5
+                  group relative overflow-hidden rounded-[2rem]
+                  border border-slate-200
                   bg-white
-                  shadow-sm
+                  shadow-[0_30px_90px_rgba(15,23,42,0.08)]
                   transition-all duration-500
-                  hover:-translate-y-2 hover:shadow-xl
+                  hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(59,130,246,0.18)]
                 "
               >
                 {/* IMAGE */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-64 overflow-hidden">
                   <Image
                     src={pillarImages[icon]}
                     alt={item.title}

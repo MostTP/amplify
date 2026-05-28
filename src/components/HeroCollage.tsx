@@ -4,7 +4,7 @@ import { IconRec } from "./Icons";
 
 export default function HeroCollage() {
   return (
-    <div className="relative mx-auto mt-16 w-full max-w-lg lg:mt-0 lg:max-w-none">
+    <div className="relative mx-auto mt-8 w-full max-w-sm sm:max-w-md sm:mt-12 lg:mt-0 lg:max-w-none overflow-hidden">
       {/* Main feature image */}
       <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/15 shadow-luxury sm:aspect-[3/4] lg:aspect-[4/5]">
         <EventImage
@@ -40,8 +40,8 @@ export default function HeroCollage() {
         </div>
       </div>
 
-      {/* Floating secondary card */}
-      <div className="absolute -bottom-6 -left-4 z-30 w-36 overflow-hidden rounded-xl border border-white/20 shadow-luxury animate-float sm:-left-8 sm:w-44">
+      {/* Floating secondary card - repositioned to avoid overflow */}
+      <div className="hidden sm:block absolute bottom-4 left-0 z-30 w-40 overflow-hidden rounded-xl border border-white/20 shadow-luxury animate-float translate-y-12">
         <EventImage
           src={visuals.gallery[1].src}
           alt="Stage production"
@@ -50,14 +50,14 @@ export default function HeroCollage() {
         />
       </div>
 
-      {/* Floating stats chip */}
-      <div className="absolute -right-2 top-1/4 z-30 glass animate-float-delayed rounded-2xl px-5 py-4 shadow-glow sm:-right-6">
+      {/* Floating stats chip - repositioned to avoid overflow */}
+      <div className="hidden md:block absolute right-0 top-1/4 z-30 glass animate-float-delayed rounded-2xl px-5 py-4 shadow-glow translate-x-12">
         <p className="font-display text-2xl font-bold text-white">4K</p>
         <p className="text-[10px] uppercase tracking-widest text-royal-300">Vision</p>
       </div>
 
-      {/* Orbit ring decoration */}
-      <div className="pointer-events-none absolute -inset-8 rounded-full border border-royal-500/20 animate-spin-slow" style={{ animationDuration: "25s" }} />
+      {/* Orbit ring decoration - hide on small screens */}
+      <div className="pointer-events-none absolute -inset-8 rounded-full border border-royal-500/20 animate-spin-slow hidden lg:block" style={{ animationDuration: "25s" }} />
     </div>
   );
 }
