@@ -1,14 +1,20 @@
+"use client";
+
+import { useMemo } from "react";
 import PageHero from "@/components/PageHero";
 import RegisterForm from "@/components/RegisterForm";
 import EventImage from "@/components/EventImage";
 import Image from "next/image";
 import { register, site, visuals } from "@/data/content";
+import { getRandomBackground } from "@/components/backgrounds";
 
 export const metadata = {
   title: `Register | ${site.fullTitle}`,
 };
 
 export default function RegisterPage() {
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
+
   return (
     <>
       <PageHero
@@ -23,30 +29,7 @@ export default function RegisterPage() {
         {/* ================================= */}
         {/* BACKGROUND DESIGN */}
         {/* ================================= */}
-
-        {/* PATTERN OVERLAY */}
-        <div className="pointer-events-none absolute inset-0 opacity-65">
-          <div className="absolute inset-0 pattern-dots" />
-          <div className="absolute inset-0 pattern-grain" />
-          <div className="absolute inset-0 pattern-geo-lines opacity-75" />
-        </div>
-
-        {/* Soft gradient atmosphere */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-200/40 blur-3xl" />
-
-          <div className="absolute right-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-fuchsia-200/40 blur-3xl" />
-
-          <div className="absolute bottom-[-20%] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-blue-100/60 blur-3xl" />
-        </div>
-
-        {/* Visible grid */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
-          <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.12)_1px,transparent_1px)] bg-[size:70px_70px]" />
-        </div>
-
-        {/* Grain texture */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
+        <BackgroundComponent />
 
         {/* Decorative rings */}
         <div className="pointer-events-none absolute left-[5%] top-[20%] hidden h-52 w-52 rounded-full border border-slate-200 xl:block" />

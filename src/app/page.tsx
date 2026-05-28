@@ -1,30 +1,24 @@
+"use client";
+
+import { useMemo } from "react";
 import Hero from "@/components/Hero";
 import MediaPillars from "@/components/MediaPillars";
 import PhotoMarquee from "@/components/PhotoMarquee";
 import VisualCTA from "@/components/VisualCTA";
 import SectionHeading from "@/components/SectionHeading";
 import { homeSections, visuals } from "@/data/content";
+import { getRandomBackground } from "@/components/backgrounds";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
   const { highlight } = homeSections;
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
-    <main className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(251,207,138,0.22),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(236,72,153,0.08),_transparent_18%),linear-gradient(180deg,_#fffdf8_0%,_#f7efe4_45%,_#f2e7dd_100%)] text-slate-900 antialiased">
-      {/* PATTERN OVERLAY LAYER */}
-      <div className="pointer-events-none absolute inset-0 opacity-65">
-        <div className="absolute inset-0 pattern-dots" />
-        <div className="absolute inset-0 pattern-grain" />
-        <div className="absolute inset-0 pattern-geo-lines opacity-70" />
-      </div>
-
-      {/* DECORATIVE BLURS */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-60 bg-gradient-to-b from-amber-200/40 to-transparent" />
-      <div className="pointer-events-none absolute left-0 top-24 h-72 w-72 rounded-full bg-amber-200/30 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 top-28 h-80 w-80 rounded-full bg-fuchsia-100/30 blur-3xl" />
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-56 w-56 -translate-x-1/2 rounded-full bg-white/60 blur-2xl" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-slate-100/95 to-transparent" />
+    <main className="relative overflow-hidden bg-white text-slate-900 antialiased">
+      {/* RANDOM BACKGROUND */}
+      <BackgroundComponent />
 
       {/* HERO (keep as-is, already strong) */}
       <Hero />

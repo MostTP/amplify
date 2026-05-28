@@ -1,19 +1,35 @@
+"use client";
+
+import { useMemo } from "react";
 import Link from "next/link";
 import HeroCollage from "./HeroCollage";
 import { IconPlay, IconRec, Waveform } from "./Icons";
 import { hero, site } from "@/data/content";
+import FloatingLines from "./FloatingLines";
+import { getRandomBackground } from "./backgrounds";
 
 export default function Hero() {
   const [headlinePrefix, headlineAccent] = hero.headline.split(" Through ");
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.15),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(236,72,153,0.08),_transparent_20%),linear-gradient(180deg,#ffffff,#f8fafc)] pt-24">
-      {/* LIGHT FIELD BACKGROUND */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-[-10%] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-blue-100 blur-[140px]" />
-        <div className="absolute right-[-10%] top-[20%] h-[500px] w-[500px] rounded-full bg-fuchsia-100 blur-[160px]" />
-        <div className="absolute bottom-[-20%] left-[-10%] h-[600px] w-[600px] rounded-full bg-cyan-100 blur-[160px]" />
-      </div>
+    <section className="relative min-h-screen overflow-hidden bg-white pt-24">
+      <BackgroundComponent />
+      <FloatingLines
+        enabledWaves={["top", "middle", "bottom"]}
+        // Array - specify line count per wave; Number - same count for all waves
+        lineCount={8}
+        // Array - specify line distance per wave; Number - same distance for all waves
+        lineDistance={8}
+        bendRadius={8}
+        bendStrength={-2}
+        interactive
+        parallax={true}
+        animationSpeed={1}
+        gradientStart="#e945f5"
+        gradientMid="#8b5cf6"
+        gradientEnd="#0ea5e9"
+      />
 
       {/* SUBTLE GRID */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
@@ -55,9 +71,7 @@ export default function Hero() {
                 <p className="mt-1 text-2xl font-bold text-black">
                   {site.date}
                 </p>
-                <p className="text-sm text-black/50">
-                  {site.locationShort}
-                </p>
+                <p className="text-sm text-black/50">{site.locationShort}</p>
               </div>
             </div>
 
@@ -66,7 +80,8 @@ export default function Hero() {
                 href={hero.ctaPrimary.href}
                 className="rounded-full bg-black px-8 py-4 font-semibold text-white shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:scale-[1.02]"
               >
-                {hero.ctaPrimary.label} <IconPlay className="ml-2 inline h-4 w-4" />
+                {hero.ctaPrimary.label}{" "}
+                <IconPlay className="ml-2 inline h-4 w-4" />
               </Link>
 
               <Link

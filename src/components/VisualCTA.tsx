@@ -1,32 +1,25 @@
+"use client";
+
+import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { homeSections } from "@/data/content";
+import { getRandomBackground } from "./backgrounds";
 
 export default function VisualCTA() {
   const { cta } = homeSections;
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-fuchsia-50">
+    <section className="relative overflow-hidden bg-white">
       {/* ============================= */}
-      {/* BACKGROUND LIGHT SYSTEM */}
+      {/* RANDOM BACKGROUND */}
       {/* ============================= */}
-
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* SOFT CENTER GLOW */}
-        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100 blur-[140px]" />
-        <div className="absolute right-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-fuchsia-100 blur-[160px]" />
-        <div className="absolute left-[-10%] bottom-[-20%] h-[600px] w-[600px] rounded-full bg-cyan-100 blur-[160px]" />
-      </div>
-
-      {/* GRID (SUBTLE STRUCTURE) */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
-        <div className="h-full w-full bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:90px_90px]" />
-      </div>
-
+      <BackgroundComponent />
+      \n
       {/* ============================= */}
       {/* MAIN VISUAL BACKDROP */}
-      {/* ============================= */}
-
+      {/* ============================= */}\n
       <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2200&auto=format&fit=crop"
@@ -35,25 +28,8 @@ export default function VisualCTA() {
           priority
           className="object-cover opacity-[0.15] saturate-150 contrast-125"
         />
-
-        {/* SOFT FADE FOR READABILITY */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white" />
-      </div>
-
-      {/* ============================= */}
-      {/* FLOATING LIGHT ACCENTS */}
-      {/* ============================= */}
-
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-[10%] top-[20%] h-[400px] w-[120px] rotate-[18deg] bg-gradient-to-b from-cyan-300/30 to-transparent blur-2xl" />
-
-        <div className="absolute right-[10%] top-[10%] h-[500px] w-[120px] -rotate-[18deg] bg-gradient-to-b from-fuchsia-300/30 to-transparent blur-2xl" />
-      </div>
-
-      {/* ============================= */}
-      {/* CONTENT */}
-      {/* ============================= */}
-
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white" />{" "}
+      </div>{" "}
       <div className="relative mx-auto flex min-h-[520px] max-w-6xl flex-col items-center justify-center px-4 py-16 sm:py-24 md:py-28 text-center">
         {/* BADGE */}
         <div className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white px-5 py-2 shadow-sm backdrop-blur">

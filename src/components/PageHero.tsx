@@ -1,5 +1,9 @@
+"use client";
+
+import { useMemo } from "react";
 import EventImage from "./EventImage";
 import VisualBackdrop from "./VisualBackdrop";
+import { getRandomBackground } from "./backgrounds";
 import Link from "next/link";
 
 type PageHeroProps = {
@@ -17,28 +21,17 @@ export default function PageHero({
   imageSrc,
   imageAlt = "Media Week",
 }: PageHeroProps) {
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-white">
       {/* ===================== */}
       {/* BACKGROUND SYSTEM */}
       {/* ===================== */}
       <div className="absolute inset-0">
-        {/* base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50" />
-
-        {/* structured grid (clean but visible) */}
-        <div className="absolute inset-0 opacity-[0.12]">
-          <div className="h-full w-full bg-[linear-gradient(to_right,rgba(15,23,42,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.12)_1px,transparent_1px)] bg-[size:56px_56px]" />
-        </div>
-
-        {/* dot texture (adds depth) */}
-        <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(rgba(15,23,42,0.35)_1px,transparent_1px)] [background-size:16px_16px]" />
-
-        {/* subtle glow anchors */}
-        <div className="absolute left-[-15%] top-[-10%] h-[600px] w-[600px] rounded-full bg-blue-500/15 blur-[140px]" />
-        <div className="absolute right-[-15%] bottom-[-10%] h-[600px] w-[600px] rounded-full bg-fuchsia-500/15 blur-[160px]" />
+        <BackgroundComponent />
       </div>
-
+      \n
       {/* ===================== */}
       {/* IMAGE SIDE PANEL */}
       {/* ===================== */}
@@ -56,16 +49,13 @@ export default function PageHero({
           <div className="absolute inset-0 bg-gradient-to-l from-white via-white/60 to-transparent" />
         </div>
       )}
-
       {/* fallback visual */}
       {!imageSrc && <VisualBackdrop variant="subtle" />}
-
       {/* ===================== */}
       {/* CONTENT LAYOUT */}
       {/* ===================== */}
       <div className="relative mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2">
-          
           {/* LEFT CONTENT */}
           <div>
             {eyebrow && (
@@ -106,7 +96,6 @@ export default function PageHero({
           {/* RIGHT VISUAL CARD (desktop only depth layer) */}
           <div className="hidden lg:block">
             <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(0,0,0,0.08)]">
-              
               {/* inner glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-fuchsia-500/10" />
 
@@ -124,7 +113,8 @@ export default function PageHero({
                 </h3>
 
                 <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                  A structured environment where media, creativity, and excellence come together to produce impactful content.
+                  A structured environment where media, creativity, and
+                  excellence come together to produce impactful content.
                 </p>
 
                 {/* mini stats */}
@@ -147,7 +137,6 @@ export default function PageHero({
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

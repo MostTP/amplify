@@ -1,7 +1,11 @@
+"use client";
+
+import { useMemo } from "react";
 import Image from "next/image";
 import { homeSections, visuals } from "@/data/content";
 import SectionHeading from "./SectionHeading";
 import { MediaIcon } from "./Icons";
+import { getRandomBackground } from "./backgrounds";
 
 type MediaPillarIcon =
   | "broadcast"
@@ -26,21 +30,12 @@ const pillarImages: Record<MediaPillarIcon, string> = {
 
 export default function MediaPillars() {
   const { mediaPillars } = homeSections;
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
     <section className="relative bg-white py-16 sm:py-24 md:py-32 overflow-hidden">
-      {/* LIGHT BACKGROUND SYSTEM */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-blue-50 blur-[140px]" />
-        <div className="absolute right-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-fuchsia-50 blur-[160px]" />
-        <div className="absolute bottom-[-20%] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-50 blur-[160px]" />
-      </div>
-
-      {/* GRID */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
-        <div className="h-full w-full bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:90px_90px]" />
-      </div>
-
+      {/* RANDOM BACKGROUND */}
+      <BackgroundComponent />\n
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="The Media Mandate"

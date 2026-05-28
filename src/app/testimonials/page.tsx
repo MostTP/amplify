@@ -1,7 +1,11 @@
+"use client";
+
+import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { testimonials, site, visuals } from "@/data/content";
+import { getRandomBackground } from "@/components/backgrounds";
 
 export const metadata = {
   title: `Testimonials | ${site.fullTitle}`,
@@ -9,6 +13,8 @@ export const metadata = {
 
 export default function TestimonialsPage() {
   const featured = testimonials.items[0];
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
+
 
   return (
     <>
@@ -24,30 +30,7 @@ export default function TestimonialsPage() {
       <section className="relative overflow-hidden bg-[#F8FAFC] py-24 text-slate-900">
         {/* BACKGROUND */}
         <div className="absolute inset-0 overflow-hidden bg-white">
-          {/* BASE WHITE */}
-          <div className="absolute inset-0 bg-white" />
-
-          {/* PATTERN OVERLAY */}
-          <div className="absolute inset-0 opacity-65">
-            <div className="absolute inset-0 pattern-dots" />
-            <div className="absolute inset-0 pattern-grain" />
-            <div className="absolute inset-0 pattern-geo-lines opacity-75" />
-          </div>
-
-          {/* STRONGER ATMOSPHERIC COLOR BLOBS */}
-          <div className="absolute left-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-blue-500/18 blur-[120px]" />
-          <div className="absolute right-[-10%] bottom-[5%] h-[600px] w-[600px] rounded-full bg-fuchsia-500/16 blur-[120px]" />
-          <div className="absolute left-1/2 top-[30%] h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[140px]" />
-
-          {/* MAIN GRID (NOW CLEARLY VISIBLE) */}
-          <div className="absolute inset-0 opacity-[0.12]">
-            <div className="h-full w-full bg-[linear-gradient(to_right,rgba(15,23,42,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.14)_1px,transparent_1px)] bg-[size:48px_48px]" />
-          </div>
-
-          {/* DOT MATRIX (STRONG TEXTURE LAYER) */}
-          <div className="absolute inset-0 opacity-[0.10]">
-            <div className="h-full w-full [background-image:radial-gradient(rgba(15,23,42,0.28)_1.2px,transparent_1.2px)] [background-size:14px_14px]" />
-          </div>
+          <BackgroundComponent />
 
           {/* SECONDARY DIAGONAL DEPTH LINES */}
           <div className="absolute inset-0 opacity-[0.06] [background-image:repeating-linear-gradient(135deg,rgba(15,23,42,0.12)_0px,rgba(15,23,42,0.12)_1px,transparent_1px,transparent_10px)]" />

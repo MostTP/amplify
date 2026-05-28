@@ -1,13 +1,19 @@
+"use client";
+
+import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { schedule, site, visuals } from "@/data/content";
+import { getRandomBackground } from "@/components/backgrounds";
 
 export const metadata = {
   title: `Schedule | ${site.fullTitle}`,
 };
 
 export default function SchedulePage() {
+  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
+
   return (
     <>
       <PageHero
@@ -22,32 +28,7 @@ export default function SchedulePage() {
         {/* ===================================== */}
         {/* BACKGROUND */}
         {/* ===================================== */}
-
-        {/* PATTERN OVERLAY */}
-        <div className="pointer-events-none absolute inset-0 opacity-65">
-          <div className="absolute inset-0 pattern-dots" />
-          <div className="absolute inset-0 pattern-grain" />
-          <div className="absolute inset-0 pattern-geo-lines opacity-75" />
-        </div>
-
-        {/* GRID */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
-          <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        </div>
-
-        {/* TOP GLOW */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-cyan-50 via-white to-transparent" />
-
-        {/* RADIAL LIGHT */}
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-cyan-100/40 blur-[120px]" />
-
-        {/* SIDE LIGHTS */}
-        <div className="pointer-events-none absolute left-[-10%] top-[20%] h-[500px] w-[500px] rounded-full bg-blue-100/50 blur-[120px]" />
-
-        <div className="pointer-events-none absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-fuchsia-100/40 blur-[120px]" />
-
-        {/* NOISE */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
+        <BackgroundComponent />
 
         {/* ===================================== */}
         {/* CONTENT */}
