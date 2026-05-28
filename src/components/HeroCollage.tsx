@@ -15,13 +15,13 @@ export default function HeroCollage() {
           kenBurns
         />
         <div className="absolute inset-0 z-10 overflow-hidden">
-          {/* <iframe
+          <iframe
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&modestbranding=1"
             className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2"
             frameBorder="0"
             allow="autoplay; fullscreen"
             allowFullScreen
-          /> */}
+          />
         </div>
         {/* Viewfinder corners */}
         <span className="absolute left-4 top-4 z-20 h-10 w-10 border-l-2 border-t-2 border-royal-400/80" />
