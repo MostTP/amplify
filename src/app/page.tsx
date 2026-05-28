@@ -11,11 +11,20 @@ export default function Home() {
   const { highlight } = homeSections;
 
   return (
-    <main className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-900 antialiased">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_32%)]" />
-      <div className="pointer-events-none absolute left-0 top-40 h-72 w-72 rounded-full bg-fuchsia-100/70 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 top-40 h-72 w-72 rounded-full bg-cyan-100/70 blur-3xl" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-100 to-transparent" />
+    <main className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(251,207,138,0.22),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(236,72,153,0.08),_transparent_18%),linear-gradient(180deg,_#fffdf8_0%,_#f7efe4_45%,_#f2e7dd_100%)] text-slate-900 antialiased">
+      {/* PATTERN OVERLAY LAYER */}
+      <div className="pointer-events-none absolute inset-0 opacity-65">
+        <div className="absolute inset-0 pattern-dots" />
+        <div className="absolute inset-0 pattern-grain" />
+        <div className="absolute inset-0 pattern-geo-lines opacity-70" />
+      </div>
+
+      {/* DECORATIVE BLURS */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-60 bg-gradient-to-b from-amber-200/40 to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-24 h-72 w-72 rounded-full bg-amber-200/30 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-28 h-80 w-80 rounded-full bg-fuchsia-100/30 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-56 w-56 -translate-x-1/2 rounded-full bg-white/60 blur-2xl" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-slate-100/95 to-transparent" />
 
       {/* HERO (keep as-is, already strong) */}
       <Hero />
@@ -35,7 +44,7 @@ export default function Home() {
       {/* HIGHLIGHT SECTION (REDESIGNED) */}
       {/* ===================================== */}
 
-      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white via-amber-50 to-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 sm:gap-12 md:gap-16 lg:grid-cols-2">
 

@@ -24,6 +24,13 @@ export default function RegisterPage() {
         {/* BACKGROUND DESIGN */}
         {/* ================================= */}
 
+        {/* PATTERN OVERLAY */}
+        <div className="pointer-events-none absolute inset-0 opacity-65">
+          <div className="absolute inset-0 pattern-dots" />
+          <div className="absolute inset-0 pattern-grain" />
+          <div className="absolute inset-0 pattern-geo-lines opacity-75" />
+        </div>
+
         {/* Soft gradient atmosphere */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-200/40 blur-3xl" />

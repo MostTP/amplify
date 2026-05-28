@@ -22,6 +22,13 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-white py-24">
         {/* ================= BACKGROUND ================= */}
 
+        {/* PATTERN OVERLAY */}
+        <div className="pointer-events-none absolute inset-0 opacity-65">
+          <div className="absolute inset-0 pattern-dots" />
+          <div className="absolute inset-0 pattern-grain" />
+          <div className="absolute inset-0 pattern-geo-lines opacity-75" />
+        </div>
+
         {/* GRID */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
           <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:80px_80px]" />

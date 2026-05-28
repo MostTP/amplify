@@ -27,6 +27,13 @@ export default function TestimonialsPage() {
           {/* BASE WHITE */}
           <div className="absolute inset-0 bg-white" />
 
+          {/* PATTERN OVERLAY */}
+          <div className="absolute inset-0 opacity-65">
+            <div className="absolute inset-0 pattern-dots" />
+            <div className="absolute inset-0 pattern-grain" />
+            <div className="absolute inset-0 pattern-geo-lines opacity-75" />
+          </div>
+
           {/* STRONGER ATMOSPHERIC COLOR BLOBS */}
           <div className="absolute left-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-blue-500/18 blur-[120px]" />
           <div className="absolute right-[-10%] bottom-[5%] h-[600px] w-[600px] rounded-full bg-fuchsia-500/16 blur-[120px]" />
