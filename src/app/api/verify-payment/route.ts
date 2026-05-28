@@ -15,10 +15,16 @@ export async function POST(req: Request) {
     );
 
     const verifyData = await verifyRes.json();
-
+    const validAmounts = [
+      3000 * 100,
+      4000 * 100,
+      5000 * 100,
+      6000 * 100,
+    ];
+    
     if (
       verifyData.data.status === "success" &&
-      verifyData.data.amount === 2000 * 100
+      validAmounts.includes(verifyData.data.amount)
     ) {
       // SAVE TO SHEET HERE
       // await submitToSheet(formData, reference)

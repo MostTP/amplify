@@ -1,7 +1,3 @@
-/**
- * Edit all placeholder copy here — pages import from this file.
- */
-
 export const site = {
   name: "RCF KWASU",
   eventTitle: "Media Week",
@@ -11,10 +7,10 @@ export const site = {
   date: "11th–14th June 2026",
   dateISO: "2026-06-11",
 
-  location: "Redeemed Christian Fellowship, KWASU Main Campus",
+  location: "RCF KWASU Auditorium, Opposite Alaga Hostel, Okoru Road, Westend, Malete.",
   locationShort: "KWASU Campus",
-  contactEmail: "mediaweek@rcfkwasu.org",
-  contactPhone: "+234 800 000 0000",
+  contactEmail: "rcfkwasumedia01@gmail.com",
+  contactPhone: "08118611779",
 
   theme: "AMPLIFY. 26’",
   tag: "Projecting the Gospel to Nations through Digital Tools.",
@@ -53,34 +49,40 @@ export const homeSections = {
       "From the pulpit to the pixel - we steward every channel for Christ.",
     items: [
       {
-        icon: "broadcast",
-        title: "Broadcast & Audio",
+        icon: "digital",
+        title: "Social Media Management (SMM)",
         description:
-          "Live production, mixing consoles, streaming systems, and sound engineering.",
-      },
-      {
-        icon: "camera",
-        title: "Cinematography",
-        description:
-          "Cinema cameras, lighting rigs, and storytelling through professional visuals.",
+          "Content planning, platform management, analytics, and digital engagement strategies.",
       },
       {
         icon: "design",
-        title: "Creative Design",
+        title: "Graphics",
         description:
-          "UI/UX design, motion graphics, posters, and digital branding systems.",
+          "Creative design, branding, posters, and visual communication for digital and print media.",
       },
       {
-        icon: "digital",
-        title: "Digital Evangelism",
+        icon: "camera",
+        title: "Photography & Editing",
         description:
-          "Social media tools, analytics, content strategy, and online outreach.",
+          "Professional photography, retouching, and post-production editing workflows.",
       },
       {
-        icon: "visuals",
-        title: "Video Production",
+        icon: "code",
+        title: "Web Development",
         description:
-          "Editing suites, color grading, motion graphics, and post-production workflows.",
+          "Building modern, responsive websites and web applications for ministry and media use.",
+      },
+      {
+        icon: "video",
+        title: "Videography & Editing",
+        description:
+          "Cinematic video production, shooting, editing, and storytelling through motion.",
+      },
+      {
+        icon: "write",
+        title: "Copywriting",
+        description:
+          "Crafting compelling messages, captions, scripts, and communication for digital outreach.",
       },
     ],
   },
@@ -155,27 +157,35 @@ export const schedule = {
   tracks: [
     {
       time: "Day 1",
-      title: "Opening & Commissioning",
-      location: "Main Auditorium",
-      type: "Plenary",
-      description:
-        "Worship, vision casting, and spiritual commissioning.",
-    },
-    {
-      time: "Day 1",
-      title: "Live Sound Engineering",
-      location: "Media Lab A",
+      title: "Workshop - Intensive Training",
+      location: "Training Halls & Media Labs",
       type: "Workshop",
       description:
-        "Hands-on mixing consoles and audio production systems.",
+        "Hands-on training sessions introducing participants to core media tools, workflows, and production systems.",
     },
     {
       time: "Day 2",
-      title: "Cinematography Workshop",
-      location: "Outdoor Set",
+      title: "Workshop - Advanced Intensive Training",
+      location: "Training Halls & Media Labs",
       type: "Workshop",
       description:
-        "Camera operation, lighting rigs, and visual storytelling.",
+        "Advanced practical sessions focused on collaboration, creative execution, and real-time media production.",
+    },
+    {
+      time: "Day 3",
+      title: "Project (Practical) & Virtual Conference",
+      location: "Main Auditorium & Virtual Sessions",
+      type: "Project",
+      description:
+        "Team-based practical projects, live production exercises, and virtual conference sessions with guest speakers.",
+    },
+    {
+      time: "Day 4",
+      title: "Thanksgiving",
+      location: "Main Auditorium",
+      type: "Celebration",
+      description:
+        "A special thanksgiving gathering featuring worship, testimonies, reflections, and appreciation.",
     },
   ],
 };
@@ -184,15 +194,17 @@ export const register = {
   title: "Register for Media Week",
   subtitle:
     "Join AMPLIFY. 26’ — step into professional media production training.",
-    successMessage:
+
+  successMessage:
     "Your registration has been received successfully. Check your email for further instructions.",
+
   departments: [
-    "Broadcast & Audio",
-    "Photography",
-    "Videography",
-    "Graphics Design",
-    "Social Media",
-    "Content Writing",
+    "Social Media Management (SMM)",
+    "Graphics",
+    "Photography & Editing",
+    "Web Development",
+    "Videography & Editing",
+    "Copywriting",
   ],
 };
 
@@ -308,12 +320,11 @@ export const visuals = {
   ],
 
   marquee: [
-    "https://images.unsplash.com/photo-1581091870622-1e7b1f0b7f0b?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
   ],
-
   about:
     "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1800&auto=format&fit=crop",
 

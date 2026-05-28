@@ -16,6 +16,7 @@ export default function RegisterForm() {
     department: "",
     church: "",
     notes: "",
+    attendanceType: "outsider",
     wantsCertificate: false,
   });
 
@@ -58,9 +59,13 @@ export default function RegisterForm() {
     payWithPaystack(formData, handlePayment);
   }
 
-  const total =
-    5000 + (formData.wantsCertificate ? 1000 : 0);
+  const baseFee =
+    formData.attendanceType === "inhouse"
+      ? 5000
+      : 3000;
 
+  const total =
+    baseFee + (formData.wantsCertificate ? 1000 : 0);
   const inputStyles = `
     w-full rounded-2xl
     border border-slate-200
@@ -81,7 +86,7 @@ export default function RegisterForm() {
   if (submitted) {
     return (
       <div className="relative overflow-hidden rounded-[36px] border border-emerald-200 bg-white p-12 text-center shadow-[0_20px_80px_rgba(16,185,129,0.12)]">
-        
+
         {/* glow */}
         <div className="absolute left-1/2 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-emerald-400/20 blur-[120px]" />
 
@@ -104,7 +109,7 @@ export default function RegisterForm() {
 
   return (
     <div className="relative overflow-hidden rounded-[40px] border border-slate-200 bg-white p-6 shadow-[0_30px_100px_rgba(0,0,0,0.08)] md:p-10">
-      
+
       {/* BACKGROUND EFFECTS */}
       <div className="absolute inset-0">
         {/* grid */}
@@ -181,6 +186,55 @@ export default function RegisterForm() {
             </div>
           </div>
 
+          <div>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Participation Type
+            </p>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300">
+                <input
+                  type="radio"
+                  name="attendanceType"
+                  value="inhouse"
+                  checked={formData.attendanceType === "inhouse"}
+                  onChange={handleChange}
+                  className="h-5 w-5 accent-blue-500"
+                />
+
+                <div>
+                  <p className="font-semibold text-slate-900">
+                    In-House Participant
+                  </p>
+
+                  <p className="text-sm text-slate-500">
+                    ₦5,000 registration fee
+                  </p>
+                </div>
+              </label>
+
+              <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300">
+                <input
+                  type="radio"
+                  name="attendanceType"
+                  value="outsider"
+                  checked={formData.attendanceType === "outsider"}
+                  onChange={handleChange}
+                  className="h-5 w-5 accent-blue-500"
+                />
+
+                <div>
+                  <p className="font-semibold text-slate-900">
+                    Guest Participant
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    ₦3,000 registration fee
+                  </p>
+                </div>
+              </label>
+            </div>
+          </div>
+
           {/* DEPARTMENT */}
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
@@ -188,22 +242,40 @@ export default function RegisterForm() {
             </p>
 
             <div className="space-y-5">
-              <select
-                name="department"
-                className={inputStyles}
-                onChange={handleChange}
-                required
-              >
-                <option value="">
-                  Select Department
-                </option>
+              <div>
 
-                {registerContent.departments.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
-              </select>
+                <select
+                  name="department"
+                  value={formData.department}
+                  onChange={handleChange}
+                  required
+                  className="
+          w-full appearance-none rounded-2xl
+          border border-slate-200 bg-white/90
+          px-5 py-4 pr-10
+          text-slate-900
+          shadow-sm backdrop-blur-xl
+          outline-none transition-all duration-300
+          focus:border-blue-400 focus:ring-4 focus:ring-blue-100
+          hover:border-slate-300
+        "
+                  style={{
+                    backgroundImage:
+                      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 14px center",
+                    backgroundSize: "18px",
+                  }}
+                >
+                  <option value="">Select a department</option>
+
+                  {registerContent.departments.map((department) => (
+                    <option key={department} value={department}>
+                      {department}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               <input
                 name="church"
@@ -214,7 +286,7 @@ export default function RegisterForm() {
 
               <textarea
                 name="notes"
-                placeholder="Additional Notes..."
+                placeholder="Share your expectations, goals, or what you believe God will do for you at AMPLIFY.26"
                 className={`${inputStyles} min-h-[140px] resize-none`}
                 onChange={handleChange}
               />
@@ -225,15 +297,15 @@ export default function RegisterForm() {
         {/* PAYMENT CARD */}
         <div className="rounded-[28px] border border-slate-200 bg-slate-50/80 p-6 backdrop-blur-xl">
           <div className="flex items-start justify-between gap-5">
-            
+
             <div>
               <h3 className="text-xl font-bold text-slate-900">
-                Registration Package
+                AMPLIFY.26 Package
               </h3>
 
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Training access includes all sessions and
-                workshop materials.
+
+                Equipping you with full access to workshops, sessions, and hands-on media training.
               </p>
             </div>
 
@@ -287,7 +359,7 @@ export default function RegisterForm() {
             hover:shadow-[0_20px_60px_rgba(59,130,246,0.45)]
           "
         >
-          Pay ₦{total.toLocaleString()} & Register
+          Secure My Spot • ₦{total.toLocaleString()}
         </button>
       </form>
     </div>

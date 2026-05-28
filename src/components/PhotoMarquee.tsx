@@ -6,7 +6,8 @@ export default function PhotoMarquee() {
 
   return (
     <section className="relative overflow-hidden border-y border-black/5 bg-white py-8">
-      {/* LIGHT BACKGROUND GLOW */}
+      
+      {/* background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[300px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-50 blur-[120px]" />
       </div>
@@ -14,17 +15,19 @@ export default function PhotoMarquee() {
       <div className="flex animate-marquee-slow gap-4">
         {images.map((src, i) => (
           <div
-            key={i}
-            className="relative h-32 w-48 shrink-0 overflow-hidden rounded-xl border border-black/5 bg-white shadow-sm"
+            key={`${src}-${i}`}
+            className="relative h-32 w-48 shrink-0 overflow-hidden rounded-xl border border-black/5 bg-slate-100 shadow-sm"
           >
             <Image
               src={src}
               alt={`media ${i}`}
               fill
-              className="object-cover transition-transform duration-500 hover:scale-105"
+              sizes="192px"
+              className="object-cover"
+              unoptimized
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent" />
           </div>
         ))}
       </div>

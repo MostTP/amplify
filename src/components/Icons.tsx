@@ -81,10 +81,14 @@ export function Waveform({ className = "" }: IconProps) {
 }
 
 const iconMap = {
-  broadcast: IconBroadcast,
-  camera: IconCamera,
+  social: IconDigital, // or create IconSocial
+  digital: IconDigital, // or create IconSocial
   design: IconDesign,
-  digital: IconDigital,
+  camera: IconCamera,
+  code: IconDigital,
+  video: IconPlay, // or a proper video icon
+  write: IconDesign, // or text icon
+  broadcast: IconBroadcast,
   visuals: IconVisuals,
 } as const;
 
@@ -96,5 +100,8 @@ export function MediaIcon({
   className?: string;
 }) {
   const Icon = iconMap[name];
+
+  if (!Icon) return null; // 🔥 prevents Next.js crash
+
   return <Icon className={className} />;
 }
