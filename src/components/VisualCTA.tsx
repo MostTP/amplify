@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { homeSections } from "@/data/content";
-import { getRandomBackground } from "./backgrounds";
+import getRandomBackground from "./backgrounds";
 
 export default function VisualCTA() {
   const { cta } = homeSections;

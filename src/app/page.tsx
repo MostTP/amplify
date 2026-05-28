@@ -7,7 +7,7 @@ import PhotoMarquee from "@/components/PhotoMarquee";
 import VisualCTA from "@/components/VisualCTA";
 import SectionHeading from "@/components/SectionHeading";
 import { homeSections, visuals } from "@/data/content";
-import { getRandomBackground } from "@/components/backgrounds";
+import getRandomBackground from "@/components/backgrounds";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -51,7 +51,7 @@ export default function Home() {
                 light={false}
               />
 
-              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+              <p className="mt-6 text-lg leading-relaxed text-slate-700">
                 {highlight.body}
               </p>
 

@@ -6,7 +6,7 @@ import HeroCollage from "./HeroCollage";
 import { IconPlay, IconRec, Waveform } from "./Icons";
 import { hero, site } from "@/data/content";
 import FloatingLines from "./FloatingLines";
-import { getRandomBackground } from "./backgrounds";
+import getRandomBackground from "./backgrounds";
 
 export default function Hero() {
   const [headlinePrefix, headlineAccent] = hero.headline.split(" Through ");

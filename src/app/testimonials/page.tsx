@@ -1,19 +1,28 @@
-"use client";
 
-import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { testimonials, site, visuals } from "@/data/content";
-import { getRandomBackground } from "@/components/backgrounds";
 
+import {
+  AnimatedGradientBg,
+  MeshGradientBg,
+  NoisePatternBg,
+} from "@/components/backgrounds";
 export const metadata = {
   title: `Testimonials | ${site.fullTitle}`,
 };
 
 export default function TestimonialsPage() {
   const featured = testimonials.items[0];
-  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
+const backgrounds = [
+  AnimatedGradientBg,
+  MeshGradientBg,
+  NoisePatternBg,
+];
+
+const BackgroundComponent =
+  backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
 
   return (

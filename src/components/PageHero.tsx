@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import EventImage from "./EventImage";
 import VisualBackdrop from "./VisualBackdrop";
-import { getRandomBackground } from "./backgrounds";
+import getRandomBackground from "./backgrounds";
 import Link from "next/link";
 
 type PageHeroProps = {

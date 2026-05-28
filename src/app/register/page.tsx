@@ -1,19 +1,22 @@
-"use client";
-
-import { useMemo } from "react";
 import PageHero from "@/components/PageHero";
 import RegisterForm from "@/components/RegisterForm";
 import EventImage from "@/components/EventImage";
 import Image from "next/image";
 import { register, site, visuals } from "@/data/content";
-import { getRandomBackground } from "@/components/backgrounds";
+import { AnimatedGradientBg, MeshGradientBg, NoisePatternBg } from "@/components/backgrounds";
 
 export const metadata = {
   title: `Register | ${site.fullTitle}`,
 };
 
 export default function RegisterPage() {
-  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
+const backgrounds = [
+  AnimatedGradientBg,
+  MeshGradientBg,
+  NoisePatternBg,
+];
+const BackgroundComponent =
+  backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
   return (
     <>

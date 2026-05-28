@@ -5,7 +5,7 @@ import Image from "next/image";
 import { homeSections, visuals } from "@/data/content";
 import SectionHeading from "./SectionHeading";
 import { MediaIcon } from "./Icons";
-import { getRandomBackground } from "./backgrounds";
+import getRandomBackground from "./backgrounds";
 
 type MediaPillarIcon =
   | "broadcast"

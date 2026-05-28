@@ -10,7 +10,7 @@ const BACKGROUNDS = [
   NoisePatternBg,
 ];
 
-export function getRandomBackground() {
+export default function getRandomBackground() {
   const randomIndex = Math.floor(Math.random() * BACKGROUNDS.length);
   return BACKGROUNDS[randomIndex];
 }
