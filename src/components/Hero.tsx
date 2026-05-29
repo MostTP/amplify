@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 lg:px-8 lg:pb-28">
         <div className="grid justify-center items-center gap-10">
           {/* TEXT */}
-          <div className="text-center w-[calc(100%-2rem)]">
+          <div className="text-center w-[calc(100%-20rem)]">
 
             {/* SUB TEXT */}
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-slate-800">
@@ -36,7 +36,7 @@ export default function Hero() {
             </h1>
 
             {/* SUBHEADLINE */}
-            <p className="mx-auto text-center mt-6 max text-base text-slate-800 sm:text-lg lg:mx-0">
+            <p className="w-calc(100%-6rem) mx-auto mt-6 text-lg leading-relaxed text-slate-700 sm:w-[60%]">
               {hero.subheadline}
             </p>
 
