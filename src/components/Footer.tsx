@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { footer, navLinks, site } from "@/data/content";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -18,19 +19,28 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Brand */}
-          <div>
-            <p className="text-xl font-bold text-white">
-              {site.fullTitle}
-            </p>
+            <Link href="/" className="group flex items-center gap-3">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-blue-500/15 blur-xl transition group-hover:bg-blue-500/25" />
 
-            <p className="mt-2 text-sm font-medium text-cyan-400">
-              {site.date}
-            </p>
+                <Image
+                  src="/Tenurenamew.png"
+                  width={52}
+                  height={52}
+                  className="relative h-11 w-auto sm:h-12"
+                  alt="RCF KWASU"
+                />
+              </div>
 
-            <p className="text-sm text-slate-400">
-              {site.locationShort}
-            </p>
-          </div>
+              <div className="leading-tight">
+                <p className="font-display text-sm font-bold text-slate-100">
+                  {site.theme}
+                </p>
+                <p className="text-xs font-medium text-slate-500">
+                  {site.eventTitle} • {site.year}
+                </p>
+              </div>
+            </Link>
 
           {/* Navigation */}
           <div>
