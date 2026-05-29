@@ -1,20 +1,11 @@
 "use client";
 import Link from "next/link";
 import { footer, navLinks, site } from "@/data/content";
-import DarkVeil from "./backgrounds/DarkVeil";
 
 export default function Footer() {
   return (
     <footer className="relative border-t border-slate-200 bg-white text-slate-700">
       <div className="pointer-events-none absolute inset-0 opacity-70">
-        <DarkVeil
-          hueShift={0}
-          noiseIntensity={0}
-          scanlineIntensity={0}
-          speed={0.5}
-          scanlineFrequency={0}
-          warpAmount={0}
-        />
       </div>
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-fuchsia-500" />
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">

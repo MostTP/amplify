@@ -1,7 +1,5 @@
 "use client";
 
-import { NoisePatternBg } from "./backgrounds";
-import PrismaticBurst from "./backgrounds/PrismaticBurst";
 import EventImage from "./EventImage";
 import VisualBackdrop from "./VisualBackdrop";
 import Link from "next/link";
@@ -23,15 +21,7 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-white">
-      {/* ===================== */}
-      {/* BACKGROUND SYSTEM */}
-      {/* ===================== */}
-      <div className="pointer-events-none absolute inset-0 opacity-90">
-        <NoisePatternBg />
-      </div>
-      {/* ===================== */}
-      {/* IMAGE SIDE PANEL */}
-      {/* ===================== */}
+  
       {imageSrc && (
         <div className="absolute right-0 top-0 hidden h-full w-1/2 lg:block">
           <EventImage

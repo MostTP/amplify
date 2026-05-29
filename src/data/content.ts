@@ -7,15 +7,16 @@ export const site = {
   date: "11th–14th June 2026",
   dateISO: "2026-06-11",
 
-  location: "RCF KWASU Auditorium, Opposite Alaga Hostel, Okoru Road, Westend, Malete.",
+  location:
+    "RCF KWASU Auditorium, Opposite Alaga Hostel, Okoru Road, Westend, Malete.",
   locationShort: "KWASU Campus",
   contactEmail: "rcfkwasumedia01@gmail.com",
   contactPhone: "08118611779",
 
   theme: "AMPLIFY. 26’",
-  tag: "Projecting the Gospel to Nations through Digital Tools.",
+  tag: "Equipping a generation to project the Gospel through modern media systems.",
   scripture:
-    "Acts 1:8 — But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth.",
+    "Acts 1:8 — But ye shall receive power… and ye shall be witnesses unto the uttermost part of the earth.",
 };
 
 export const navLinks = [
@@ -28,17 +29,19 @@ export const navLinks = [
 
 export const hero = {
   eyebrow: "ON AIR · MEDIA WEEK 2026",
-  headline: "Amplify the Gospel Through Media",
-  subheadline:
-    "AMPLIFY. 26’ — Projecting the Gospel to Nations through Digital Tools.",
 
-  ctaPrimary: { label: "Register Now", href: "/register" },
-  ctaSecondary: { label: "View Schedule", href: "/schedule" },
+  headline: "Amplify the Gospel Through Media That Speaks to Nations",
+
+  subheadline:
+    "AMPLIFY. 26’ — A hands-on creative experience where worship meets production, and media becomes ministry.",
+
+  ctaPrimary: { label: "Secure Your Spot", href: "/register" },
+  ctaSecondary: { label: "Explore Schedule", href: "/schedule" },
 
   stats: [
-    { value: "4 Days", label: "Immersive Experience" },
-    { value: "6+", label: "Media Tracks" },
-    { value: "∞", label: "Kingdom Impact" },
+    { value: "4 Days", label: "Intensive Training Experience" },
+    { value: "6+ Tracks", label: "Creative Media Paths" },
+    { value: "∞ Impact", label: "Kingdom Reach" },
   ],
 };
 
@@ -46,110 +49,117 @@ export const homeSections = {
   mediaPillars: {
     title: "The Media Mandate",
     subtitle:
-      "From the pulpit to the pixel - we steward every channel for Christ.",
+      "We don’t just create content — we steward media as a tool for global impact.",
+
     items: [
       {
         icon: "digital",
-        title: "Social Media Management (SMM)",
+        title: "Social Media Management",
         description:
-          "Content planning, platform management, analytics, and digital engagement strategies.",
+          "Strategic content systems, platform growth, and digital engagement for kingdom visibility.",
       },
       {
         icon: "design",
-        title: "Graphics",
+        title: "Graphic Design",
         description:
-          "Creative design, branding, posters, and visual communication for digital and print media.",
+          "Visual storytelling that communicates excellence, identity, and message clarity.",
       },
       {
         icon: "camera",
         title: "Photography & Editing",
         description:
-          "Professional photography, retouching, and post-production editing workflows.",
+          "Capturing moments with purpose and transforming them into powerful visual narratives.",
       },
       {
         icon: "code",
         title: "Web Development",
         description:
-          "Building modern, responsive websites and web applications for ministry and media use.",
+          "Building digital ecosystems that power ministry, communication, and outreach.",
       },
       {
         icon: "video",
         title: "Videography & Editing",
         description:
-          "Cinematic video production, shooting, editing, and storytelling through motion.",
+          "Cinematic storytelling that turns ideas into compelling visual experiences.",
       },
       {
         icon: "write",
         title: "Copywriting",
         description:
-          "Crafting compelling messages, captions, scripts, and communication for digital outreach.",
+          "Crafting words that move people — from captions to sermons to campaigns.",
       },
     ],
   },
 
   highlight: {
-    title: "Why Media Week?",
-    body:
-      "Media Week 2026 is RCF KWASU's flagship creative gathering under AMPLIFY. 26’ — where worship meets workflow and modern media tools become instruments of ministry.",
+    title: "Why Media Week Exists",
+
+    body: "Media Week 2026 is more than a training event — it is a convergence point where skill, creativity, and spiritual clarity are formed into one mission: using media as a tool for global impact under AMPLIFY. 26’.",
 
     bullets: [
-      "Hands-on training with real production equipment",
-      "Exposure to industry-grade media workflows",
-      "Team-based creative production challenges",
-      "Spiritual clarity for media as ministry",
+      "Hands-on production with real media tools",
+      "Exposure to real industry workflows",
+      "Team-based creative execution challenges",
+      "Spiritual grounding for media as ministry",
     ],
   },
 
   cta: {
     title: "Ready to Go Live?",
-    body:
-      "Secure your spot for 11th–14th June 2026. Come prepared to create and be equipped.",
-    buttonLabel: "Register for Media Week",
+    body: "Join us from 11th–14th June 2026 and step into a real creative production environment built for impact.",
+
+    buttonLabel: "Secure Your Spot",
     buttonHref: "/register",
   },
 };
 
 export const about = {
   title: "About Media Week",
+
   intro:
-    "A convergence of creatives, technicians, and ministers using modern media tools for kingdom impact.",
+    "Media Week is a convergence of creatives, technicians, and ministers committed to using modern media systems for global gospel impact.",
 
   mission: {
     title: "Our Mission",
     text:
-      "To raise media ministers equipped with technical skill, creative excellence, and spiritual depth.",
+      "To raise a generation of media ministers equipped with technical excellence, creative depth, and spiritual sensitivity for impactful communication.",
   },
 
   vision: {
     title: "Our Vision",
     text:
-      "A campus where media becomes a powerful production tool for revival and global evangelism.",
+      "To see campuses transformed into creative hubs where media becomes a tool for revival, excellence, and global gospel outreach.",
   },
 
   values: [
     {
       title: "Excellence",
-      description: "High-quality production as worship to God.",
+      description:
+        "We treat every output as worship, delivering work that reflects precision and intentionality.",
     },
     {
       title: "Integrity",
-      description: "Truthful storytelling across all media outputs.",
+      description:
+        "We communicate truthfully and responsibly across all media expressions.",
     },
     {
       title: "Unity",
-      description: "One production team working as one body.",
+      description:
+        "We operate as one creative body, building together rather than individually.",
     },
     {
       title: "Anointing",
-      description: "Spirit-led creativity powered by skill and purpose.",
+      description:
+        "We rely on spiritual sensitivity to guide creativity and purpose.",
     },
   ],
 };
 
 export const schedule = {
   title: "Event Schedule",
+
   subtitle:
-    "11th–14th June 2026 · AMPLIFY. 26’ — Media Production Training",
+    "11th–14th June 2026 · AMPLIFY. 26’ — A 4-day immersive media production journey",
 
   heroImage:
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop",
@@ -157,54 +167,55 @@ export const schedule = {
   tracks: [
     {
       time: "Day 1",
-      title: "Workshop - Intensive Training",
+      title: "Foundation Workshop — Creative & Technical Onboarding",
       location: "Training Halls & Media Labs",
       type: "Workshop",
       description:
-        "Hands-on training sessions introducing participants to core media tools, workflows, and production systems.",
+        "Introduction to core media systems, production tools, and workflow fundamentals. Participants are immersed into hands-on creative training from the start.",
     },
     {
       time: "Day 2",
-      title: "Workshop - Advanced Intensive Training",
+      title: "Advanced Workshop — Production Execution",
       location: "Training Halls & Media Labs",
       type: "Workshop",
       description:
-        "Advanced practical sessions focused on collaboration, creative execution, and real-time media production.",
+        "Deeper practical sessions focused on collaboration, real-time production, and creative problem-solving in team environments.",
     },
     {
       time: "Day 3",
-      title: "Project (Practical) & Virtual Conference",
+      title: "Live Production Challenge & Virtual Conference",
       location: "Main Auditorium & Virtual Sessions",
       type: "Project",
       description:
-        "Team-based practical projects, live production exercises, and virtual conference sessions with guest speakers.",
+        "Teams execute real production tasks while engaging with guest speakers in a hybrid learning experience combining practice and insight.",
     },
     {
       time: "Day 4",
-      title: "Thanksgiving",
+      title: "Media Showcase & Thanksgiving Celebration",
       location: "Main Auditorium",
       type: "Celebration",
       description:
-        "A special thanksgiving gathering featuring worship, testimonies, reflections, and appreciation.",
+        "A closing experience of worship, testimonies, media showcases, and celebration of what has been created throughout the program.",
     },
   ],
 };
 
 export const register = {
-  title: "Register for Media Week",
+  title: "Join Media Week 2026",
+
   subtitle:
-    "Join AMPLIFY. 26’ — step into professional media production training.",
+    "Step into AMPLIFY. 26’ — a hands-on training experience designed to equip you with real-world media production skills and spiritual clarity.",
 
   successMessage:
-    "Your registration has been received successfully. Check your email for further instructions.",
+    "Your registration has been successfully received. You are now part of AMPLIFY. 26’. Check your email for next steps and event updates.",
 
   departments: [
     "Social Media Management (SMM)",
-    "Graphics",
+    "Graphics & Visual Design",
     "Photography & Editing",
     "Web Development",
-    "Videography & Editing",
-    "Copywriting",
+    "Videography & Motion Production",
+    "Copywriting & Communication",
   ],
 };
 
@@ -221,8 +232,7 @@ export const testimonials = {
       rating: 4,
     },
     {
-      quote:
-        "I learned how real live streaming systems actually work.",
+      quote: "I learned how real live streaming systems actually work.",
       name: "David O.",
       role: "Live Stream Volunteer · 2024",
       rating: 5,
@@ -281,39 +291,33 @@ export const footer = {
 
 export const visuals = {
   hero: {
-    main:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop",
+    main: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop",
     alt: "Professional media production studio setup",
   },
 
   gallery: [
     {
-      src:
-        "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=1200&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=1200&auto=format&fit=crop",
       label: "Live Production Control Room",
       span: "col-span-2 row-span-2",
     },
     {
-      src:
-        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop",
       label: "Cinema Camera Setup",
       span: "col-span-1 row-span-1",
     },
     {
-      src:
-        "https://images.unsplash.com/photo-1611175694989-0e8d6a2d8b2b?q=80&w=1200&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1611175694989-0e8d6a2d8b2b?q=80&w=1200&auto=format&fit=crop",
       label: "Editing Workstation",
       span: "col-span-1 row-span-1",
     },
     {
-      src:
-        "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=1200&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=1200&auto=format&fit=crop",
       label: "Audio Mixing Console",
       span: "col-span-1 row-span-2",
     },
     {
-      src:
-        "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1200&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1200&auto=format&fit=crop",
       label: "Drone Cinematography",
       span: "col-span-2 row-span-1",
     },
@@ -346,8 +350,7 @@ export const visuals = {
       "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=80&w=1200&auto=format&fit=crop",
     digital:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-    code:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    code: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
     video:
       "https://images.unsplash.com/photo-1517142089942-ba376ce32a2e?q=80&w=1200&auto=format&fit=crop",
     write:

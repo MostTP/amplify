@@ -4,21 +4,12 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { about, site, visuals } from "@/data/content";
-import { AnimatedGradientBg, MeshGradientBg, NoisePatternBg } from "@/components/backgrounds";
 
 export const metadata = {
   title: `About | ${site.fullTitle}`,
 };
 
 export default function AboutPage() {
-const backgrounds = [
-  AnimatedGradientBg,
-  MeshGradientBg,
-  NoisePatternBg,
-];
-const BackgroundComponent =
-  backgrounds[Math.floor(Math.random() * backgrounds.length)];
-
   return (
     <>
       <PageHero
@@ -30,19 +21,13 @@ const BackgroundComponent =
       />
 
       <section className="relative overflow-hidden bg-white py-24">
-        {/* ================= BACKGROUND ================= */}
-        <BackgroundComponent />
-
-        {/* ================= CONTENT ================= */}
-
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
           {/* ================= MISSION / VISION ================= */}
 
           <div className="grid gap-10 lg:grid-cols-2">
-
             {/* MISSION */}
-            <article className="
+            <article
+              className="
   group relative overflow-hidden rounded-[34px]
   border border-white/10
   bg-white/[0.03]
@@ -51,8 +36,8 @@ const BackgroundComponent =
   transition-all duration-700
   hover:-translate-y-2
   hover:border-cyan-400/30
-">
-
+"
+            >
               {/* IMAGE HEADER */}
               <div className="relative h-60 overflow-hidden">
                 <Image
@@ -93,7 +78,8 @@ const BackgroundComponent =
             </article>
 
             {/* VISION */}
-            <article className="
+            <article
+              className="
   group relative overflow-hidden rounded-[34px]
   border border-white/10
   bg-white/[0.03]
@@ -102,8 +88,8 @@ const BackgroundComponent =
   transition-all duration-700
   hover:-translate-y-2
   hover:border-fuchsia-400/30
-">
-
+"
+            >
               {/* IMAGE HEADER */}
               <div className="relative h-60 overflow-hidden">
                 <Image
@@ -142,7 +128,6 @@ const BackgroundComponent =
                 </p>
               </div>
             </article>
-
           </div>
 
           {/* ================= VALUES ================= */}
@@ -156,7 +141,6 @@ const BackgroundComponent =
             />
 
             <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-
               {about.values.map((value, i) => (
                 <div
                   key={value.title}
@@ -181,7 +165,6 @@ const BackgroundComponent =
                   <div className="mt-6 h-[3px] w-10 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500 group-hover:w-full" />
                 </div>
               ))}
-
             </div>
           </div>
 
@@ -189,7 +172,6 @@ const BackgroundComponent =
 
           <div className="mt-28 overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-cyan-50 via-white to-blue-50 shadow-sm">
             <div className="grid lg:grid-cols-2">
-
               <div className="relative h-[320px] lg:h-full">
                 <Image
                   src={visuals.gallery[4].src}
@@ -209,8 +191,8 @@ const BackgroundComponent =
                 </h3>
 
                 <p className="mt-6 leading-relaxed text-slate-600">
-                  Become part of a generation using media, storytelling,
-                  and technology to amplify the Gospel on campus and beyond.
+                  Become part of a generation using media, storytelling, and
+                  technology to amplify the Gospel on campus and beyond.
                 </p>
 
                 <Link
@@ -220,10 +202,8 @@ const BackgroundComponent =
                   Join the Crew →
                 </Link>
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
     </>

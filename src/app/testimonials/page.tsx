@@ -4,26 +4,12 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { testimonials, site, visuals } from "@/data/content";
 
-import {
-  AnimatedGradientBg,
-  MeshGradientBg,
-  NoisePatternBg,
-} from "@/components/backgrounds";
 export const metadata = {
   title: `Testimonials | ${site.fullTitle}`,
 };
 
 export default function TestimonialsPage() {
   const featured = testimonials.items[0];
-const backgrounds = [
-  AnimatedGradientBg,
-  MeshGradientBg,
-  NoisePatternBg,
-];
-
-const BackgroundComponent =
-  backgrounds[Math.floor(Math.random() * backgrounds.length)];
-
 
   return (
     <>
@@ -39,7 +25,7 @@ const BackgroundComponent =
       <section className="relative overflow-hidden bg-[#F8FAFC] py-24 text-slate-900">
         {/* BACKGROUND */}
         <div className="absolute inset-0 overflow-hidden bg-white">
-          <BackgroundComponent />
+         
 
           {/* SECONDARY DIAGONAL DEPTH LINES */}
           <div className="absolute inset-0 opacity-[0.06] [background-image:repeating-linear-gradient(135deg,rgba(15,23,42,0.12)_0px,rgba(15,23,42,0.12)_1px,transparent_1px,transparent_10px)]" />

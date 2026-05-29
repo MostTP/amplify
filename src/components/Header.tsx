@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks, site } from "@/data/content";
 import { Waveform } from "./Icons";
-import DarkVeil from "./backgrounds/DarkVeil";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,23 +13,11 @@ export default function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 overflow-hidden border-b border-white/10 bg-white/60 backdrop-blur-2xl">
-      {/* BACKGROUND LAYER */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <DarkVeil
-          hueShift={0}
-          noiseIntensity={0}
-          scanlineIntensity={0}
-          speed={0.5}
-          scanlineFrequency={0}
-          warpAmount={0}
-        />
-      </div>
-
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* BRAND */}
         <Link href="/" className="flex items-center gap-2 sm:gap-3">
           <Image
-            src="/Tenurenamew.png"
+            src="/Tenurenameb.png"
             width={48}
             height={48}
             className="h-10 w-auto sm:h-12"
@@ -38,9 +25,7 @@ export default function Header() {
           />
 
           <div className="leading-tight">
-            <p className="text-sm font-semibold text-slate-900">
-              {site.theme}
-            </p>
+            <p className="text-sm font-semibold text-slate-900">{site.theme}</p>
 
             <p className="text-xs text-slate-600">
               {site.eventTitle} • {site.year}

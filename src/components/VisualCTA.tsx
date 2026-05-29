@@ -4,16 +4,12 @@ import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { homeSections } from "@/data/content";
-import { FloatingLines } from "./backgrounds";
 
 export default function VisualCTA() {
   const { cta } = homeSections;
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="pointer-events-none absolute inset-0 opacity-50">
-        <FloatingLines />
-      </div>
       <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2200&auto=format&fit=crop"

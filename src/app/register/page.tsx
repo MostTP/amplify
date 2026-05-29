@@ -3,22 +3,12 @@ import RegisterForm from "@/components/RegisterForm";
 import EventImage from "@/components/EventImage";
 import Image from "next/image";
 import { register, site, visuals } from "@/data/content";
-import {
-  AnimatedGradientBg,
-  LightRays,
-  MeshGradientBg,
-  NoisePatternBg,
-} from "@/components/backgrounds";
 
 export const metadata = {
   title: `Register | ${site.fullTitle}`,
 };
 
 export default function RegisterPage() {
-  const backgrounds = [AnimatedGradientBg, MeshGradientBg, NoisePatternBg];
-  const BackgroundComponent =
-    backgrounds[Math.floor(Math.random() * backgrounds.length)];
-
   return (
     <>
       <PageHero
@@ -30,30 +20,9 @@ export default function RegisterPage() {
       />
 
       <section className="relative overflow-hidden bg-white py-24 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 opacity-40">
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#7C3AED"
-            raysSpeed={1}
-            lightSpread={0.5}
-            rayLength={3}
-            followMouse={true}
-            mouseInfluence={0.1}
-            noiseAmount={0}
-            distortion={0}
-            className="custom-rays"
-            pulsating={false}
-            fadeDistance={1}
-            saturation={1}
-          />
-        </div>
         {/* Decorative rings */}
         <div className="pointer-events-none absolute left-[5%] top-[20%] hidden h-52 w-52 rounded-full border border-slate-200 xl:block" />
         <div className="pointer-events-none absolute right-[8%] bottom-[18%] hidden h-72 w-72 rounded-full border border-slate-200 xl:block" />
-
-        {/* ================================= */}
-        {/* CONTENT */}
-        {/* ================================= */}
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-10 lg:grid-cols-5">

@@ -2,21 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { schedule, site, visuals } from "@/data/content";
-import { AnimatedGradientBg, MeshGradientBg, NoisePatternBg } from "@/components/backgrounds";
 
 export const metadata = {
   title: `Schedule | ${site.fullTitle}`,
 };
 
 export default function SchedulePage() {
-const backgrounds = [
-  AnimatedGradientBg,
-  MeshGradientBg,
-  NoisePatternBg,
-];
-const BackgroundComponent =
-  backgrounds[Math.floor(Math.random() * backgrounds.length)];
-
   return (
     <>
       <PageHero
@@ -28,15 +19,6 @@ const BackgroundComponent =
       />
 
       <section className="relative overflow-hidden bg-white py-24">
-        {/* ===================================== */}
-        {/* BACKGROUND */}
-        {/* ===================================== */}
-        <BackgroundComponent />
-
-        {/* ===================================== */}
-        {/* CONTENT */}
-        {/* ===================================== */}
-
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* HERO */}
           <div className="mx-auto max-w-5xl text-center">
