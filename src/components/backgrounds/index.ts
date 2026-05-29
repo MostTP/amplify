@@ -1,13 +1,17 @@
 "use client";
 
 import AnimatedGradientBg from "./AnimatedGradientBg";
+import FloatingLines from "./FloatingLines";
+import LightRays from "./LightRays";
 import MeshGradientBg from "./MeshGradientBg";
 import NoisePatternBg from "./NoisePatternBg";
 
 const BACKGROUNDS = [
-  AnimatedGradientBg,
+//   AnimatedGradientBg,
   MeshGradientBg,
   NoisePatternBg,
+  FloatingLines,
+  LightRays
 ];
 
 export default function getRandomBackground() {

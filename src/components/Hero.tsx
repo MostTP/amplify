@@ -5,7 +5,7 @@ import Link from "next/link";
 import HeroCollage from "./HeroCollage";
 import { IconPlay, IconRec, Waveform } from "./Icons";
 import { hero, site } from "@/data/content";
-import FloatingLines from "./FloatingLines";
+import FloatingLines from "./backgrounds/FloatingLines";
 import getRandomBackground from "./backgrounds";
 
 export default function Hero() {
@@ -15,21 +15,6 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-white pt-24">
       <BackgroundComponent />
-      <FloatingLines
-        enabledWaves={["top", "middle", "bottom"]}
-        // Array - specify line count per wave; Number - same count for all waves
-        lineCount={8}
-        // Array - specify line distance per wave; Number - same distance for all waves
-        lineDistance={8}
-        bendRadius={8}
-        bendStrength={-2}
-        interactive
-        parallax={true}
-        animationSpeed={1}
-        gradientStart="#e945f5"
-        gradientMid="#8b5cf6"
-        gradientEnd="#0ea5e9"
-      />
 
       {/* SUBTLE GRID */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.04]">

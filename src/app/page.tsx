@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import Hero from "@/components/Hero";
+import Hero from "@/components/backgrounds/Hero";
 import MediaPillars from "@/components/MediaPillars";
 import PhotoMarquee from "@/components/PhotoMarquee";
 import VisualCTA from "@/components/VisualCTA";
