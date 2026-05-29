@@ -100,29 +100,6 @@ export default function PageHero({
               </Link>
             </div>
 
-            {/* Event Metrics */}
-            <div className="mt-12 grid w-full max-w-xl grid-cols-3 gap-4">
-              <div className="rounded-2xl border border-slate-100 bg-white/80 p-5 text-center shadow-sm backdrop-blur">
-                <p className="text-3xl font-black text-slate-900">5+</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-slate-500">
-                  Tracks
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-100 bg-white/80 p-5 text-center shadow-sm backdrop-blur">
-                <p className="text-3xl font-black text-slate-900">2</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-slate-500">
-                  Days
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-100 bg-white/80 p-5 text-center shadow-sm backdrop-blur">
-                <p className="text-3xl font-black text-slate-900">Live</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-slate-500">
-                  Experience
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* RIGHT FEATURE CARD */}

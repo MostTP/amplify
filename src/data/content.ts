@@ -24,13 +24,13 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/schedule", label: "Schedule" },
   { href: "/register", label: "Register" },
-  { href: "/testimonials", label: "Testimonials" },
+  // { href: "/testimonials", label: "Testimonials" },
 ];
 
 export const hero = {
   eyebrow: "ON AIR · MEDIA WEEK 2026",
 
-  headline: "Amplify the Gospel Through Media That Speaks to Nations",
+  headline: "Amplifying Gospel Through Media That Reaches Nations",
 
   subheadline:
     "AMPLIFY. 26’ — A hands-on creative experience where worship meets production, and media becomes ministry.",
@@ -114,7 +114,7 @@ export const homeSections = {
 };
 
 export const about = {
-  title: "About Media Week",
+  title: "Where Media Meets Mission",
 
   intro:
     "Media Week is a convergence of creatives, technicians, and ministers committed to using modern media systems for global gospel impact.",
@@ -156,10 +156,10 @@ export const about = {
 };
 
 export const schedule = {
-  title: "Event Schedule",
+  title: "Event Timeline",
 
   subtitle:
-    "11th–14th June 2026 · AMPLIFY. 26’ — A 4-day immersive media production journey",
+    "11–14 June 2026 · AMPLIFY.26 - A 4-day immersive media production experience",
 
   heroImage:
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1800&auto=format&fit=crop",
@@ -204,7 +204,7 @@ export const register = {
   title: "Join Media Week 2026",
 
   subtitle:
-    "Step into AMPLIFY. 26’ — a hands-on training experience designed to equip you with real-world media production skills and spiritual clarity.",
+    "Step into AMPLIFY. 26’ - a hands-on training experience designed to equip you with real-world media production skills and spiritual clarity.",
 
   successMessage:
     "Your registration has been successfully received. You are now part of AMPLIFY. 26’. Check your email for next steps and event updates.",
