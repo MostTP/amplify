@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${montserrat.variable} font-sans antialiased`}
+        className={`${montserrat.className} antialiased`}
         suppressHydrationWarning
       >
         <Header />

@@ -7,6 +7,11 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      montserrat: ["var(--font-montserrat)", "system-ui", "sans-serif"],
+      sans: ["var(--font-montserrat)", "system-ui", "sans-serif"],
+      display: ["var(--font-montserrat)", "system-ui", "sans-serif"],
+    },
     extend: {
       colors: {
         navy: {
@@ -30,6 +35,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-playfair)", "Georgia", "serif"],
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "hero-gradient":
