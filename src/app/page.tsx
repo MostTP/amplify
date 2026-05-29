@@ -1,13 +1,13 @@
 "use client";
 
 import MediaPillars from "@/components/MediaPillars";
-import PhotoMarquee from "@/components/PhotoMarquee";
 import VisualCTA from "@/components/VisualCTA";
 import SectionHeading from "@/components/SectionHeading";
 import { homeSections, visuals } from "@/data/content";
 import Link from "next/link";
 import Image from "next/image";
 import Hero from "@/components/Hero";
+import { ImageMarquee } from "@/components/PhotoMarquee";
 
 export default function Home() {
   const { highlight } = homeSections;
@@ -20,7 +20,7 @@ export default function Home() {
 
       {/* MARQUEE (lightened wrapper) */}
       <div className="bg-gray-50">
-        <PhotoMarquee />
+        <ImageMarquee />
       </div>
 
       {/* MEDIA PILLARS */}

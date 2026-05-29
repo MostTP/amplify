@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import HeroCollage from "./HeroCollage";
-import { IconPlay, IconRec, Waveform } from "./Icons";
+import { IconPlay } from "./Icons";
 import { hero, site } from "@/data/content";
 
 export default function Hero() {
@@ -17,7 +16,7 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 lg:px-8 lg:pb-28">
-        <div className="grid justify-center items-center gap-10">
+        <div className="flex justify-center items-center gap-10">
           {/* TEXT */}
           <div className="text-center w-[calc(100%-20rem)]">
 
@@ -56,7 +55,7 @@ export default function Hero() {
             </div>
 
             {/* CTA */}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row lg:justify-start justify-center">
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row justify-center">
               <Link
                 href={hero.ctaPrimary.href}
                 className="rounded-full bg-slate-950 px-8 py-4 font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-slate-800"

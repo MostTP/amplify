@@ -1,31 +1,26 @@
 import type { Metadata } from "next";
-import { Sora, Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { site } from "@/data/content";
 import "./globals.css";
 
-// Modern premium font combo
-const sora = Sora({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-sora",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
-  title: `${site.fullTitle} | ${site.tag}`,
-  description: `${site.fullTitle} — ${site.date} at ${site.location}. Equipping believers in broadcast, visual media, design, and digital ministry.`,
-  openGraph: {
-    title: site.fullTitle,
-    description: site.tag,
-    type: "website",
+  title: "M.E.P CONFERENCE 3.0 | AMPLIFY.26",
+  description: "Projecting the Gospel to the ends of the earth through media and technology.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -37,11 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`
-          ${sora.variable}
-          ${inter.variable}
-          font-sans antialiased overflow-x-hidden
-        `}
+        className={`${montserrat.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <Header />
         <main>{children}</main>

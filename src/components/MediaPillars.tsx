@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import Image from "next/image";
 import { homeSections, visuals } from "@/data/content";
 import SectionHeading from "./SectionHeading";
@@ -31,7 +30,7 @@ export default function MediaPillars() {
   const { mediaPillars } = homeSections;
 
   return (
-    <section className="relative bg-white py-16 sm:py-24 md:py-32 overflow-hidden">
+    <section className="relative bg-white py-10 sm:py-16 md:py-22 overflow-hidden">
       {/* RANDOM BACKGROUND */}
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
