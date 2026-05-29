@@ -15,17 +15,34 @@ export async function POST(req: Request) {
     );
 
     const verifyData = await verifyRes.json();
+
+    if (verifyData.status !== true) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Invalid Paystack response",
+        },
+        { status: 400 }
+      );
+    }
+
+    const amount = verifyData.data.amount; // in kobo
+
+    // ✅ NEW PRICING MODEL
+    const INHOUSE_FEE = 5000 * 100;
+    const OUTSIDER_FEE = 3000 * 100;
+    const CERTIFICATE_FEE = 1000 * 100;
+
     const validAmounts = [
-      3000 * 100,
-      4000 * 100,
-      5000 * 100,
-      6000 * 100,
+      INHOUSE_FEE + CERTIFICATE_FEE,
+      OUTSIDER_FEE + CERTIFICATE_FEE,
     ];
-    
-    if (
+
+    const isValidPayment =
       verifyData.data.status === "success" &&
-      validAmounts.includes(verifyData.data.amount)
-    ) {
+      validAmounts.includes(amount);
+
+    if (isValidPayment) {
       // SAVE TO SHEET HERE
       // await submitToSheet(formData, reference)
 
@@ -37,7 +54,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Payment not verified",
+        message: "Payment amount mismatch or invalid transaction",
       },
       { status: 400 }
     );

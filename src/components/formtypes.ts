@@ -7,5 +7,4 @@ export type RegisterData = {
   church: string;
   notes: string;
   attendanceType: "inhouse" | "outsider";
-  wantsCertificate: boolean;
 };

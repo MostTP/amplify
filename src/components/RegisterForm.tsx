@@ -25,7 +25,6 @@ export default function RegisterForm() {
     church: "",
     notes: "",
     attendanceType: "outsider",
-    wantsCertificate: false,
   });
 
   function handleChange(
@@ -33,12 +32,11 @@ export default function RegisterForm() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) {
-    const { name, value, type } = e.target as HTMLInputElement;
+    const { name, value } = e.target as HTMLInputElement;
 
     setFormData((prev) => ({
       ...prev,
-      [name]:
-        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      [name]: value,
     }));
   }
 
@@ -66,8 +64,8 @@ export default function RegisterForm() {
   }
 
   const baseFee = formData.attendanceType === "inhouse" ? 5000 : 3000;
-
-  const total = baseFee + (formData.wantsCertificate ? 1000 : 0);
+  const certificateFee = 1000;
+  const total = baseFee + certificateFee;
 
   const inputStyles = `
     w-full rounded-2xl
@@ -109,29 +107,20 @@ export default function RegisterForm() {
   }
 
   return (
-    <div
-      className="
-        relative w-full overflow-hidden
-        rounded-2xl sm:rounded-3xl md:rounded-[40px]
-        sm:border sm:border-slate-200 sm:bg-white
-        sm:shadow-[0_30px_100px_rgba(0,0,0,0.08)]
-        p-0 sm:p-6 md:p-8 lg:p-10
-      "
-    >
+    <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[40px] sm:border sm:border-slate-200 sm:bg-white sm:shadow-[0_30px_100px_rgba(0,0,0,0.08)] p-0 sm:p-6 md:p-8 lg:p-10">
+
       {/* BACKGROUND EFFECTS */}
       <div className="absolute hidden sm:block inset-0">
-        {/* grid */}
         <div className="absolute inset-0 opacity-[0.06]">
           <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.08)_1px,transparent_1px)] bg-[size:42px_42px]" />
         </div>
 
-        {/* glows */}
         <div className="absolute -left-20 top-0 h-[300px] w-[300px] rounded-full bg-blue-500/10 blur-[100px]" />
-
         <div className="absolute -right-20 bottom-0 h-[300px] w-[300px] rounded-full bg-fuchsia-500/10 blur-[100px]" />
       </div>
 
-      <form onSubmit={handleSubmit} className="relative space-y-8 sm:space-y-10">
+      <form onSubmit={handleSubmit} className="relative space-y-10">
+
         {/* HEADER */}
         <div className="text-center">
           <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
@@ -143,226 +132,122 @@ export default function RegisterForm() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-slate-600">
-            Join creatives, media professionals, and believers for an immersive
-            training experience.
+            Join creatives, media professionals, and believers for an immersive training experience.
           </p>
         </div>
 
         {/* PERSONAL INFO */}
         <div className="space-y-6">
-          <div>
-            <p className="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-              Personal Information
-            </p>
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+            Personal Information
+          </p>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                name="firstName"
-                placeholder="First Name"
-                className={inputStyles}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="lastName"
-                placeholder="Last Name"
-                className={inputStyles}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="email"
-                type="email"
-                placeholder="Email Address"
-                className={inputStyles}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="phone"
-                placeholder="Phone Number"
-                className={inputStyles}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <input name="firstName" placeholder="First Name" className={inputStyles} onChange={handleChange} required />
+            <input name="lastName" placeholder="Last Name" className={inputStyles} onChange={handleChange} required />
+            <input name="email" type="email" placeholder="Email Address" className={inputStyles} onChange={handleChange} required />
+            <input name="phone" placeholder="Phone Number" className={inputStyles} onChange={handleChange} required />
           </div>
+        </div>
 
-          {/* PARTICIPATION */}
-          <div>
-            <p className="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-              Participation Type
-            </p>
+        {/* PARTICIPATION */}
+        <div className="space-y-4">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+            Participation Type
+          </p>
 
-            <div className="grid gap-4 xl:grid-cols-2">
-              <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300">
-                <input
-                  type="radio"
-                  name="attendanceType"
-                  value="inhouse"
-                  checked={formData.attendanceType === "inhouse"}
-                  onChange={handleChange}
-                  className="h-5 w-5 accent-blue-500"
-                />
+          <div className="grid gap-4 xl:grid-cols-2">
+            <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-blue-300 transition">
+              <input type="radio" name="attendanceType" value="inhouse" checked={formData.attendanceType === "inhouse"} onChange={handleChange} className="h-5 w-5 accent-blue-500" />
+              <div>
+                <p className="font-semibold text-slate-900">In-House Participant</p>
+                <p className="text-sm text-slate-500">₦5,000 registration fee</p>
+              </div>
+            </label>
 
-                <div>
-                  <p className="font-semibold text-slate-900">
-                    In-House Participant
-                  </p>
-
-                  <p className="text-sm text-slate-500">
-                    ₦5,000 registration fee
-                  </p>
-                </div>
-              </label>
-
-              <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300">
-                <input
-                  type="radio"
-                  name="attendanceType"
-                  value="outsider"
-                  checked={formData.attendanceType === "outsider"}
-                  onChange={handleChange}
-                  className="h-5 w-5 accent-blue-500"
-                />
-
-                <div>
-                  <p className="font-semibold text-slate-900">
-                    Guest Participant
-                  </p>
-
-                  <p className="text-sm text-slate-500">
-                    ₦3,000 registration fee
-                  </p>
-                </div>
-              </label>
-            </div>
+            <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-blue-300 transition">
+              <input type="radio" name="attendanceType" value="outsider" checked={formData.attendanceType === "outsider"} onChange={handleChange} className="h-5 w-5 accent-blue-500" />
+              <div>
+                <p className="font-semibold text-slate-900">Guest Participant</p>
+                <p className="text-sm text-slate-500">₦3,000 registration fee</p>
+              </div>
+            </label>
           </div>
+        </div>
 
-          {/* TRAINING DETAILS */}
-          <div>
-            <p className="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-              Training Details
-            </p>
+        {/* TRAINING DETAILS */}
+        <div className="space-y-5">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+            Training Details
+          </p>
 
-            <div className="space-y-5">
-              <Select
-                value={formData.department}
-                onValueChange={(value) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    department: value,
-                  }))
-                }
-              >
-                <SelectTrigger
-                  className="
-                    w-full rounded-2xl border border-slate-200
-                    bg-white/90 px-5 py-6 text-slate-900
-                    shadow-sm backdrop-blur-xl transition-all
-                    duration-300 hover:border-slate-300
-                    focus:border-blue-400 focus:ring-4 focus:ring-blue-100
-                  "
-                >
-                  <SelectValue placeholder="Select a department" />
-                </SelectTrigger>
+          <Select
+            value={formData.department}
+            onValueChange={(value) =>
+              setFormData((prev) => ({ ...prev, department: value }))
+            }
+          >
+            <SelectTrigger className="w-full rounded-2xl border border-slate-200 bg-white/90 px-5 py-6 text-slate-900 shadow-sm backdrop-blur-xl transition hover:border-slate-300 focus:border-blue-400 focus:ring-4 focus:ring-blue-100">
+              <SelectValue placeholder="Select a department" />
+            </SelectTrigger>
 
-                <SelectContent className="rounded-2xl border-slate-200 bg-white/95 backdrop-blur-xl">
-                  <SelectGroup>
-                    {registerContent.departments.map((department) => (
-                      <SelectItem
-                        key={department}
-                        value={department}
-                        className="cursor-pointer rounded-xl"
-                      >
-                        {department}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+            <SelectContent className="rounded-2xl border-slate-200 bg-white/95 backdrop-blur-xl">
+              <SelectGroup>
+                {registerContent.departments.map((department) => (
+                  <SelectItem key={department} value={department}>
+                    {department}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
 
-              <input
-                name="church"
-                placeholder="Church Name (Optional)"
-                className={inputStyles}
-                onChange={handleChange}
-              />
+          <input name="church" placeholder="Church Name (Optional)" className={inputStyles} onChange={handleChange} />
 
-              <textarea
-                name="notes"
-                placeholder="Share your expectations, goals, or what you believe God will do for you at AMPLIFY.26"
-                className={`${inputStyles} min-h-[140px] resize-none`}
-                onChange={handleChange}
-              />
+          <textarea name="notes" placeholder="Share expectations or goals for AMPLIFY.26" className={`${inputStyles} min-h-[140px]`} onChange={handleChange} />
+        </div>
+
+        {/* CERTIFICATE INFO (MANDATORY) */}
+        <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5 backdrop-blur-xl">
+          <div className="flex items-start gap-4">
+            <div className="flex p-3 items-center justify-center rounded-full bg-blue-600 text-white font-bold">
+              ₦
+            </div>
+
+            <div>
+              <p className="font-semibold text-slate-900">
+                Certificate Fee Included
+              </p>
+              <p className="mt-1 text-sm text-slate-600">
+                ₦1,000 compulsory certificate fee covers official documentation, verification, and issuance of your AMPLIFY.26 participation certificate.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* PAYMENT CARD */}
-        <div className="rounded-[28px] border border-slate-200 bg-slate-50/80 p-5 sm:p-6 backdrop-blur-xl">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+        {/* PAYMENT */}
+        <div className="rounded-[28px] border border-slate-200 bg-slate-50/80 p-6 backdrop-blur-xl">
+          <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900">
+              <h3 className="text-lg font-bold text-slate-900">
                 AMPLIFY.26 Package
               </h3>
-
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Equipping you with full access to workshops, sessions, and
-                hands-on media training.
+              <p className="mt-2 text-sm text-slate-600">
+                Includes training access, workshop sessions, and official certificate issuance.
               </p>
             </div>
 
-            <div className="w-full sm:w-auto rounded-2xl bg-white px-5 py-3 shadow-sm">
+            <div className="rounded-2xl bg-white px-5 py-3 shadow-sm">
               <p className="text-sm text-slate-500">Total</p>
-
               <p className="text-2xl font-black text-slate-900">
                 ₦{total.toLocaleString()}
               </p>
             </div>
           </div>
-
-          {/* CERTIFICATE */}
-          <label className="mt-6 flex cursor-pointer items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300">
-            <input
-              type="checkbox"
-              name="wantsCertificate"
-              checked={formData.wantsCertificate}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 accent-blue-500"
-            />
-
-            <div>
-              <p className="font-semibold text-slate-900">Add Certificate</p>
-
-              <p className="mt-1 text-sm text-slate-500">
-                Receive an official certificate after training completion.
-              </p>
-            </div>
-          </label>
         </div>
 
-        {/* BUTTON */}
-        <button
-          type="submit"
-          className="
-            w-full rounded-full
-            bg-gradient-to-r
-            from-blue-600
-            via-cyan-500
-            to-fuchsia-500
-            px-6 py-4
-            text-base sm:text-lg
-            font-semibold text-white
-            shadow-[0_15px_50px_rgba(59,130,246,0.35)]
-            transition-all duration-500
-            hover:scale-[1.02]
-            hover:shadow-[0_20px_60px_rgba(59,130,246,0.45)]
-          "
-        >
+        {/* SUBMIT */}
+        <button type="submit" className="w-full rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-fuchsia-500 px-6 py-4 text-base font-semibold text-white shadow-[0_15px_50px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]">
           Secure My Spot • ₦{total.toLocaleString()}
         </button>
       </form>

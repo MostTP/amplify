@@ -40,7 +40,6 @@ function loadPaystack(): Promise<void> {
     script.async = true;
 
     script.onload = () => resolve();
-
     script.onerror = () =>
       reject(new Error("Failed to load Paystack"));
 
@@ -60,13 +59,22 @@ export async function payWithPaystack(
       return;
     }
 
-    const amount =
-      5000 + (data.wantsCertificate ? 1000 : 0);
+    // ✅ FIXED PRICING LOGIC
+    const INHOUSE_FEE = 5000;
+    const OUTSIDER_FEE = 3000;
+    const CERTIFICATE_FEE = 1000;
+
+    const baseFee =
+      data.attendanceType === "inhouse"
+        ? INHOUSE_FEE
+        : OUTSIDER_FEE;
+
+    const amount = (baseFee + CERTIFICATE_FEE) * 100;
 
     const handler = window.PaystackPop.setup({
       key: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
       email: data.email,
-      amount: amount * 100,
+      amount,
 
       callback: (response: PaystackResponse) => {
         onSuccess(response.reference);
