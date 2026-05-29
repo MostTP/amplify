@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
+import { NoisePatternBg } from "./backgrounds";
+import PrismaticBurst from "./backgrounds/PrismaticBurst";
 import EventImage from "./EventImage";
 import VisualBackdrop from "./VisualBackdrop";
-import getRandomBackground from "./backgrounds";
 import Link from "next/link";
 
 type PageHeroProps = {
@@ -21,17 +21,14 @@ export default function PageHero({
   imageSrc,
   imageAlt = "Media Week",
 }: PageHeroProps) {
-  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
-
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-white">
       {/* ===================== */}
       {/* BACKGROUND SYSTEM */}
       {/* ===================== */}
-      <div className="absolute inset-0">
-        <BackgroundComponent />
+      <div className="pointer-events-none absolute inset-0 opacity-90">
+        <NoisePatternBg />
       </div>
-      \n
       {/* ===================== */}
       {/* IMAGE SIDE PANEL */}
       {/* ===================== */}
@@ -57,7 +54,7 @@ export default function PageHero({
       <div className="relative mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* LEFT CONTENT */}
-          <div>
+          <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
             {eyebrow && (
               <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600 shadow-sm backdrop-blur-xl">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
@@ -65,21 +62,21 @@ export default function PageHero({
               </p>
             )}
 
-            <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-display text-5xl font-bold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
               {title}
             </h1>
 
             {subtitle && (
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+              <p className="mt-4 max-w-xl text-md leading-relaxed text-slate-600">
                 {subtitle}
               </p>
             )}
 
             {/* CTA AREA */}
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/register"
-                className="rounded-full bg-gradient-to-r from-blue-600 to-fuchsia-500 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:shadow-xl"
+                className="rounded-full w-full sm:w-fit bg-gradient-to-r from-blue-600 to-fuchsia-500 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:shadow-xl"
               >
                 Register Now
               </Link>
@@ -94,7 +91,7 @@ export default function PageHero({
           </div>
 
           {/* RIGHT VISUAL CARD (desktop only depth layer) */}
-          <div className="hidden lg:block">
+          <div className="">
             <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(0,0,0,0.08)]">
               {/* inner glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-fuchsia-500/10" />

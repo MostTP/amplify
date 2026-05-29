@@ -4,22 +4,16 @@ import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { homeSections } from "@/data/content";
-import getRandomBackground from "./backgrounds";
+import { FloatingLines } from "./backgrounds";
 
 export default function VisualCTA() {
   const { cta } = homeSections;
-  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* ============================= */}
-      {/* RANDOM BACKGROUND */}
-      {/* ============================= */}
-      <BackgroundComponent />
-      \n
-      {/* ============================= */}
-      {/* MAIN VISUAL BACKDROP */}
-      {/* ============================= */}\n
+      <div className="pointer-events-none absolute inset-0 opacity-50">
+        <FloatingLines />
+      </div>
       <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2200&auto=format&fit=crop"

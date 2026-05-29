@@ -1,28 +1,22 @@
 "use client";
 
-import { useMemo } from "react";
 import MediaPillars from "@/components/MediaPillars";
 import PhotoMarquee from "@/components/PhotoMarquee";
 import VisualCTA from "@/components/VisualCTA";
 import SectionHeading from "@/components/SectionHeading";
 import { homeSections, visuals } from "@/data/content";
-import getRandomBackground from "@/components/backgrounds";
 import Link from "next/link";
 import Image from "next/image";
 import Hero from "@/components/Hero";
 
 export default function Home() {
   const { highlight } = homeSections;
-  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
     <main className="relative overflow-hidden bg-white text-slate-900 antialiased">
-      {/* RANDOM BACKGROUND */}
-      <BackgroundComponent />
 
       {/* HERO (keep as-is, already strong) */}
       <Hero />
-
 
       {/* MARQUEE (lightened wrapper) */}
       <div className="bg-gray-50">
@@ -41,7 +35,6 @@ export default function Home() {
       <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white via-amber-50 to-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 sm:gap-12 md:gap-16 lg:grid-cols-2">
-
             {/* TEXT */}
             <div>
               <SectionHeading
@@ -84,7 +77,6 @@ export default function Home() {
                   fill
                   className="object-cover"
                   priority
-
                 />
               </div>
 

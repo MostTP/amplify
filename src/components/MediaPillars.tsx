@@ -5,7 +5,7 @@ import Image from "next/image";
 import { homeSections, visuals } from "@/data/content";
 import SectionHeading from "./SectionHeading";
 import { MediaIcon } from "./Icons";
-import getRandomBackground from "./backgrounds";
+import { getRandomBackground } from "./backgrounds";
 
 type MediaPillarIcon =
   | "broadcast"
@@ -35,7 +35,10 @@ export default function MediaPillars() {
   return (
     <section className="relative bg-white py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* RANDOM BACKGROUND */}
-      <BackgroundComponent />\n
+            <div className="pointer-events-none absolute inset-0 opacity-50">
+
+      <BackgroundComponent />
+      </div>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="The Media Mandate"

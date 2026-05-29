@@ -1,26 +1,34 @@
+"use client";
 import Link from "next/link";
 import { footer, navLinks, site } from "@/data/content";
+import DarkVeil from "./backgrounds/DarkVeil";
 
 export default function Footer() {
   return (
     <footer className="relative border-t border-slate-200 bg-white text-slate-700">
+      <div className="pointer-events-none absolute inset-0 opacity-70">
+        <DarkVeil
+          hueShift={0}
+          noiseIntensity={0}
+          scanlineIntensity={0}
+          speed={0.5}
+          scanlineFrequency={0}
+          warpAmount={0}
+        />
+      </div>
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-fuchsia-500" />
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-
         <div className="grid gap-12 md:grid-cols-3">
-
           {/* BRAND */}
           <div>
-            <p className="text-xl font-bold text-slate-900">
-              {site.fullTitle}
-            </p>
-            <p className="mt-2 text-sm text-blue-600">{site.date}</p>
-            <p className="text-sm text-slate-600">{site.locationShort}</p>
+            <p className="text-xl font-bold text-slate-100">{site.fullTitle}</p>
+            <p className="mt-2 text-sm text-blue-200">{site.date}</p>
+            <p className="text-sm text-slate-100">{site.locationShort}</p>
           </div>
 
           {/* NAV */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-50">
               Navigate
             </p>
 
@@ -29,7 +37,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-600 hover:text-slate-900"
+                    className="text-sm text-slate-100 hover:text-slate-300"
                   >
                     {link.label}
                   </Link>
@@ -40,18 +48,15 @@ export default function Footer() {
 
           {/* CONTACT */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-100">
               Contact
             </p>
 
-            <p className="mt-4 text-sm">{site.contactEmail}</p>
-            <p className="text-sm text-slate-600">{site.contactPhone}</p>
+            <p className="mt-4 text-sm text-slate-100">{site.contactEmail}</p>
+            <p className="text-sm text-slate-100">{site.contactPhone}</p>
 
-            <p className="mt-6 text-sm italic text-slate-500">
-              {footer.verse}
-            </p>
+            <p className="mt-6 text-sm italic text-slate-100">{footer.verse}</p>
           </div>
-
         </div>
 
         <div className="mt-10 rounded-[2rem] border border-slate-200 bg-slate-50 px-6 py-6 text-center shadow-sm sm:flex sm:items-center sm:justify-between sm:text-left">
@@ -65,19 +70,6 @@ export default function Footer() {
             Register Now
           </Link>
         </div>
-
-        {/* BOTTOM */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
-          <p className="text-xs text-slate-500">
-            {footer.copyright}
-          </p>
-
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-slate-500">
-            <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
-            Media Ministry · KWASU
-          </div>
-        </div>
-
       </div>
     </footer>
   );

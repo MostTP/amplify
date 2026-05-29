@@ -3,20 +3,21 @@ import RegisterForm from "@/components/RegisterForm";
 import EventImage from "@/components/EventImage";
 import Image from "next/image";
 import { register, site, visuals } from "@/data/content";
-import { AnimatedGradientBg, MeshGradientBg, NoisePatternBg } from "@/components/backgrounds";
+import {
+  AnimatedGradientBg,
+  LightRays,
+  MeshGradientBg,
+  NoisePatternBg,
+} from "@/components/backgrounds";
 
 export const metadata = {
   title: `Register | ${site.fullTitle}`,
 };
 
 export default function RegisterPage() {
-const backgrounds = [
-  AnimatedGradientBg,
-  MeshGradientBg,
-  NoisePatternBg,
-];
-const BackgroundComponent =
-  backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  const backgrounds = [AnimatedGradientBg, MeshGradientBg, NoisePatternBg];
+  const BackgroundComponent =
+    backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
   return (
     <>
@@ -29,11 +30,23 @@ const BackgroundComponent =
       />
 
       <section className="relative overflow-hidden bg-white py-24 sm:py-28">
-        {/* ================================= */}
-        {/* BACKGROUND DESIGN */}
-        {/* ================================= */}
-        <BackgroundComponent />
-
+        <div className="pointer-events-none absolute inset-0 opacity-40">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#7C3AED"
+            raysSpeed={1}
+            lightSpread={0.5}
+            rayLength={3}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0}
+            distortion={0}
+            className="custom-rays"
+            pulsating={false}
+            fadeDistance={1}
+            saturation={1}
+          />
+        </div>
         {/* Decorative rings */}
         <div className="pointer-events-none absolute left-[5%] top-[20%] hidden h-52 w-52 rounded-full border border-slate-200 xl:block" />
         <div className="pointer-events-none absolute right-[8%] bottom-[18%] hidden h-72 w-72 rounded-full border border-slate-200 xl:block" />
@@ -81,8 +94,8 @@ const BackgroundComponent =
                     </h3>
 
                     <p className="mt-3 text-sm leading-relaxed text-slate-200">
-                      Learn production, storytelling, media systems,
-                      design, livestreaming, and digital ministry workflows.
+                      Learn production, storytelling, media systems, design,
+                      livestreaming, and digital ministry workflows.
                     </p>
                   </div>
                 </div>
@@ -106,9 +119,7 @@ const BackgroundComponent =
                         </div>
 
                         <div>
-                          <p className="font-semibold text-slate-900">
-                            {item}
-                          </p>
+                          <p className="font-semibold text-slate-900">{item}</p>
                         </div>
                       </div>
                     ))}
@@ -146,7 +157,7 @@ const BackgroundComponent =
             {/* ========================= */}
 
             <div className="lg:col-span-3">
-              <div className="relative overflow-hidden rounded-[38px] border border-slate-200 bg-white shadow-[0_25px_100px_rgba(15,23,42,0.08)]">
+              <div className="relative overflow-hidden sm:rounded-[38px]  rounded-[28px] sm:border sm:border-slate-200 sm:bg-white sm:shadow-[0_25px_100px_rgba(15,23,42,0.08)]">
                 {/* Decorative top glow */}
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500" />
 
@@ -158,7 +169,7 @@ const BackgroundComponent =
                 {/* Glow */}
                 <div className="absolute right-[-120px] top-[-120px] h-[300px] w-[300px] rounded-full bg-cyan-200/50 blur-3xl" />
 
-                <div className="relative p-6 sm:p-10 lg:p-12">
+                <div className="relative p-2 pt-6 sm:p-10 lg:p-12">
                   {/* Top heading */}
                   <div className="mb-10 flex flex-col gap-6 border-b border-slate-100 pb-8 sm:flex-row sm:items-center sm:justify-between">
                     <div>
@@ -171,8 +182,8 @@ const BackgroundComponent =
                       </h2>
 
                       <p className="mt-3 max-w-xl text-slate-600">
-                        Complete your registration and payment to gain access
-                        to Media Week training sessions and activities.
+                        Complete your registration and payment to gain access to
+                        Media Week training sessions and activities.
                       </p>
                     </div>
 
@@ -200,24 +211,6 @@ const BackgroundComponent =
 
                   {/* FORM */}
                   <RegisterForm />
-                </div>
-              </div>
-
-              {/* Footer text */}
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-cyan-500" />
-                  Secure payment via Paystack
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-blue-500" />
-                  Instant confirmation
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-fuchsia-500" />
-                  Optimized for mobile
                 </div>
               </div>
             </div>

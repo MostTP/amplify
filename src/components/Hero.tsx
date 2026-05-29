@@ -1,24 +1,43 @@
 "use client";
 
-import { useMemo } from "react";
 import Link from "next/link";
 import HeroCollage from "./HeroCollage";
 import { IconPlay, IconRec, Waveform } from "./Icons";
 import { hero, site } from "@/data/content";
-import FloatingLines from "./backgrounds/FloatingLines";
-import getRandomBackground from "./backgrounds";
+import LightRays from "./backgrounds/LightRays";
+import { FloatingLines } from "./backgrounds";
 
 export default function Hero() {
   const [headlinePrefix, headlineAccent] = hero.headline.split(" Through ");
-  const BackgroundComponent = useMemo(() => getRandomBackground(), []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white pt-24">
-      <BackgroundComponent />
-
+    <section className="relative min-h-screen h-full overflow-hidden bg-white pt-24">
+      <div className="pointer-events-none absolute inset-0 opacity-50">
+        <FloatingLines
+          enabledWaves={["top", "middle", "bottom"]}
+          // Array - specify line count per wave; Number - same count for all waves
+          lineCount={8}
+          // Array - specify line distance per wave; Number - same distance for all waves
+          lineDistance={8}
+          bendRadius={8}
+          bendStrength={-2}
+          interactive
+          parallax={true}
+          animationSpeed={1}
+          gradientStart="#e945f5"
+          gradientMid="#6f6f6f"
+          gradientEnd="#6a6a6a"
+        />
+      </div>
       {/* SUBTLE GRID */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-        <div className="h-full w-full bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:80px_80px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-20">
+        <div
+          className="
+      h-full w-full
+      bg-[linear-gradient(rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.08)_1px,transparent_1px)]
+      bg-[size:80px_80px]
+    "
+        />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28">
