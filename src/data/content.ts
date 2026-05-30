@@ -201,7 +201,7 @@ export const schedule = {
 };
 
 export const register = {
-  title: "Join Media Week 2026",
+  title: "Join the Gospel Movement",
 
   subtitle:
     "Step into AMPLIFY. 26’ - a hands-on training experience designed to equip you with real-world media production skills and spiritual clarity.",
