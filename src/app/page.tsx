@@ -44,7 +44,7 @@ export default function Home() {
                 light={false}
               />
 
-              <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              <p className="mt-6 text-md leading-relaxed text-slate-700">
                 {highlight.body}
               </p>
 

@@ -48,17 +48,16 @@ export default function PageHero({
       <div className="relative mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <div className="grid items-center gap-20 lg:grid-cols-2">
           {/* LEFT CONTENT */}
-          {/* LEFT CONTENT */}
           <div className="flex max-w-3xl flex-col items-center text-center sm:items-start sm:text-left">
             {eyebrow && (
               <p className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/90 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-blue-700 shadow-lg shadow-blue-500/10 backdrop-blur-xl">
                 <span className="h-2 w-2 rounded-full bg-blue-500" />
                 {eyebrow}
-              </p>
+              </p> 
             )}
 
             {/* Hero Title */}
-            <h1 className="mt-8 font-display text-5xl font-black leading-[0.9] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 font-display text-4xl font-black leading-[0.9] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
               {title.split(" ").slice(0, -2).join(" ")}
 
               <span className="mt-2 block bg-gradient-to-r from-blue-600 via-cyan-500 to-fuchsia-500 bg-clip-text text-transparent">
@@ -68,15 +67,15 @@ export default function PageHero({
 
             {/* Subtitle */}
             {subtitle && (
-              <p className="mt-8 max-w-2xl text-xl leading-relaxed text-slate-600">
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-600">
                 {subtitle}
               </p>
             )}
 
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-8 flex gap-4">
               <div className="h-16 w-1 rounded-full bg-gradient-to-b from-blue-500 via-cyan-500 to-fuchsia-500" />
 
-              <p className="max-w-md text-sm leading-relaxed text-slate-500">
+              <p className="max-w-md text-xs leading-relaxed text-slate-500 text-start">
                 Equipping media ministers, creatives, storytellers, and technical teams
                 with the skills, tools, and excellence needed to communicate the Gospel
                 effectively.

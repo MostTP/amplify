@@ -27,7 +27,7 @@ export default function SchedulePage() {
               <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-500" />
 
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-700">
-                Media Week 2026
+                M.E.P CONFERENCE 2026
               </span>
             </div>
 
@@ -194,7 +194,7 @@ export default function SchedulePage() {
           {/* CTA */}
           {/* ===================================== */}
 
-          <div className="relative mt-28 overflow-hidden rounded-[40px] border border-slate-200 bg-gradient-to-br from-cyan-50 via-white to-blue-50 p-14 text-center shadow-[0_20px_80px_rgba(14,165,233,0.08)]">
+          <div className="relative mt-28 overflow-hidden rounded-[40px] border border-slate-200 bg-gradient-to-br from-cyan-50 via-white to-blue-50 p-10 text-center shadow-[0_20px_80px_rgba(14,165,233,0.08)]">
             {/* GRID */}
             <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
               <div className="h-full w-full bg-[linear-gradient(rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.08)_1px,transparent_1px)] bg-[size:50px_50px]" />
@@ -205,8 +205,8 @@ export default function SchedulePage() {
                 Join The Experience
               </p>
 
-              <h2 className="mx-auto mt-6 max-w-3xl text-4xl font-black tracking-tight text-slate-900 sm:text-5xl">
-                Reserve Your Seat For Media Week 2026
+              <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-black tracking-tight text-slate-900 sm:text-5xl">
+                Reserve Your Seat
               </h2>
 
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">

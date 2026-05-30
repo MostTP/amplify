@@ -68,7 +68,7 @@ export default function RegisterPage() {
                   {/* FLOATING HERO CARD */}
                   <div className="absolute bottom-6 left-6 right-6 z-20 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-2xl shadow-xl">
                     <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-cyan-200">
-                      Media Week 2026
+                      M.E.P CONFERENCE 2026
                     </p>
 
                     <h3 className="mt-3 text-2xl font-black leading-tight text-white">
@@ -168,7 +168,7 @@ export default function RegisterPage() {
 
                       <p className="mt-3 max-w-xl text-slate-600">
                         Complete your registration and payment to gain access to
-                        Media Week training sessions and activities.
+                        M.E.P training sessions and activities.
                       </p>
                     </div>
 

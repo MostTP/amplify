@@ -28,22 +28,22 @@ export default function Hero() {
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
 
           {/* SUB TEXT */}
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-700 sm:text-sm">
+          <p className="text-[7px] font-semibold uppercase tracking-[0.35em] text-slate-700">
             {site.fullTitle}
           </p>
 
           {/* HEADLINE */}
           <h1 className="mt-5 text-4xl font-bold leading-[1.1] text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="block">{headlinePrefix}</span>
+            <span className="block">{site.theme}</span>
 
-            <span className="mt-2 block bg-gradient-to-r from-blue-700 via-cyan-600 to-fuchsia-600 bg-clip-text text-transparent">
-              Through {headlineAccent}
+            <span className="text-2xl sm:text-4xl mt-2 block bg-gradient-to-r from-blue-700 via-cyan-600 to-fuchsia-600 bg-clip-text text-transparent">
+              Through {hero.headline}
             </span>
           </h1>
 
           {/* SUBHEAD */}
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
-            {hero.subheadline}
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-700 sm:text-lg">
+            {site.scripture}
           </p>
 
           {/* DATE CARD */}

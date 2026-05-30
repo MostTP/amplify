@@ -1,8 +1,8 @@
 export const site = {
   name: "RCF KWASU",
-  eventTitle: "Media Week",
+  eventTitle: "M.E.P CONFERENCE",
   year: "2026",
-  fullTitle: "RCF KWASU Media Week 2026",
+  fullTitle: "RCF KWASU M.E.P CONFERENCE 2026",
 
   date: "11th–14th June 2026",
   dateISO: "2026-06-11",
@@ -16,7 +16,7 @@ export const site = {
   theme: "AMPLIFY. 26’",
   tag: "Equipping a generation to project the Gospel through modern media systems.",
   scripture:
-    "Acts 1:8 — But ye shall receive power… and ye shall be witnesses unto the uttermost part of the earth.",
+    "But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jereusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth. - Acts 1:8",
 };
 
 export const navLinks = [
@@ -28,9 +28,9 @@ export const navLinks = [
 ];
 
 export const hero = {
-  eyebrow: "ON AIR · MEDIA WEEK 2026",
+  eyebrow: "ON AIR · M.E.P CONFERENCE 2026",
 
-  headline: "Amplifying Gospel Through Media That Reaches Nations",
+  headline: "Projecting the Gospel to Nations through Digital Tools.",
 
   subheadline:
     "AMPLIFY. 26’ — A hands-on creative experience where worship meets production, and media becomes ministry.",
@@ -92,9 +92,9 @@ export const homeSections = {
   },
 
   highlight: {
-    title: "Why Media Week Exists",
+    title: "Why M.E.P 2026",
 
-    body: "Media Week 2026 is more than a training event — it is a convergence point where skill, creativity, and spiritual clarity are formed into one mission: using media as a tool for global impact under AMPLIFY. 26’.",
+    body: "Media, Editorial, and Publicity Conference 2026 is more than a training event, it is a convergence point where skill, creativity, and spiritual clarity are formed into one mission: using media as a tool for global impact under AMPLIFY. 26’.",
 
     bullets: [
       "Hands-on production with real media tools",
@@ -117,7 +117,7 @@ export const about = {
   title: "Where Media Meets Mission",
 
   intro:
-    "Media Week is a convergence of creatives, technicians, and ministers committed to using modern media systems for global gospel impact.",
+    "M.E.P CONFERENCE is a convergence of creatives, technicians, and ministers committed to using modern media systems for global gospel impact.",
 
   mission: {
     title: "Our Mission",

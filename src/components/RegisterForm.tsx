@@ -124,7 +124,7 @@ export default function RegisterForm() {
         {/* HEADER */}
         <div className="text-center">
           <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
-            Media Week 2026
+            M.E.P CONFERENCE 2026
           </p>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-black tracking-tight text-slate-900">

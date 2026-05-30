@@ -10,7 +10,7 @@ export default function BentoGallery() {
         <SectionHeading
           eyebrow="Behind the Scenes"
           title="The Production Floor"
-          subtitle="A glimpse of the energy, craft, and creativity Media Week brings. Replace these photos with your own in src/data/content.ts."
+          subtitle="A glimpse of the energy, craft, and creativity M.E.P CONFERENCE brings. Replace these photos with your own in src/data/content.ts."
           light
         />
 
