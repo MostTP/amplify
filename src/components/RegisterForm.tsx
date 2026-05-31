@@ -39,14 +39,16 @@ export default function RegisterForm() {
       [name]: value,
     }));
   }
-
   async function handlePayment(reference: string) {
     const res = await fetch("/api/verify-payment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ reference }),
+      body: JSON.stringify({
+        reference,
+        formData,
+      }),
     });
 
     const data = await res.json();
@@ -54,7 +56,7 @@ export default function RegisterForm() {
     if (data.success) {
       setSubmitted(true);
     } else {
-      alert("Payment verification failed");
+      alert(data.message || "Payment verification failed");
     }
   }
 
@@ -245,9 +247,10 @@ export default function RegisterForm() {
             </div>
           </div>
         </div>
-
-        {/* SUBMIT */}
-        <button type="submit" className="w-full rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-fuchsia-500 px-6 py-4 text-base font-semibold text-white shadow-[0_15px_50px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]">
+        <button
+          type="submit"
+          className="w-full rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-fuchsia-500 px-6 py-4 text-base font-semibold text-white shadow-[0_15px_50px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
+        >
           Secure My Spot • ₦{total.toLocaleString()}
         </button>
       </form>

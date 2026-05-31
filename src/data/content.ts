@@ -23,7 +23,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/schedule", label: "Schedule" },
-  { href: "/register", label: "Register" },
+  // { href: "/register", label: "Register" },
   // { href: "/testimonials", label: "Testimonials" },
 ];
 

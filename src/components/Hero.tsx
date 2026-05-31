@@ -5,8 +5,6 @@ import { IconPlay } from "./Icons";
 import { hero, site } from "@/data/content";
 
 export default function Hero() {
-  const [headlinePrefix, headlineAccent] = hero.headline.split(" Through ");
-
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-slate-50 to-blue-50/40 pt-28 sm:pt-32">
       
