@@ -25,12 +25,14 @@ export default function RegisterForm() {
     church: "",
     notes: "",
     attendanceType: "outsider",
+    certificateRequired: false,
+    isPaid: true, // ✅ NEW
   });
 
   function handleChange(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    >
   ) {
     const { name, value } = e.target as HTMLInputElement;
 
@@ -39,6 +41,7 @@ export default function RegisterForm() {
       [name]: value,
     }));
   }
+
   async function handlePayment(reference: string) {
     const res = await fetch("/api/verify-payment", {
       method: "POST",
@@ -56,17 +59,45 @@ export default function RegisterForm() {
     if (data.success) {
       setSubmitted(true);
     } else {
-      alert(data.message || "Payment verification failed");
+      alert(data.message || "Registration failed");
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // 🆓 FREE FLOW
+    if (!formData.isPaid) {
+      const res = await fetch("/api/verify-payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formData,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        alert(data.message || "Registration failed");
+      }
+
+      return;
+    }
+
+    // 💳 PAID FLOW
     payWithPaystack(formData, handlePayment);
   }
 
-  const baseFee = formData.attendanceType === "inhouse" ? 5000 : 3000;
-  const certificateFee = 1000;
+  const baseFee =
+    formData.attendanceType === "inhouse" ? 5000 : 3000;
+
+  const certificateFee = formData.certificateRequired ? 1000 : 0;
+
   const total = baseFee + certificateFee;
 
   const inputStyles = `
@@ -160,7 +191,14 @@ export default function RegisterForm() {
 
           <div className="grid gap-4 xl:grid-cols-2">
             <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-blue-300 transition">
-              <input type="radio" name="attendanceType" value="inhouse" checked={formData.attendanceType === "inhouse"} onChange={handleChange} className="h-5 w-5 accent-blue-500" />
+              <input
+                type="radio"
+                name="attendanceType"
+                value="inhouse"
+                checked={formData.attendanceType === "inhouse"}
+                onChange={handleChange}
+                className="h-5 w-5 accent-blue-500"
+              />
               <div>
                 <p className="font-semibold text-slate-900">In-House Participant</p>
                 <p className="text-sm text-slate-500">₦5,000 registration fee</p>
@@ -168,7 +206,14 @@ export default function RegisterForm() {
             </label>
 
             <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-blue-300 transition">
-              <input type="radio" name="attendanceType" value="outsider" checked={formData.attendanceType === "outsider"} onChange={handleChange} className="h-5 w-5 accent-blue-500" />
+              <input
+                type="radio"
+                name="attendanceType"
+                value="outsider"
+                checked={formData.attendanceType === "outsider"}
+                onChange={handleChange}
+                className="h-5 w-5 accent-blue-500"
+              />
               <div>
                 <p className="font-semibold text-slate-900">Guest Participant</p>
                 <p className="text-sm text-slate-500">₦3,000 registration fee</p>
@@ -209,49 +254,85 @@ export default function RegisterForm() {
           <textarea name="notes" placeholder="Share expectations or goals for AMPLIFY.26" className={`${inputStyles} min-h-[140px]`} onChange={handleChange} />
         </div>
 
-        {/* CERTIFICATE INFO (MANDATORY) */}
-        <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5 backdrop-blur-xl">
-          <div className="flex items-start gap-4">
-            <div className="flex p-3 items-center justify-center rounded-full bg-blue-600 text-white font-bold">
-              ₦
-            </div>
+        {/* OPTIONS */}
+        <div className="space-y-4">
+
+          {/* PAYMENT TOGGLE */}
+          <label className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-5">
+            <p className="font-semibold text-slate-900">Paid Registration</p>
+            <input
+              type="checkbox"
+              checked={formData.isPaid}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  isPaid: e.target.checked,
+                }))
+              }
+              className="h-5 w-5 accent-blue-600"
+            />
+          </label>
+
+          {/* CERTIFICATE OPTION */}
+          <label className="flex cursor-pointer items-start gap-4 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
+            <input
+              type="checkbox"
+              checked={formData.certificateRequired}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  certificateRequired: e.target.checked,
+                }))
+              }
+              className="mt-1 h-5 w-5 accent-blue-600"
+            />
 
             <div>
               <p className="font-semibold text-slate-900">
-                Certificate Fee Included
+                Add Participation Certificate (+₦1,000)
               </p>
               <p className="mt-1 text-sm text-slate-600">
-                ₦1,000 compulsory certificate fee covers official documentation, verification, and issuance of your AMPLIFY.26 participation certificate.
+                Optional certificate for participants
               </p>
             </div>
-          </div>
+          </label>
         </div>
 
-        {/* PAYMENT */}
-        <div className="rounded-[28px] border border-slate-200 bg-slate-50/80 p-6 backdrop-blur-xl">
-          <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
-            <div>
-              <h3 className="text-lg font-bold text-slate-900">
-                AMPLIFY.26 Package
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Includes training access, workshop sessions, and official certificate issuance.
-              </p>
-            </div>
+        {/* PAYMENT SUMMARY */}
+        {formData.isPaid && (
+          <div className="rounded-[28px] border border-slate-200 bg-slate-50/80 p-6 backdrop-blur-xl">
+            <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
 
-            <div className="rounded-2xl bg-white px-5 py-3 shadow-sm">
-              <p className="text-sm text-slate-500">Total</p>
-              <p className="text-2xl font-black text-slate-900">
-                ₦{total.toLocaleString()}
-              </p>
+              <div>
+                <h3 className="text-lg font-bold text-slate-900">
+                  AMPLIFY.26 Package
+                </h3>
+
+                <div className="mt-2 space-y-1 text-sm text-slate-600">
+                  <p>Registration Fee: ₦{baseFee.toLocaleString()}</p>
+                  {formData.certificateRequired && (
+                    <p>Certificate Fee: ₦1,000</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="rounded-2xl bg-white px-5 py-3 shadow-sm">
+                <p className="text-sm text-slate-500">Total</p>
+                <p className="text-2xl font-black text-slate-900">
+                  ₦{total.toLocaleString()}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
         <button
           type="submit"
           className="w-full rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-fuchsia-500 px-6 py-4 text-base font-semibold text-white shadow-[0_15px_50px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
         >
-          Secure My Spot • ₦{total.toLocaleString()}
+          {formData.isPaid
+            ? `Pay & Register • ₦${total.toLocaleString()}`
+            : "Register And Pay Later / I paid already "}
         </button>
       </form>
     </div>

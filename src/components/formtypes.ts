@@ -7,4 +7,6 @@ export type RegisterData = {
   church: string;
   notes: string;
   attendanceType: "inhouse" | "outsider";
+  certificateRequired: boolean;
+  isPaid: boolean; // ✅ NEW: payment toggle
 };

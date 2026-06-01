@@ -2,17 +2,10 @@ import { NextResponse } from "next/server";
 import { sendRegistrationEmails } from "@/lib/mail";
 import { submitToSheet } from "@/components/bmitToSheet";
 
-async function fetchWithRetry(
-  url: string,
-  options: RequestInit,
-  retries = 3
-): Promise<Response | null> {
+async function fetchWithRetry(url: string, options: RequestInit, retries = 3) {
   for (let i = 0; i < retries; i++) {
     const controller = new AbortController();
-
-    const timeout = setTimeout(() => {
-      controller.abort();
-    }, 25000); // 25s timeout
+    const timeout = setTimeout(() => controller.abort(), 25000);
 
     try {
       const res = await fetch(url, {
@@ -25,10 +18,8 @@ async function fetchWithRetry(
     } catch {
       clearTimeout(timeout);
 
-      // last attempt → fail
       if (i === retries - 1) return null;
 
-      // backoff delay (important for Nigeria networks)
       await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
     }
   }
@@ -41,17 +32,19 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { reference, formData } = body;
 
-    if (!reference || !formData) {
+    // =========================
+    // VALIDATION
+    // =========================
+    if (!reference) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Missing data",
-        },
+        { success: false, message: "Missing payment reference" },
         { status: 400 }
       );
     }
 
-    // 🔥 Paystack verification with retry + timeout
+    // =========================
+    // VERIFY PAYSTACK
+    // =========================
     const verifyRes = await fetchWithRetry(
       `https://api.paystack.co/transaction/verify/${reference}`,
       {
@@ -62,24 +55,11 @@ export async function POST(req: Request) {
       }
     );
 
-    // ❌ Network failure after retries
     if (!verifyRes) {
       return NextResponse.json(
         {
           success: false,
-          message:
-            "Unable to verify payment due to network issues. If your payment was deducted, it will be confirmed shortly.",
-        },
-        { status: 502 }
-      );
-    }
-
-    // ❌ Paystack HTTP error (401, 500, etc.)
-    if (!verifyRes.ok) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Payment verification service error",
+          message: "Unable to verify payment (network error)",
         },
         { status: 502 }
       );
@@ -87,50 +67,54 @@ export async function POST(req: Request) {
 
     const verifyData = await verifyRes.json();
 
-    // ❌ Invalid response shape
     if (!verifyData?.status || !verifyData?.data) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid payment verification response",
+          message: "Invalid Paystack response",
         },
         { status: 400 }
       );
     }
 
-    const amount = verifyData.data.amount;
+    const payment = verifyData.data;
 
-    const INHOUSE_FEE = 5000 * 100;
-    const OUTSIDER_FEE = 3000 * 100;
-    const CERTIFICATE_FEE = 1000 * 100;
-
-    const validAmounts = [
-      INHOUSE_FEE + CERTIFICATE_FEE,
-      OUTSIDER_FEE + CERTIFICATE_FEE,
-    ];
-
-    const isValidPayment =
-      verifyData.data.status === "success" &&
-      validAmounts.includes(amount);
-
-    if (!isValidPayment) {
+    // =========================
+    // CORE CHECK
+    // =========================
+    if (payment.status !== "success") {
       return NextResponse.json(
         {
           success: false,
-          message: "Payment amount mismatch or unsuccessful transaction",
+          message: "Payment not successful",
         },
         { status: 400 }
       );
     }
 
-    // 💰 Convert amount
-    const amountPaid = amount / 100;
+    const amountPaid = payment.amount / 100;
 
-    // 📊 Save to Google Sheets
-    await Promise.all([
-      submitToSheet(formData, reference, amountPaid),
-      sendRegistrationEmails({ ...formData, reference }),
-    ]);
+    // =========================
+    // GOOGLE SHEET WRITE (IDEMPOTENT SAFE)
+    // =========================
+    await submitToSheet(
+      {
+        ...formData,
+        paymentStatus: "paid",
+        amountPaid,
+        reference,
+      },
+      reference,
+      amountPaid
+    );
+
+    // =========================
+    // EMAIL NOTIFICATION
+    // =========================
+    await sendRegistrationEmails({
+      ...formData,
+      reference,
+    });
 
     return NextResponse.json({
       success: true,
@@ -142,7 +126,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Server error. Please try again.",
+        message: "Server error",
       },
       { status: 500 }
     );
