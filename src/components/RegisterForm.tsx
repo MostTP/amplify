@@ -259,7 +259,7 @@ export default function RegisterForm() {
 
           {/* PAYMENT TOGGLE */}
           <label className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-5">
-            <p className="font-semibold text-slate-900">Paid Registration</p>
+            <p className="font-semibold text-slate-900">Make Payment Now</p>
             <input
               type="checkbox"
               checked={formData.isPaid}

@@ -171,27 +171,6 @@ export default function RegisterPage() {
                         M.E.P training sessions and activities.
                       </p>
                     </div>
-
-                    {/* Pricing */}
-                    <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 py-5">
-                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">
-                        Registration Fee
-                      </p>
-
-                      <div className="mt-3 flex items-end gap-2">
-                        <span className="text-4xl font-black text-slate-950">
-                          ₦5,000
-                        </span>
-
-                        <span className="pb-1 text-sm text-slate-500">
-                          Training
-                        </span>
-                      </div>
-
-                      <p className="mt-2 text-sm text-slate-500">
-                        + ₦1,000 optional certificate
-                      </p>
-                    </div>
                   </div>
 
                   {/* FORM */}
