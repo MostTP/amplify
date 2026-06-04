@@ -36,21 +36,22 @@ export async function POST(req: Request) {
     // FREE REGISTRATION (NO PAYMENT)
     // =========================
     if (!reference) {
-      await submitToSheet(
-        {
+      await Promise.all([
+        submitToSheet(
+          {
+            ...formData,
+            paymentStatus: "free",
+            amountPaid: 0,
+            reference: "",
+          },
+          "",
+          0
+        ),
+        sendRegistrationEmails({
           ...formData,
-          paymentStatus: "free",
-          amountPaid: 0,
           reference: "",
-        },
-        "",
-        0
-      );
-
-      await sendRegistrationEmails({
-        ...formData,
-        reference: "",
-      });
+        }),
+      ]);
 
       return NextResponse.json({
         success: true,
@@ -111,26 +112,24 @@ export async function POST(req: Request) {
     const amountPaid = payment.amount / 100;
 
     // =========================
-    // GOOGLE SHEET WRITE (IDEMPOTENT SAFE)
+    // GOOGLE SHEET WRITE & EMAIL (PARALLEL)
     // =========================
-    await submitToSheet(
-      {
-        ...formData,
-        paymentStatus: "paid",
-        amountPaid,
+    await Promise.all([
+      submitToSheet(
+        {
+          ...formData,
+          paymentStatus: "paid",
+          amountPaid,
+          reference,
+        },
         reference,
-      },
-      reference,
-      amountPaid
-    );
-
-    // =========================
-    // EMAIL NOTIFICATION
-    // =========================
-    await sendRegistrationEmails({
-      ...formData,
-      reference,
-    });
+        amountPaid
+      ),
+      sendRegistrationEmails({
+        ...formData,
+        reference,
+      }),
+    ]);
 
     return NextResponse.json({
       success: true,
