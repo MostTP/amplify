@@ -33,13 +33,29 @@ export async function POST(req: Request) {
     const { reference, formData } = body;
 
     // =========================
-    // VALIDATION
+    // FREE REGISTRATION (NO PAYMENT)
     // =========================
     if (!reference) {
-      return NextResponse.json(
-        { success: false, message: "Missing payment reference" },
-        { status: 400 }
+      await submitToSheet(
+        {
+          ...formData,
+          paymentStatus: "free",
+          amountPaid: 0,
+          reference: "",
+        },
+        "",
+        0
       );
+
+      await sendRegistrationEmails({
+        ...formData,
+        reference: "",
+      });
+
+      return NextResponse.json({
+        success: true,
+        message: "Registration successful",
+      });
     }
 
     // =========================
