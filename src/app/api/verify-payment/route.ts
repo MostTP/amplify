@@ -36,6 +36,16 @@ export async function POST(req: Request) {
     // FREE REGISTRATION (NO PAYMENT)
     // =========================
     if (!reference) {
+      if (formData.attendanceType === "outsider") {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Guest participants must complete payment during registration.",
+          },
+          { status: 400 }
+        );
+      }
+
       await Promise.all([
         submitToSheet(
           {

@@ -39,6 +39,9 @@ export default function RegisterForm() {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+      ...(name === "attendanceType" && value === "outsider"
+        ? { isPaid: true }
+        : {}),
     }));
   }
 
@@ -66,7 +69,6 @@ export default function RegisterForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    // 🆓 FREE FLOW
     if (!formData.isPaid) {
       const res = await fetch("/api/verify-payment", {
         method: "POST",
@@ -99,6 +101,8 @@ export default function RegisterForm() {
   const certificateFee = formData.certificateRequired ? 1000 : 0;
 
   const total = baseFee + certificateFee;
+
+  const isGuestParticipant = formData.attendanceType === "outsider";
 
   const inputStyles = `
     w-full rounded-2xl
@@ -259,10 +263,18 @@ export default function RegisterForm() {
 
           {/* PAYMENT TOGGLE */}
           <label className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-5">
-            <p className="font-semibold text-slate-900">Make Payment Now</p>
+            <div>
+              <p className="font-semibold text-slate-900">Make Payment Now</p>
+              {isGuestParticipant ? (
+                <p className="text-xs text-slate-500">
+                  Guest participants must complete payment now.
+                </p>
+              ) : null}
+            </div>
             <input
               type="checkbox"
               checked={formData.isPaid}
+              disabled={isGuestParticipant}
               onChange={(e) =>
                 setFormData((prev) => ({
                   ...prev,
