@@ -39,7 +39,7 @@ export const hero = {
   ctaSecondary: { label: "Explore Schedule", href: "/schedule" },
 
   stats: [
-    { value: "4 Days", label: "Intensive Training Experience" },
+    { value: "3 Days", label: "Intensive Training Experience" },
     { value: "6+ Tracks", label: "Creative Media Paths" },
     { value: "∞ Impact", label: "Kingdom Reach" },
   ],
