@@ -69,7 +69,8 @@ export async function payWithPaystack(
         ? INHOUSE_FEE
         : OUTSIDER_FEE;
 
-    const amount = (baseFee + CERTIFICATE_FEE) * 100;
+    const amount =
+      (baseFee + (data.certificateRequired ? CERTIFICATE_FEE : 0)) * 100;
 
     const handler = window.PaystackPop.setup({
       key: process.env.NEXT_PUBLIC_PAYSTACK_KEY,

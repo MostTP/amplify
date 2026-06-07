@@ -32,9 +32,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { reference, formData } = body;
 
-    // =========================
-    // FREE REGISTRATION (NO PAYMENT)
-    // =========================
     if (!reference) {
       if (formData.attendanceType === "outsider") {
         return NextResponse.json(
@@ -69,9 +66,6 @@ export async function POST(req: Request) {
       });
     }
 
-    // =========================
-    // VERIFY PAYSTACK
-    // =========================
     const verifyRes = await fetchWithRetry(
       `https://api.paystack.co/transaction/verify/${reference}`,
       {
@@ -106,9 +100,6 @@ export async function POST(req: Request) {
 
     const payment = verifyData.data;
 
-    // =========================
-    // CORE CHECK
-    // =========================
     if (payment.status !== "success") {
       return NextResponse.json(
         {
@@ -121,9 +112,6 @@ export async function POST(req: Request) {
 
     const amountPaid = payment.amount / 100;
 
-    // =========================
-    // GOOGLE SHEET WRITE & EMAIL (PARALLEL)
-    // =========================
     await Promise.all([
       submitToSheet(
         {
