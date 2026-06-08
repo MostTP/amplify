@@ -35,7 +35,7 @@ export default function Hero() {
             <span className="block">{site.theme}</span>
 
             <span className="text-2xl sm:text-4xl mt-2 block bg-gradient-to-r from-blue-700 via-cyan-600 to-fuchsia-600 bg-clip-text text-transparent">
-              Through {hero.headline}
+              {hero.headline}
             </span>
           </h1>
 
@@ -44,20 +44,46 @@ export default function Hero() {
             {site.scripture}
           </p>
 
-          {/* DATE CARD */}
-          <div className="mt-8 inline-flex flex-col items-center rounded-2xl border border-slate-200 bg-white/80 px-6 py-4 shadow-lg backdrop-blur sm:flex-row sm:gap-6">
-            <div className="text-center sm:text-left">
-              <p className="text-xs uppercase tracking-widest text-slate-500">
-                Save the Date
+<div className="mt-4 grid gap-4 lg:grid-cols-2">
+  {hero.schedule.map((item, index) => (
+    <div
+      key={index}
+      className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+    >
+      {/* Accent */}
+      <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-500 to-blue-600" />
+
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex flex-col items-start">
+          <div className="rounded-full bg-cyan-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-700">
+            {item.day}
+          </div>
+
+          <h4 className="mt-4 text-xl font-black text-slate-950">
+            {item.title}
+          </h4>
+
+          <p className="text-start mt-2 text-sm leading-6 text-slate-600">
+            {item.note}
+          </p>
+        </div>
+
+        {item.time && (
+          <div className="shrink-0">
+            <div className="rounded-2xl bg-slate-950 px-4 py-3 text-center text-white">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-slate-300">
+                Time
               </p>
-              <p className="mt-1 text-xl font-bold text-slate-950 sm:text-2xl">
-                {site.date}
-              </p>
-              <p className="text-sm text-slate-600">
-                {site.locationShort}
+              <p className="mt-1 text-sm font-bold">
+                {item.time}
               </p>
             </div>
           </div>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
 
           {/* CTA */}
           <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">

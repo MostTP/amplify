@@ -38,6 +38,32 @@ export const hero = {
   ctaPrimary: { label: "Secure Your Spot", href: "/register" },
   ctaSecondary: { label: "Explore Schedule", href: "/schedule" },
 
+schedule: [
+  {
+    day: "Thursday",
+    title: "Day One",
+    time: "11:00 AM",
+    note: "Physical Session",
+  },
+  {
+    day: "Friday",
+    title: "Day Two",
+    time: null,
+    note: "Projects, Assignments & Practice (No Physical Meeting)",
+  },
+  {
+    day: "Saturday",
+    title: "Day Three",
+    time: "9:00 AM",
+    note: "Virtual Conference",
+  },
+  {
+    day: "Saturday",
+    title: "Workshop Continues",
+    time: "1:00 PM",
+    note: "Physical Session",
+  },
+],
   stats: [
     { value: "3 Days", label: "Intensive Training Experience" },
     { value: "6+ Tracks", label: "Creative Media Paths" },
@@ -166,7 +192,7 @@ export const schedule = {
 
   tracks: [
     {
-      time: "Day 1",
+      time: "Thursday Day One — 11am",
       title: "Foundation Workshop — Creative & Technical Onboarding",
       location: "Training Halls & Media Labs",
       type: "Workshop",
@@ -174,20 +200,20 @@ export const schedule = {
         "Introduction to core media systems, production tools, and workflow fundamentals. Participants are immersed into hands-on creative training from the start.",
     },
     {
-      time: "Day 2",
-      title: "Advanced Workshop — Production Execution",
-      location: "Training Halls & Media Labs",
-      type: "Workshop",
-      description:
-        "Deeper practical sessions focused on collaboration, real-time production, and creative problem-solving in team environments.",
-    },
-    {
-      time: "Day 3",
-      title: "Live Production Challenge & Virtual Conference",
-      location: "Main Auditorium & Virtual Sessions",
+      time: "Friday Day Two — Project, Assignment & Practice",
+      title: "Remote Production Project",
+      location: "No Physical Meeting",
       type: "Project",
       description:
-        "Teams execute real production tasks while engaging with guest speakers in a hybrid learning experience combining practice and insight.",
+        "A focused day for project work, assignment completion, and practical skills practice from home. There is no physical meeting on this day.",
+    },
+    {
+      time: "Saturday Day Three — Virtual Conference 9am",
+      title: "Virtual Conference & Workshop Continuation",
+      location: "Online + Physical Meeting at 1pm",
+      type: "Experience",
+      description:
+        "Join the virtual conference at 9am, then continue with a physical workshop session at 1pm for hands-on practice and collaboration.",
     },
     {
       time: "Day 4",

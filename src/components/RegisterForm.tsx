@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { register as registerContent } from "@/data/content";
 import { RegisterData } from "./formtypes";
 import { payWithPaystack } from "./paystack";
@@ -15,6 +15,13 @@ import {
 
 export default function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [proofFile, setProofFile] = useState<File | null>(null);
+  const [proofError, setProofError] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const MAX_PROOF_SIZE = 5 * 1024 * 1024; // 5MB
+  const ALLOWED_PROOF_TYPES = ["image/jpeg", "image/png", "application/pdf"];
 
   const [formData, setFormData] = useState<RegisterData>({
     firstName: "",
@@ -91,8 +98,64 @@ export default function RegisterForm() {
       return;
     }
 
-    // 💳 PAID FLOW
-    payWithPaystack(formData, handlePayment);
+    // 💳 PAID FLOW — offline-proof upload flow
+    const proceed = window.confirm(
+      "Online payments are temporarily suspended. If you have already paid, upload proof of payment now. Press OK to continue."
+    );
+
+    if (!proceed) return;
+
+    if (!proofFile) {
+      // prompt user to select a file
+      fileInputRef.current?.click();
+      alert("Please select a proof of payment file, then click Submit Proof.");
+      return;
+    }
+
+    await uploadProof();
+  }
+
+  async function readFileAsDataUrl(file: File) {
+    return await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result));
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function uploadProof() {
+    if (!proofFile) return;
+
+    try {
+      setUploading(true);
+
+      const dataUrl = await readFileAsDataUrl(proofFile);
+
+      const res = await fetch("/api/offline-proof", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formData,
+          proofBase64: dataUrl,
+          proofFilename: proofFile.name,
+          amountPaid: total,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setProofError(data.message || "Upload failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setProofError("Upload failed. Please try again.");
+    } finally {
+      setUploading(false);
+    }
   }
 
   const baseFee =
@@ -334,6 +397,73 @@ export default function RegisterForm() {
                   ₦{total.toLocaleString()}
                 </p>
               </div>
+            </div>
+            {/* OFFLINE PAYMENT DETAILS */}
+            <div className="mt-4 rounded-xl border border-dashed border-slate-200 bg-white/80 p-4">
+              <p className="text-sm font-semibold text-slate-900">Offline Payment (Bank / OPAY)</p>
+              <p className="mt-2 text-sm text-slate-600">Account: <span className="font-mono">8056366057</span> — OPAY</p>
+              <p className="text-sm text-slate-600">Account name: OLASUNKANMI STEPHEN</p>
+              <p className="mt-2 text-sm text-slate-500">Please send a proof of payment to 08056366057</p>
+
+              <div className="mt-3 flex items-center gap-3">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*,application/pdf"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0] ?? null;
+
+                    if (!f) {
+                      setProofFile(null);
+                      setProofError(null);
+                      return;
+                    }
+
+                    if (!ALLOWED_PROOF_TYPES.includes(f.type)) {
+                      setProofFile(null);
+                      setProofError("Only JPEG, PNG, or PDF proof files are allowed.");
+                      return;
+                    }
+
+                    if (f.size > MAX_PROOF_SIZE) {
+                      setProofFile(null);
+                      setProofError("File too large. Please upload a proof under 5MB.");
+                      return;
+                    }
+
+                    setProofError(null);
+                    setProofFile(f);
+                  }}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="rounded-md bg-blue-50 px-3 py-2 text-sm text-blue-700 border border-blue-100"
+                >
+                  {proofFile ? "Change proof" : "Select proof"}
+                </button>
+
+                <button
+                  type="button"
+                  disabled={!proofFile || uploading}
+                  onClick={uploadProof}
+                  className="rounded-md bg-green-600 px-3 py-2 text-sm text-white disabled:opacity-50"
+                >
+                  {uploading ? "Uploading..." : "Submit Proof"}
+                </button>
+
+                {proofFile && (
+                  <span className="text-sm text-slate-500">{proofFile.name}</span>
+                )}
+              </div>
+
+              {proofError ? (
+                <p className="mt-2 text-sm text-red-600">{proofError}</p>
+              ) : (
+                <p className="mt-2 text-sm text-slate-500">Accepted formats: JPEG, PNG, PDF. Max size: 5MB.</p>
+              )}
             </div>
           </div>
         )}

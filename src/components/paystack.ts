@@ -51,15 +51,10 @@ export async function payWithPaystack(
   data: RegisterData,
   onSuccess: (reference: string) => void
 ) {
+  // Temporarily suspend inline Paystack payment flow.
+  // Show bank transfer details and ask users to send proof of payment.
   try {
-    await loadPaystack();
-
-    if (!window.PaystackPop) {
-      alert("Paystack failed to initialize");
-      return;
-    }
-
-    // ✅ FIXED PRICING LOGIC
+    // ✅ FIXED PRICING LOGIC (client-side display only)
     const INHOUSE_FEE = 5000;
     const OUTSIDER_FEE = 3000;
     const CERTIFICATE_FEE = 1000;
@@ -69,26 +64,27 @@ export async function payWithPaystack(
         ? INHOUSE_FEE
         : OUTSIDER_FEE;
 
-    const amount =
-      (baseFee + (data.certificateRequired ? CERTIFICATE_FEE : 0)) * 100;
+    const total = baseFee + (data.certificateRequired ? CERTIFICATE_FEE : 0);
 
-    const handler = window.PaystackPop.setup({
-      key: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
-      email: data.email,
-      amount,
+    const accountNumber = "8056366057";
+    const bankName = "OPAY";
+    const accountName = "OLASUNKANMI STEPHEN";
+    const proofNumber = "08056366057";
 
-      callback: (response: PaystackResponse) => {
-        onSuccess(response.reference);
-      },
+    // Copy account number to clipboard for convenience (best-effort)
+    try {
+      await navigator.clipboard.writeText(accountNumber);
+    } catch {}
 
-      onClose: () => {
-        alert("Payment cancelled");
-      },
-    });
+    const message = `Online payments are temporarily suspended.\n\nPlease pay via bank transfer:\nAccount: ${accountNumber}\nBank: ${bankName}\nAccount name: ${accountName}\n\nAmount: ₦${total.toLocaleString()}\n\nPlease send a proof of payment to ${proofNumber}`;
 
-    handler.openIframe();
+    alert(message);
+
+    // Do not attempt to call Paystack until fixed. Let the caller handle next steps.
+    return;
   } catch (err) {
-    console.error(err);
-    alert("Payment failed to load");
+    console.error("Offline payment fallback error:", err);
+    alert("Unable to show offline payment instructions");
+    return;
   }
 }

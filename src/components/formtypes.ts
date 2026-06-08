@@ -9,4 +9,6 @@ export type RegisterData = {
   attendanceType: "inhouse" | "outsider";
   certificateRequired: boolean;
   isPaid: boolean; // ✅ NEW: payment toggle
+  proofFilename?: string;
+  proofUrl?: string;
 };

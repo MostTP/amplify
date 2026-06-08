@@ -47,12 +47,10 @@ export async function POST(req: Request) {
         submitToSheet(
           {
             ...formData,
-            paymentStatus: "free",
-            amountPaid: 0,
-            reference: "",
           },
           "",
-          0
+          0,
+          "FREE"
         ),
         sendRegistrationEmails({
           ...formData,
@@ -116,12 +114,10 @@ export async function POST(req: Request) {
       submitToSheet(
         {
           ...formData,
-          paymentStatus: "paid",
-          amountPaid,
-          reference,
         },
         reference,
-        amountPaid
+        amountPaid,
+        "PAID"
       ),
       sendRegistrationEmails({
         ...formData,

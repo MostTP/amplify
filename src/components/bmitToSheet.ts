@@ -5,7 +5,8 @@ const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL!;
 export async function submitToSheet(
   data: RegisterData,
   reference: string,
-  amountPaid: number
+  amountPaid: number,
+  paymentStatus: string = "PAID"
 ) {
   const paymentType =
     data.attendanceType === "inhouse"
@@ -21,10 +22,18 @@ export async function submitToSheet(
     church: data.church,
     notes: data.notes,
     attendanceType: data.attendanceType,
+    certificateRequired: data.certificateRequired ?? false,
+    isPaid: data.isPaid ?? false,
+    paymentType:
+      data.attendanceType === "inhouse"
+        ? "In-House Participant"
+        : "Guest Participant",
 
-    paymentType,
+    proofFilename: data.proofFilename || "",
+    proofUrl: data.proofUrl || "",
+
     amountPaid,
-    paymentStatus: "PAID",
+    paymentStatus,
     reference,
 
     submittedAt: new Date().toISOString(),
