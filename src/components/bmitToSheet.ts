@@ -24,10 +24,7 @@ export async function submitToSheet(
     attendanceType: data.attendanceType,
     certificateRequired: data.certificateRequired ?? false,
     isPaid: data.isPaid ?? false,
-    paymentType:
-      data.attendanceType === "inhouse"
-        ? "In-House Participant"
-        : "Guest Participant",
+    paymentType,
 
     proofFilename: data.proofFilename || "",
     proofUrl: data.proofUrl || "",

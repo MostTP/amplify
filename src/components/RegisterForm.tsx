@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { register as registerContent } from "@/data/content";
 import { RegisterData } from "./formtypes";
-import { payWithPaystack } from "./paystack";
 import {
   Select,
   SelectContent,
@@ -52,26 +51,26 @@ export default function RegisterForm() {
     }));
   }
 
-  async function handlePayment(reference: string) {
-    const res = await fetch("/api/verify-payment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        reference,
-        formData,
-      }),
-    });
+  // async function handlePayment(reference: string) {
+  //   const res = await fetch("/api/verify-payment", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       reference,
+  //       formData,
+  //     }),
+  //   });
 
-    const data = await res.json();
+  //   const data = await res.json();
 
-    if (data.success) {
-      setSubmitted(true);
-    } else {
-      alert(data.message || "Registration failed");
-    }
-  }
+  //   if (data.success) {
+  //     setSubmitted(true);
+  //   } else {
+  //     alert(data.message || "Registration failed");
+  //   }
+  // }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
